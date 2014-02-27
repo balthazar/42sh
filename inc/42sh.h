@@ -6,13 +6,15 @@
 /*   By: janteuni <janteuni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/23 12:11:13 by janteuni          #+#    #+#             */
-/*   Updated: 2014/02/27 20:07:39 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/02/27 20:08:38 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef 42SH_H
 # define 42SH_H
 # include "libft.h"
+
+#include <stdio.h> /* TODO delete */
 
 # define CHEV	1
 # define PIPE	2
