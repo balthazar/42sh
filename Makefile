@@ -6,7 +6,7 @@
 #*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/23 23:45:20 by mpillet           #+#    #+#             *#
-#*   Updated: 2014/02/27 20:16:25 by mpillet          ###   ########.fr       *#
+#*   Updated: 2014/02/27 20:27:27 by mpillet          ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -59,12 +59,12 @@ $(DIR_OBJ) :
 		done
 
 clean:
-	@$(MAKE) -C ../libft $@
+	@$(MAKE) -C libft $@
 	@/bin/rm -rf $(DIR_OBJ);
 	@printf "\e[32m[✔]\e[0m Project cleaned.\n"
 
 fclean: clean
-	@$(MAKE) -C ../libft $@
+	@$(MAKE) -C libft $@
 	@/bin/rm -rf $(NAME);
 	@printf "\e[32m[✔]\e[0m Project fcleaned.\n"
 
