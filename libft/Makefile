@@ -6,7 +6,7 @@
 #    By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/02/15 18:48:46 by mpillet           #+#    #+#              #
-#    Updated: 2014/02/26 19:06:46 by mpillet          ###   ########.fr        #
+#*   Updated: 2014/02/27 20:03:03 by mpillet          ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -108,21 +108,19 @@ DIR_LIST           = src
 
 OBJ                = $(addprefix $(DIR_OBJ)/, $(SRC:.c=.o))
 
-.SILENT:
-
 all : $(NAME)
 
 $(NAME) : $(DIR_OBJ) $(OBJ)
-	ar rc $(NAME) $(OBJ)
-	ranlib $(NAME)
-	printf "\e[32m------------------------------------------------------\e[0m\n"
-	printf '\e[34m%-51s\e[0m\e[32m[✔]\e[0m\n' "libft.a"
-	printf "\e[32m------------------------------------------------------\e[0m\n"
+	@ar rc $(NAME) $(OBJ)
+	@ranlib $(NAME)
+	@printf "\e[32m------------------------------------------------------\e[0m\n"
+	@printf '\e[34m%-51s\e[0m\e[32m[✔]\e[0m\n' "libft.a"
+	@printf "\e[32m------------------------------------------------------\e[0m\n"
 
 $(addprefix $(DIR_OBJ)/, %.o) : %.c $(DIR_INC)
-	printf "compiling \e[33m%-41s\e[0m" "$@..."
-	$(CC) $(FLAG) -o $@ -c $< $(INCS)
-	printf "\e[32m[✔]\e[0m\n"
+	@printf "compiling \e[33m%-41s\e[0m" "$@..."
+	@$(CC) $(FLAG) -o $@ -c $< $(INCS)
+	@printf "\e[32m[✔]\e[0m\n"
 
 clean :
 	@if [ -e '$(DIR_OBJ)' ]; then \
@@ -140,10 +138,10 @@ re : fclean all
 
 debug : FLAG += -g3 -fno-inline -DD_ERRORS_ON
 debug : re
-	printf '\033[1;31m%s\033[0m\n' "Debug enabled."
+	@printf '\033[1;31m%s\033[0m\n' "Debug enabled."
 
 $(DIR_OBJ) :
-	/bin/mkdir $(DIR_OBJ); \
+	@/bin/mkdir $(DIR_OBJ); \
 		for DIR in $(DIR_LIST); \
 		do \
 		/bin/mkdir $(DIR_OBJ)/$$DIR; \
