@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/02/27 20:48:15 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/02/27 21:35:03 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,19 @@ static void			st_run_pipe(t_btree *node1, t_btree *node2)
 	{
 		dup2(fdes[1], 1);
 		close(fdes[0]);
-		execve(C(node1)->path, C(node1)->cmd, C(node1)->env);
+		if (CMD == C(node1)->type)
+			execve(C(node1)->path, C(node1)->cmd, C(node1)->env);
+		else
+			ft_treat_node(node1);
 		exit(1);
 	}
 	dup2(fdes[0], 0);
 	close(fdes[1]);
 	wait(NULL);
-	execve(C(node2)->path, C(node2)->cmd, C(node2)->env);
+	if (CMD == C(node2)->type)
+		execve(C(node2)->path, C(node2)->cmd, C(node2)->env);
+	else
+		ft_treat_node(node2);
 }
 
 int					ft_pipe(t_btree *node1, t_btree *node2)

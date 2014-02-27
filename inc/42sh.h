@@ -6,7 +6,7 @@
 /*   By: janteuni <janteuni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/23 12:11:13 by janteuni          #+#    #+#             */
-/*   Updated: 2014/02/27 20:50:50 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/02/27 21:19:38 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ void				add_node(t_btree **tree, void *data, size_t content_size);
 
 int					ft_pipe(t_btree *node1, t_btree *node2);
 t_cmd				*ft_make_cmd(char *path, char *e1, char *e2, char *e3);
+int					ft_treat_node(t_btree *node);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

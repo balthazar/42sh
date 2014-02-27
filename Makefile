@@ -6,7 +6,7 @@
 #*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/23 23:45:20 by mpillet           #+#    #+#             *#
-#*   Updated: 2014/02/27 20:51:07 by mpillet          ###   ########.fr       *#
+#*   Updated: 2014/02/27 21:20:53 by mpillet          ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -24,6 +24,10 @@ LIBS				= -L libft -lft
 SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/error.c \
 					  $(DIR_SRC)/ft_pipe.c \
+					  $(DIR_SRC)/ft_lexer.c \
+					  $(DIR_SRC)/ft_parser.c \
+					  $(DIR_SRC)/ft_parser_tree.c \
+					  $(DIR_SRC)/ft_treat_node.c \
 					  $(DIR_SRC)/ft_make_cmd.c \
 
 # ---------------------------------------------------------------------------- #
