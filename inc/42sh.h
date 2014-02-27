@@ -6,7 +6,7 @@
 /*   By: janteuni <janteuni@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/23 12:11:13 by janteuni          #+#    #+#             */
-/*   Updated: 2014/02/27 20:20:26 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/02/27 20:50:50 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@
 # define D_TREE		((t_cmd *)node->content)->type
 # define RIGHT		((t_cmd *)first->right->content)
 # define LEFT		((t_cmd *)first->left->content)
+
+# define C(EL)		((t_cmd *) EL->content)
 
 typedef struct		s_elem
 {
@@ -76,5 +78,14 @@ void				add_node(t_btree **tree, void *data, size_t content_size);
 */
 
 int					ft_pipe(t_btree *node1, t_btree *node2);
+t_cmd				*ft_make_cmd(char *path, char *e1, char *e2, char *e3);
+
+/*
+** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+** Error
+** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+*/
+
+void				ft_error(char *msg);
 
 #endif /* !A42SH_H */
