@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/02/28 20:35:19 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/02/28 23:42:56 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ void				ft_test(char *line)
 	ft_lexer(line, &dlist);
 	ft_parser(&dlist, &tree);
 	printf("\033[34m[TEST %02d]\033[0m \033[35m\"%s\"\033[0m\n", num++, line);
+	printf("\n");
+	print_tree(tree, 0, 0);
+	printf("\n");
 	ft_treat_node(tree);
 	printf("\n");
 }

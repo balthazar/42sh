@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/02/28 23:40:20 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/02/28 23:48:44 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,7 @@ void				print_tree(t_btree *node, int level, int dir)
 		{
 			printf("\033[34m\\ \033[0m");
 		}
-		else
-		{
-			printf("\033[37m%s\033[0m", get_type(C(node)->type));
-		}
+		printf("\033[37m%s\033[0m", get_type(C(node)->type));
 		if (CMD == C(node)->type)
 		{
 			printf("\033[35m");
