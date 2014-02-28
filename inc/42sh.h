@@ -97,7 +97,6 @@ void				add_node(t_btree **tree, void *data, size_t content_size);
 void				ft_fork_and_exec(t_btree *node);
 int					ft_exec(t_btree *node);
 int					ft_fill_path(t_cmd *cmd);
-int					ft_pipe(t_btree *node1, t_btree *node2);
 t_cmd				*ft_make_cmd(char *path, char *e1, char *e2, char *e3, char **env);
 int					ft_treat_node(t_btree *node);
 int					ft_redirect(t_btree *node);
