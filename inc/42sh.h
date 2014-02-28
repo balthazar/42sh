@@ -30,6 +30,7 @@
 # define LEFT		((t_cmd *)first->left->content)
 
 # define C(EL)		((t_cmd *) EL->content)
+# define CH(X)		(((t_chev *)X->content))
 
 typedef struct		s_ctx
 {
