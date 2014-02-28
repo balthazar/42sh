@@ -31,6 +31,11 @@
 
 # define C(EL)		((t_cmd *) EL->content)
 
+typedef struct		s_ctx
+{
+	char			**env;
+}					t_ctx;
+
 typedef struct		s_elem
 {
 	char			*data;
@@ -54,6 +59,21 @@ typedef struct		s_cmd
 	int				fail;
 }					t_cmd;
 
+/*
+** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+** Commons
+** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+*/
+
+char				**ft_get_env(void);
+t_ctx				*ft_get_ctx(void);
+
+/*
+** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+** Parser / Lexer
+** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+*/
+
 void				ft_lexer(char *str, t_dlist **list);
 int					ft_lexer_check_err(t_dlist *list);
 void				ft_parser(t_dlist **list, t_btree **tree);
@@ -65,9 +85,13 @@ void				add_node(t_btree **tree, void *data, size_t content_size);
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 */
 
+void				ft_fork_and_exec(t_btree *node);
+int					ft_exec(t_btree *node);
+int					ft_fill_path(t_cmd *cmd);
 int					ft_pipe(t_btree *node1, t_btree *node2);
-t_cmd				*ft_make_cmd(char *path, char *e1, char *e2, char *e3);
+t_cmd				*ft_make_cmd(char *path, char *e1, char *e2, char *e3, char **env);
 int					ft_treat_node(t_btree *node);
+int					ft_redirect(t_btree *node);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
