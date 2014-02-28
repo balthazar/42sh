@@ -6,7 +6,7 @@
 /*   By: janteuni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 17:27:58 by janteuni          #+#    #+#             */
-/*   Updated: 2014/02/27 21:23:29 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/02/28 15:14:41 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,6 +115,7 @@ void		add_node(t_btree **tree, void *data, size_t content_size)
 
 	first = *tree;
 	node = btree_create_node(data, content_size);
+	C(node)->env = ft_get_env();
 	if (!first)
 		*tree = node;
 	else

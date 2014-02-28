@@ -6,7 +6,7 @@
 #*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/23 23:45:20 by mpillet           #+#    #+#             *#
-#*   Updated: 2014/02/27 21:20:53 by mpillet          ###   ########.fr       *#
+#    Updated: 2014/02/28 15:15:04 by mpillet          ###   ########.fr        #
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -33,6 +33,8 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_exec.c \
 					  $(DIR_SRC)/ft_fork_and_exec.c \
 					  $(DIR_SRC)/ft_redirect.c \
+					  $(DIR_SRC)/ft_get_env.c \
+					  $(DIR_SRC)/context.c \
 
 # ---------------------------------------------------------------------------- #
 
@@ -83,6 +85,6 @@ re: fclean all
 
 debug : FLAG += -g3 -fno-inline -DD_ERRORS_ON
 debug : re
-	printf '\033[1;31m%s\033[0m\n' "Debug enabled."
+	@printf '\033[1;31m%s\033[0m\n' "Debug enabled."
 
 .PHONY: clean fclean re debug libft
