@@ -6,7 +6,7 @@
 #*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/23 23:45:20 by mpillet           #+#    #+#             *#
-#*   Updated: 2014/02/28 22:34:01 by mpillet          ###   ########.fr       *#
+#*   Updated: 2014/02/28 23:11:22 by mpillet          ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -22,6 +22,7 @@ INCS				= -I inc -I ./inc -I libft/inc
 LIBS				= -L libft -lft
 
 SRC					= $(DIR_SRC)/main.c \
+					  $(DIR_SRC)/context.c \
 					  $(DIR_SRC)/error.c \
 					  $(DIR_SRC)/ft_pipe.c \
 					  $(DIR_SRC)/ft_lexer.c \
@@ -34,7 +35,7 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_fork_and_exec.c \
 					  $(DIR_SRC)/ft_redirect.c \
 					  $(DIR_SRC)/ft_get_env.c \
-					  $(DIR_SRC)/context.c \
+					  $(DIR_SRC)/ft_create_files.c \
 					  $(DIR_SRC)/ft_test.c \
 					  $(DIR_SRC)/treat_cmd.c \
 					  $(DIR_SRC)/treat_pipe.c \
@@ -42,6 +43,7 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/treat_and.c \
 					  $(DIR_SRC)/treat_chev.c \
 					  $(DIR_SRC)/treat_or.c \
+					  $(DIR_SRC)/print_tree.c \
 
 # ---------------------------------------------------------------------------- #
 
