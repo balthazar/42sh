@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/02/28 17:02:18 by fbeck            ###   ########.fr       */
+/*   Updated: 2014/02/28 17:16:15 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,13 @@ int					main(int ac, char **av, char **env)
 	tree = NULL;
 	dlist = NULL;
 	ft_lexer("ls -l | cat -e >> toto", &dlist);
+	ft_parser(&dlist, &tree);
+	ft_treat_node(tree);
+
+	printf("-------------------- SIXTH TEST\n");
+	tree = NULL;
+	dlist = NULL;
+	ft_lexer("ls -l ; cat auteur", &dlist);
 	ft_parser(&dlist, &tree);
 	ft_treat_node(tree);
 	/*

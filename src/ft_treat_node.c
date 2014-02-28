@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/02/28 14:51:51 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/02/28 17:17:24 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,11 @@ int					ft_treat_node(t_btree *node)
 {
 	if (PIPE == C(node)->type)
 		ft_pipe(node->left, node->right);
+	else if (END == C(node)->type)
+	{
+		ft_treat_node(node->left);
+		ft_treat_node(node->right);
+	}
 	else if (CMD == C(node)->type)
 	{
 		if (ERR == ft_redirect(node) || ERR == ft_fill_path(C(node)))
