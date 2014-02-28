@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/02/27 21:44:59 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/02/28 14:38:01 by fbeck            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,23 @@ int					main(void)
 	node2->left = node4;
 	node2->right = node5;
 	ft_treat_node(node1);
+	printf("-------------------- SECOND TEST\n");
+	node1 = btree_create_node(ft_make_cmd("/bin/ls",  "ls",  "-l", NULL), sizeof(t_cmd));
+	node1->left = NULL;
+	node1->right = NULL;
+	ft_treat_node(node1);
+	printf("-------------------- THIRD TEST\n");
+	node1 = btree_create_node(ft_make_cmd("/bin/ls",  "ls",  "-l", NULL), sizeof(t_cmd));
+	node2 = btree_create_node(ft_make_cmd("/bin/cat",  "cat",  "-e", NULL), sizeof(t_cmd));
+	node3 = btree_create_node(cmd, sizeof(t_cmd));
+	node1->left = NULL;
+	node1->right = NULL;
+	node2->left = NULL;
+	node2->right = NULL;
+	node3->left = node1;
+	node3->right = node2;
+	ft_treat_node(node3);
+	while (1)
+		;
 	return (0);
 }

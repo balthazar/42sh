@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/02/27 20:38:49 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/02/28 14:30:14 by fbeck            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 void				ft_error(char *msg)
 {
+	ft_putstr_fd("Error: ", 2);
 	ft_putendl_fd(msg, 2);
 	exit(1);
 }

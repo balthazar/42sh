@@ -6,7 +6,7 @@
 /*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 13:04:21 by fbeck             #+#    #+#             */
-/*   Updated: 2014/02/28 12:41:33 by fbeck            ###   ########.fr       */
+/*   Updated: 2014/02/28 14:48:30 by fbeck            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ static char		**ft_get_paths(char **env)
 	int			i;
 
 	i = 0;
+	if (!env)
+		return (NULL);
 	while (env[i])
 	{
 		if (!ft_strncmp(env[i], "PATH=", 5))
@@ -77,7 +79,7 @@ static void		ft_check_paths(t_cmd *cmd, char **paths)
 	}
 }
 
-void			ft_fill_path(t_cmd *cmd)
+int				ft_fill_path(t_cmd *cmd)
 {
 	char		**paths;
 	int			i;
@@ -86,14 +88,21 @@ void			ft_fill_path(t_cmd *cmd)
 	if (ft_strchr(cmd->cmd[0], '/'))
 	{
 		if (ft_check_access(cmd->cmd[0]) == 1)
+		{
 			cmd->path = ft_strdup(cmd->cmd[0]);
-		return ;
+			return (OK);
+		}
+		return (ERR);
 	}
 	if (!(paths = ft_get_paths(cmd->env)))
-		return ;
+		return (ERR);
 	ft_check_paths(cmd, paths);
 	ft_free_tab((void ***)&paths);
 	if (!cmd->path)
+	{
 		ft_putendl_fd("Error: Command not found", 2);
+		return (ERR);
+	}
+	return (OK);
 }
 

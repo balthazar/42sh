@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exec.c                                          :+:      :+:    :+:   */
+/*   ft_fork_and_exec.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/02/28 14:30:43 by fbeck            ###   ########.fr       */
+/*   Created: 2014/02/28 14:24:03 by fbeck             #+#    #+#             */
+/*   Updated: 2014/02/28 14:31:23 by fbeck            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include <unistd.h>
 #include "42sh.h"
 
-int					ft_exec(t_btree *node)
+void				ft_fork_and_exec(t_btree *node)
 {
-	execve(C(node)->path, C(node)->cmd, C(node)->env);
-	return (0);
+	pid_t			father;
+
+	if (-1 == (father = fork()))
+		ft_error("fork failed");
+	else if (!father)
+		ft_exec(node);
+	wait(NULL);
 }
