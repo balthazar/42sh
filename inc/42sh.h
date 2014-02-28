@@ -102,7 +102,7 @@ t_cmd				*ft_make_cmd(char *path, char *e1, char *e2, char *e3, char **env);
 int					ft_treat_node(t_btree *node);
 int					ft_redirect(t_btree *node);
 
-int					treat_cmd();
+int					treat_cmd(t_btree *node);
 int					treat_pipe(t_btree *node);
 int					treat_end(t_btree *node);
 int					treat_and(t_btree *node);
