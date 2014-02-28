@@ -6,7 +6,7 @@
 #*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/23 23:45:20 by mpillet           #+#    #+#             *#
-#*   Updated: 2014/02/28 20:27:46 by mpillet          ###   ########.fr       *#
+#*   Updated: 2014/02/28 22:34:01 by mpillet          ###   ########.fr       *#
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -36,6 +36,12 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_get_env.c \
 					  $(DIR_SRC)/context.c \
 					  $(DIR_SRC)/ft_test.c \
+					  $(DIR_SRC)/treat_cmd.c \
+					  $(DIR_SRC)/treat_pipe.c \
+					  $(DIR_SRC)/treat_end.c \
+					  $(DIR_SRC)/treat_and.c \
+					  $(DIR_SRC)/treat_chev.c \
+					  $(DIR_SRC)/treat_or.c \
 
 # ---------------------------------------------------------------------------- #
 

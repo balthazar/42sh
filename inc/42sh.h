@@ -4,12 +4,12 @@
 
 #include <stdio.h> /* TODO delete */
 
+# define CMD		0
 # define CHEV		1
 # define PIPE		2
 # define END		3
 # define AND		4
 # define STR		-1
-# define CMD		0
 
 # define ERR		-1
 # define OK			0
@@ -101,6 +101,13 @@ int					ft_pipe(t_btree *node1, t_btree *node2);
 t_cmd				*ft_make_cmd(char *path, char *e1, char *e2, char *e3, char **env);
 int					ft_treat_node(t_btree *node);
 int					ft_redirect(t_btree *node);
+
+int					treat_cmd();
+int					treat_pipe(t_btree *node);
+int					treat_end(t_btree *node);
+int					treat_and(t_btree *node);
+int					treat_or(t_btree *node);
+int					treat_chev(t_btree *node);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_treat_node.c                                    :+:      :+:    :+:   */
+/*   treat_end.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/02/28 22:37:45 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/02/28 22:20:54 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
 
-int					ft_treat_node(t_btree *node)
+int					treat_end(t_btree *node)
 {
-	static int		(*p[6]) (t_btree *) = {
-		treat_cmd,
-		treat_chev,
-		treat_pipe,
-		treat_end,
-		treat_and,
-		treat_or
-	};
-	return (p[C(node)->type](node));
+	ft_treat_node(node->left);
+	ft_treat_node(node->right);
+	return (OK);
 }
