@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/02/28 17:16:15 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/02/28 17:40:37 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,28 @@ int					main(int ac, char **av, char **env)
 	printf("-------------------- SIXTH TEST\n");
 	tree = NULL;
 	dlist = NULL;
-	ft_lexer("ls -l ; cat auteur", &dlist);
+	ft_lexer("ls -l | cat -e ; cat auteur", &dlist);
+	ft_parser(&dlist, &tree);
+	ft_treat_node(tree);
+
+	printf("-------------------- SEVENTH TEST\n");
+	tree = NULL;
+	dlist = NULL;
+	ft_lexer("ls -l && cat auteur", &dlist);
+	ft_parser(&dlist, &tree);
+	ft_treat_node(tree);
+
+	printf("-------------------- EIGHTH TEST [lsaldkajlksdjlas -l && cat auteur]\n");
+	tree = NULL;
+	dlist = NULL;
+	ft_lexer("lsaldkajlksdjlas -l && cat auteur", &dlist);
+	ft_parser(&dlist, &tree);
+	ft_treat_node(tree);
+
+	printf("-------------------- NINTH TEST [lkjalk && cat auteur && ls -l]\n");
+	tree = NULL;
+	dlist = NULL;
+	ft_lexer("lkjalk && cat auteur && ls -l", &dlist);
 	ft_parser(&dlist, &tree);
 	ft_treat_node(tree);
 	/*
