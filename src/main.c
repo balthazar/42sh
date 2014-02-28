@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/02/27 21:44:59 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/02/28 12:06:38 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int					main(void)
 	t_btree			*node4;
 	t_btree			*node5;
 
+	/* ls -l | wc -l | cat -e   */
 	cmd = st_init_cmd();
 	cmd->type = PIPE;
 	node1 = btree_create_node(cmd, sizeof(t_cmd));
