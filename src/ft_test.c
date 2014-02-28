@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_test.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/02/28 20:35:44 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/02/28 20:35:19 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "42sh.h"
 
-int					main(int ac, char **av, char **env)
+void				ft_test(char *line)
 {
-	(void) ac;
-	(void) av;
-	ft_get_ctx()->env = env;
-	ft_test("ls -l");
-	ft_test("ls -l | cat -e");
-	ft_test("ls -l | cat -e > toto");
-	return (0);
+	static int		num = 0;
+	t_btree			*tree;
+	t_dlist			*dlist;
+	t_ctx			*ctx;
+
+	ctx = ft_get_ctx();
+	tree = NULL;
+	dlist = NULL;
+	ft_lexer(line, &dlist);
+	ft_parser(&dlist, &tree);
+	printf("\033[34m[TEST %02d]\033[0m \033[35m\"%s\"\033[0m\n", num++, line);
+	ft_treat_node(tree);
+	printf("\n");
 }
