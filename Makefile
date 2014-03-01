@@ -6,7 +6,7 @@
 #*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/23 23:45:20 by mpillet           #+#    #+#             *#
-#    Updated: 2014/03/01 17:40:19 by mpillet          ###   ########.fr        #
+#    Updated: 2014/03/01 18:50:46 by fbeck            ###   ########.fr        #
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -24,6 +24,7 @@ LIBS				= -L libft -lft -L /usr/lib -ltermcap
 SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/context.c \
 					  $(DIR_SRC)/error.c \
+					  $(DIR_SRC)/signals.c \
 					  $(DIR_SRC)/ft_lexer.c \
 					  $(DIR_SRC)/ft_parser.c \
 					  $(DIR_SRC)/ft_parser_tree.c \
@@ -36,6 +37,7 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_fork_and_exec.c \
 					  $(DIR_SRC)/ft_redirect.c \
 					  $(DIR_SRC)/ft_get_env.c \
+					  $(DIR_SRC)/ft_get_fd.c \
 					  $(DIR_SRC)/ft_create_files.c \
 					  $(DIR_SRC)/ft_test.c \
 					  $(DIR_SRC)/treat_cmd.c \

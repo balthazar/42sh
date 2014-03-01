@@ -87,6 +87,7 @@ void				ft_test(char *line);
 
 char				**ft_get_env(void);
 t_ctx				*ft_get_ctx(void);
+int					ft_get_fd(void);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

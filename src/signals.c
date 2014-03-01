@@ -6,7 +6,7 @@
 /*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/26 15:09:26 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/01 18:23:26 by fbeck            ###   ########.fr       */
+/*   Updated: 2014/03/01 18:51:04 by fbeck            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ static void			ft_resize(int sig)
 	struct winsize	w;
 	t_ctx			*env;
 
-	ioctl(get_fd(), TIOCGWINSZ, &w);
+	(void)sig;
+	ioctl(ft_get_fd(), TIOCGWINSZ, &w);
 	env = ft_get_ctx();
 	env->cols = w.ws_col;
 	env->rows = w.ws_row;
