@@ -6,16 +6,24 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/02/28 14:30:14 by fbeck            ###   ########.fr       */
+/*   Updated: 2014/03/01 18:02:19 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "42sh.h"
 
+void				ft_exit(int n)
+{
+	ft_reset_term();
+	exit(n);
+}
+
 void				ft_error(char *msg)
 {
+	ft_putstr_fd("\033[0;31m", 2);
 	ft_putstr_fd("Error: ", 2);
 	ft_putendl_fd(msg, 2);
-	exit(1);
+	ft_putstr_fd("\033[0m", 2);
+	ft_exit(1);
 }

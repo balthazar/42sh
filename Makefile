@@ -6,7 +6,7 @@
 #*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/23 23:45:20 by mpillet           #+#    #+#             *#
-#*   Updated: 2014/03/01 00:34:05 by mpillet          ###   ########.fr       *#
+#    Updated: 2014/03/01 17:40:19 by mpillet          ###   ########.fr        #
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -47,7 +47,8 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/print_tree.c \
 					  $(DIR_SRC)/ft_term_init.c \
 					  $(DIR_SRC)/ft_term_mode.c \
-					  $(DIR_SRC)/prompt.c \
+					  $(DIR_SRC)/ft_prompt.c \
+					  $(DIR_SRC)/ft_launch.c \
 
 # ---------------------------------------------------------------------------- #
 

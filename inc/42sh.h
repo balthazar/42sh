@@ -8,6 +8,11 @@
 
 #include <stdio.h> /* TODO delete */
 
+# define BUF_LEN	6
+# define LINE_LEN	2048
+
+# define CTX		ft_get_ctx()
+
 # define CMD		0
 # define CHEV		1
 # define PIPE		2
@@ -15,10 +20,7 @@
 # define AND		4
 # define OR			5
 # define STR		-1
-/*					TODO delete
-# define ERR		-1 
-# define OK			0
-*/
+
 # define TRUE		1
 # define FALSE		0
 
@@ -40,6 +42,8 @@
 typedef struct		s_ctx
 {
 	char			**env;
+	char			line[LINE_LEN];
+	int				i;
 }					t_ctx;
 
 typedef struct		s_elem
@@ -116,6 +120,7 @@ void				if_end(t_btree **tree, t_btree *node);
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 */
 
+int					ft_launch(void);
 void				ft_fork_and_exec(t_btree *node);
 int					ft_exec(t_btree *node);
 int					ft_fill_path(t_cmd *cmd);
