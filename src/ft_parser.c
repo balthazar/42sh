@@ -6,7 +6,7 @@
 /*   By: janteuni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/25 17:57:52 by janteuni          #+#    #+#             */
-/*   Updated: 2014/03/01 16:05:10 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/01 16:26:08 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static void		init_safe(t_cmd *cmd)
 {
 	cmd->path = NULL;
 	cmd->cmd = NULL;
-	cmd->env = NULL;
+	cmd->env = ft_get_env();
 	cmd->in = NULL;
 	cmd->out = NULL;
 	cmd->fail = FALSE;
