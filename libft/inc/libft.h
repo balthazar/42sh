@@ -6,7 +6,7 @@
 /*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 12:24:11 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/01 18:48:31 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/01 19:07:18 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ char		*ft_multijoin(int count, ...);
 ** tabs
 */
 int			ft_tab_len(char **array);
+void		ft_printab(char **array);
 
 /*
 ** output

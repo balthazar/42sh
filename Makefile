@@ -33,6 +33,8 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_term_mode.c \
 					  $(DIR_SRC)/ft_prompt.c \
 					  $(DIR_SRC)/ft_launch.c \
+					  $(DIR_SRC)/ft_has_char.c \
+					  $(DIR_SRC)/ft_is_valid.c \
 					  $(DIR_SRC)/ft_builtin.c \
 					  $(DIR_SRC)/ft_cd.c \
 					  $(DIR_SRC)/ft_exit.c \

@@ -6,7 +6,7 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/28 16:49:54 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/01 18:45:49 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/01 19:07:55 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,31 +32,6 @@ void		ft_copyenv(char ***dest, char **env)
 	(*dest)[i] = NULL;
 }
 
-static void	ft_print_env(char **env)
-{
-	t_ctx	*ctx;
-	int		i;
-
-	i = 0;
-	if (!env)
-	{
-		ctx = ft_get_ctx();
-		while (ctx->env && ctx->env[i])
-		{
-			ft_putendl(ctx->env[i]);
-			i++;
-		}
-	}
-	else
-	{
-		while (env && env[i])
-		{
-			ft_putendl(env[i]);
-			i++;
-		}
-	}
-}
-
 static void	ft_env_null_extra(t_btree *node)
 {
 	int		i;
@@ -72,7 +47,7 @@ static void	ft_env_null_extra(t_btree *node)
 		++i;
 	}
 	if (!GETT(node, cmd)[i])
-		ft_print_env(customenv);
+		ft_printab(customenv);
 //	else
 //		ft_redirect(node, customenv);
 }
@@ -93,7 +68,7 @@ static void	ft_env_extra(t_btree *node)
 		++i;
 	}
 	if (!GETT(node, cmd)[i])
-		ft_print_env(customenv);
+		ft_printab(customenv);
 //	else
 //		ft_redirect(node, customenv);
 }
@@ -101,7 +76,7 @@ static void	ft_env_extra(t_btree *node)
 void		ft_env(t_btree *node)
 {
 	if (!GETT(node, cmd)[1])
-		ft_print_env(NULL);
+		ft_printab(CTX->env);
 //	else if (NMI && !ft_charin(GETT(node, cmd)[1], '='))
 //		ft_redirect(node, ft_get_ctx()->env);
 	else if (!NMI && !GETT(node, cmd)[2])

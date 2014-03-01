@@ -6,7 +6,7 @@
 /*   By: janteuni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 15:41:53 by janteuni          #+#    #+#             */
-/*   Updated: 2014/03/01 18:04:59 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/01 19:02:23 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,17 @@ void				ft_aff_prompt(void)
 	ft_putstr("YOLO-Shell> ");
 }
 
+static int			is_full_cmd(char *line)
+{
+	int				i;
+
+	i = ft_strlen(line) - 1;
+	while (i > 1 && line[i] == ' ')
+		--i;
+	return (!(line[i] == '&' && line[i - 1] == '&')
+			&& !(line[i] == '|'));
+}
+
 void				ft_prompt(void)
 {
 	char			buf[BUF_LEN + 1];
@@ -46,7 +57,18 @@ void				ft_prompt(void)
 		if (st_isprint(buf))
 			st_push(buf[0]);
 		else if (buf[0] == 10 && buf[1] == 0 && buf[2] == 0 && buf[3] == 0 && buf[4] == 0 && buf[5] == 0)
-			ft_launch();
-/*		printf("%d %d %d %d %d %d\n", buf[0], buf[1], buf[2], buf[3], buf[4], buf[5]);*/
+		{
+			if (is_full_cmd(CTX->line))
+				ft_launch();
+			else if (ft_is_valid(CTX->line))
+				ft_putstr("> ");
+			else
+			{
+				ft_bzero(CTX->line, LINE_LEN);
+				CTX->i = 0;
+				ft_aff_prompt();
+			}
+		}
+		/*		printf("%d %d %d %d %d %d\n", buf[0], buf[1], buf[2], buf[3], buf[4], buf[5]);*/
 	}
 }
