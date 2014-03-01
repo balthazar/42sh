@@ -190,6 +190,7 @@ int			treat_chev(t_btree *node);
 */
 
 void		ft_error(char *msg);
+void		ft_exit(int n);
 
 void		print_tree(t_btree *node, int level, int dir); /* TODO delete */
 
