@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 17:37:07 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/01 18:00:20 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/01 18:04:29 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ int					ft_launch(void)
 	}
 	ft_bzero(ft_get_ctx()->line, LINE_LEN);
 	CTX->i = 0;
+	ft_aff_prompt();
 	return (OK);
 }

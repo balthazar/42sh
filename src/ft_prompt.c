@@ -6,7 +6,7 @@
 /*   By: janteuni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 15:41:53 by janteuni          #+#    #+#             */
-/*   Updated: 2014/03/01 17:52:22 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/01 18:04:59 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,17 @@ static int			st_isprint(char *buf)
 			&& buf[4] == 0 && buf[5] == 0);
 }
 
+void				ft_aff_prompt(void)
+{
+	ft_putstr("YOLO-Shell> ");
+}
+
 void				ft_prompt(void)
 {
 	char			buf[BUF_LEN + 1];
 
 	ft_bzero(ft_get_ctx()->line, LINE_LEN);
+	ft_aff_prompt();
 	while (1 && !(buf[0] == 113 && buf[1] == 0))
 	{
 		ft_bzero(buf, BUF_LEN + 1);

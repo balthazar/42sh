@@ -97,6 +97,8 @@ void				ft_reset_term(void);
 void				ft_raw_term(void);
 void				ft_term_init(void);
 void				ft_prompt(void);
+void				ft_aff_prompt(void);
+
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ** Parser / Lexer
