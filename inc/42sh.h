@@ -147,6 +147,6 @@ int					treat_chev(t_btree *node);
 
 void				ft_error(char *msg);
 
-void				print_tree(t_btree *node, int level, int dir);
+void				print_tree(t_btree *node, int level, int dir); /* TODO delete */
 
 #endif /* !A42SH_H */
