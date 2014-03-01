@@ -1,5 +1,9 @@
 #ifndef A42SH_H
 # define A42SH_H
+
+# include <termios.h>
+# include <curses.h>
+# include <term.h>
 # include "libft.h"
 
 #include <stdio.h> /* TODO delete */
@@ -11,10 +15,10 @@
 # define AND		4
 # define OR			5
 # define STR		-1
-
-# define ERR		-1
+/*					TODO delete
+# define ERR		-1 
 # define OK			0
-
+*/
 # define TRUE		1
 # define FALSE		0
 
@@ -78,6 +82,17 @@ void				ft_test(char *line);
 char				**ft_get_env(void);
 t_ctx				*ft_get_ctx(void);
 
+/*
+** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+** Termcaps
+** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+*/
+
+int					ft_putput(int c);
+void				ft_reset_term(void);
+void				ft_raw_term(void);
+void				ft_term_init(void);
+void				ft_prompt(void);
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ** Parser / Lexer
