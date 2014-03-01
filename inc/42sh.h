@@ -36,6 +36,9 @@
 typedef struct		s_ctx
 {
 	char			**env;
+	int				cols;
+	int				rows;
+
 }					t_ctx;
 
 typedef struct		s_elem
@@ -124,6 +127,15 @@ int					treat_chev(t_btree *node);
 */
 
 void				ft_error(char *msg);
+
+/*
+** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+** Signals
+** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+*/
+
+void				setup_signal(void);
+void				reset_signal(void);
 
 void				print_tree(t_btree *node, int level, int dir);
 
