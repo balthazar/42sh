@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/01 00:28:32 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/01 16:35:06 by fbeck            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static int			st_check_redirect_out(char *file)
 static int			st_create_out(t_btree *node)
 {
 	t_list			*ptr;
-	int				chev_type;
 	int				fd;
 
 	ptr = C(node)->out;
@@ -37,8 +36,7 @@ static int			st_create_out(t_btree *node)
 	{
 		if (ERR == st_check_redirect_out(CH(ptr)->file))
 			return (ERR);
-		chev_type = (CH(ptr)->op == OP_S) ? O_TRUNC : O_APPEND;
-		fd = open(CH(ptr)->file, O_WRONLY | O_CREAT | chev_type, 0644);
+		fd = open(CH(ptr)->file, O_WRONLY | O_CREAT, 0644);
 		close(fd);
 		ptr = ptr->next;
 	}
