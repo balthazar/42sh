@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exec.c                                          :+:      :+:    :+:   */
+/*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/01 19:18:43 by bgronon          ###   ########.fr       */
+/*   Created: 2014/01/28 10:42:27 by bgronon           #+#    #+#             */
+/*   Updated: 2014/03/01 18:41:43 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 #include "42sh.h"
 
-int					ft_exec(t_btree *node)
+void	ft_exit_builtin(t_btree *node)
 {
-	execve(C(node)->path, C(node)->cmd, C(node)->env);
-	return (0);
+	int		nb;
+
+	nb = 0;
+	if (GETT(node, cmd)[1])
+		nb = ft_atoi(GETT(node, cmd)[1]);
+//	ft_ttyreset(ft_getfd());
+	exit(nb);
 }

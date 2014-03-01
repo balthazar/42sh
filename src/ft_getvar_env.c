@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exec.c                                          :+:      :+:    :+:   */
+/*   ft_getvar_env.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/01 19:18:43 by bgronon          ###   ########.fr       */
+/*   Created: 2014/02/27 11:58:43 by bgronon           #+#    #+#             */
+/*   Updated: 2014/03/01 18:50:24 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "42sh.h"
 
-int					ft_exec(t_btree *node)
+char	*ft_getvar_env(char *name, char **env)
 {
-	execve(C(node)->path, C(node)->cmd, C(node)->env);
-	return (0);
+	int		i;
+	size_t	len;
+
+	i = 0;
+	len = ft_strlen(name);
+	while (env && env[i])
+	{
+		if (!ft_strncmp(name, env[i], len) && env[i][len] == '=')
+			return (env[i] + len + 1);
+		++i;
+	}
+	return (NULL);
 }

@@ -6,7 +6,7 @@
 /*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 12:24:11 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/01 16:03:16 by janteuni         ###   ########.fr       */
+/*   Updated: 2014/03/01 19:07:18 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,11 +101,13 @@ int			ft_isprint(int c);
 int			ft_toupper(int c);
 int			ft_tolower(int c);
 void		ft_free_tab(void ***arr);
+char		*ft_multijoin(int count, ...);
 
 /*
 ** tabs
 */
 int			ft_tab_len(char **array);
+void		ft_printab(char **array);
 
 /*
 ** output

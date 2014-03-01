@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exec.c                                          :+:      :+:    :+:   */
+/*   ft_printab.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/01 19:18:43 by bgronon          ###   ########.fr       */
+/*   Created: 2014/03/01 19:02:12 by bgronon           #+#    #+#             */
+/*   Updated: 2014/03/01 19:05:11 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include "42sh.h"
+#include "libft.h"
 
-int					ft_exec(t_btree *node)
+void	ft_printab(char **tab)
 {
-	execve(C(node)->path, C(node)->cmd, C(node)->env);
-	return (0);
+	while (tab && *tab)
+	{
+		ft_putendl(*tab);
+		++tab;
+	}
 }
