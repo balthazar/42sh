@@ -98,6 +98,7 @@ void				ft_raw_term(void);
 void				ft_term_init(void);
 void				ft_prompt(void);
 void				ft_aff_prompt(void);
+int					ft_has_char(char *str);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -109,6 +110,7 @@ void				ft_lexer(char *str, t_dlist **list);
 int					ft_lexer_check_err(t_dlist *list);
 void				ft_parser(t_dlist **list, t_btree **tree);
 void				add_node(t_btree **tree, void *data, size_t content_size);
+int					ft_is_valid(char *line);
 
 void				if_and(t_btree **tree, t_btree *node);
 void				if_cmd(t_btree **tree, t_btree *node);
