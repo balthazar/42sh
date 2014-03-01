@@ -6,7 +6,7 @@
 /*   By: janteuni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/25 17:57:52 by janteuni          #+#    #+#             */
-/*   Updated: 2014/03/01 12:40:59 by janteuni         ###   ########.fr       */
+/*   Updated: 2014/03/01 16:05:10 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void			ft_fill_redirection(t_cmd *cmd, t_dlist *list)
 		op = OP_D;
 	else
 		op = OP_S;
-	ft_putendl(NEXT->data);
 	chev.op = op;
 	chev.file = ft_strdup(NEXT->data);
 	if (LIST->data[0] == '<')
