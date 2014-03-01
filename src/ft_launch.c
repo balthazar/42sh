@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 17:37:07 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/01 18:04:29 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/01 18:12:55 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ int					ft_launch(void)
 	t_btree			*tree;
 	t_dlist			*dlist;
 
+	ft_reset_term();
 	tree = NULL;
 	dlist = NULL;
 	ft_putchar('\n');
@@ -42,6 +43,7 @@ int					ft_launch(void)
 	}
 	ft_bzero(ft_get_ctx()->line, LINE_LEN);
 	CTX->i = 0;
+	ft_raw_term();
 	ft_aff_prompt();
 	return (OK);
 }
