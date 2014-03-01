@@ -6,13 +6,12 @@
 /*   By: janteuni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/25 17:57:52 by janteuni          #+#    #+#             */
-/*   Updated: 2014/02/28 16:29:09 by fbeck            ###   ########.fr       */
+/*   Updated: 2014/03/01 12:40:59 by janteuni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "42sh.h"
-
 
 void			print_cmd(t_cmd *cmd)
 {
@@ -67,6 +66,7 @@ void			ft_fill_redirection(t_cmd *cmd, t_dlist *list)
 		op = OP_D;
 	else
 		op = OP_S;
+	ft_putendl(NEXT->data);
 	chev.op = op;
 	chev.file = ft_strdup(NEXT->data);
 	if (LIST->data[0] == '<')
@@ -91,7 +91,6 @@ static void		create_and_push_cmd(t_dlist *list, int index, t_cmd *cmd, t_btree *
 	int			k;
 
 	k = 0;
-	(void)tr;
 	while (index)
 	{
 		if (LIST->def == CHEV)
@@ -118,9 +117,16 @@ static void		create_and_push_sep(t_dlist *list, t_btree **tree)
 {
 	t_cmd		cmd;
 
-	(void)tree;
 	init_safe(&cmd);
-	cmd.type = LIST->def;
+	if (LIST->def == PIPE)
+	{
+		if (LIST->data[1] == '|')
+			cmd.type = OR;
+		else
+			cmd.type = PIPE;
+	}
+	else
+		cmd.type = LIST->def;
 	add_node(tree, &cmd, sizeof(t_cmd));
 }
 

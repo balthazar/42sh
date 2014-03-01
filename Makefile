@@ -27,6 +27,8 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_lexer.c \
 					  $(DIR_SRC)/ft_parser.c \
 					  $(DIR_SRC)/ft_parser_tree.c \
+					  $(DIR_SRC)/ft_parser_node.c \
+					  $(DIR_SRC)/ft_parser_error.c \
 					  $(DIR_SRC)/ft_treat_node.c \
 					  $(DIR_SRC)/ft_make_cmd.c \
 					  $(DIR_SRC)/ft_fill_path.c \

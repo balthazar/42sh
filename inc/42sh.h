@@ -9,6 +9,7 @@
 # define PIPE		2
 # define END		3
 # define AND		4
+# define OR			5
 # define STR		-1
 
 # define ERR		-1
@@ -87,6 +88,12 @@ void				ft_lexer(char *str, t_dlist **list);
 int					ft_lexer_check_err(t_dlist *list);
 void				ft_parser(t_dlist **list, t_btree **tree);
 void				add_node(t_btree **tree, void *data, size_t content_size);
+
+void				if_and(t_btree **tree, t_btree *node);
+void				if_cmd(t_btree **tree, t_btree *node);
+void				if_pipe(t_btree **tree, t_btree *node);
+void				if_or(t_btree **tree, t_btree *node);
+void				if_end(t_btree **tree, t_btree *node);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
