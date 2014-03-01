@@ -1,8 +1,17 @@
 #ifndef A42SH_H
 # define A42SH_H
+
+# include <termios.h>
+# include <curses.h>
+# include <term.h>
 # include "libft.h"
 
 #include <stdio.h> /* TODO delete */
+
+# define BUF_LEN	6
+# define LINE_LEN	2048
+
+# define CTX		ft_get_ctx()
 
 # define CMD		0
 # define CHEV		1
@@ -11,9 +20,6 @@
 # define AND		4
 # define OR			5
 # define STR		-1
-
-# define ERR		-1
-# define OK			0
 
 # define TRUE		1
 # define FALSE		0
@@ -36,9 +42,10 @@
 typedef struct		s_ctx
 {
 	char			**env;
+	char			line[LINE_LEN];
+	int				i;
 	int				cols;
 	int				rows;
-
 }					t_ctx;
 
 typedef struct		s_elem
@@ -83,6 +90,19 @@ t_ctx				*ft_get_ctx(void);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+** Termcaps
+** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+*/
+
+int					ft_putput(int c);
+void				ft_reset_term(void);
+void				ft_raw_term(void);
+void				ft_term_init(void);
+void				ft_prompt(void);
+void				ft_aff_prompt(void);
+
+/*
+** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ** Parser / Lexer
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 */
@@ -104,6 +124,7 @@ void				if_end(t_btree **tree, t_btree *node);
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 */
 
+int					ft_launch(void);
 void				ft_fork_and_exec(t_btree *node);
 int					ft_exec(t_btree *node);
 int					ft_fill_path(t_cmd *cmd);
@@ -137,6 +158,6 @@ void				ft_error(char *msg);
 void				setup_signal(void);
 void				reset_signal(void);
 
-void				print_tree(t_btree *node, int level, int dir);
+void				print_tree(t_btree *node, int level, int dir); /* TODO delete */
 
 #endif /* !A42SH_H */

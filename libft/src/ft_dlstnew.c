@@ -6,10 +6,11 @@
 /*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/04 15:06:02 by mpillet           #+#    #+#             */
-/*   Updated: 2014/01/04 15:10:48 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/01 17:48:14 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include <stdlib.h>
 #include "libft.h"
 

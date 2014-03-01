@@ -6,21 +6,21 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 18:55:03 by mpillet           #+#    #+#             */
-/*   Updated: 2014/02/26 19:02:33 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/01 16:02:26 by janteuni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void				ft_free_tab(void ***tab)
+void				ft_free_tab(void ***arr)
 {
 	int				i;
 
 	i = 0;
-	while ((*tab)[i])
+	while ((*arr)[i])
 	{
-		ft_memdel((void **) &(*tab)[i]);
+		ft_memdel((void **) &(*arr)[i]);
 		++i;
 	}
-	ft_memdel((void **) tab);
+	ft_memdel((void **) arr);
 }

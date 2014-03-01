@@ -6,10 +6,11 @@
 /*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/04 15:07:55 by mpillet           #+#    #+#             */
-/*   Updated: 2014/01/04 15:08:42 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/01 17:48:51 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "libft.h"
 
 void	ft_dlstpush(t_dlist **alst, t_dlist *new)

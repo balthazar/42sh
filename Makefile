@@ -6,7 +6,7 @@
 #*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        *#
 #*                                                +#+#+#+#+#+   +#+           *#
 #*   Created: 2014/01/23 23:45:20 by mpillet           #+#    #+#             *#
-#*   Updated: 2014/03/01 00:34:05 by mpillet          ###   ########.fr       *#
+#    Updated: 2014/03/01 17:40:19 by mpillet          ###   ########.fr        #
 #*                                                                            *#
 #* ************************************************************************** *#
 
@@ -19,7 +19,7 @@ NAME				= 42sh
 CC					= clang
 FLAG				= -Wall -Werror -Wextra -pedantic
 INCS				= -I inc -I ./inc -I libft/inc
-LIBS				= -L libft -lft
+LIBS				= -L libft -lft -L /usr/lib -ltermcap
 
 SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/context.c \
@@ -45,6 +45,10 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/treat_chev.c \
 					  $(DIR_SRC)/treat_or.c \
 					  $(DIR_SRC)/print_tree.c \
+					  $(DIR_SRC)/ft_term_init.c \
+					  $(DIR_SRC)/ft_term_mode.c \
+					  $(DIR_SRC)/ft_prompt.c \
+					  $(DIR_SRC)/ft_launch.c \
 
 # ---------------------------------------------------------------------------- #
 
