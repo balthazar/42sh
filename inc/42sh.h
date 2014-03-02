@@ -59,6 +59,7 @@ typedef struct		s_ctx
 	int				i;
 	int				cols;
 	int				rows;
+	int				prompt;
 }					t_ctx;
 
 typedef struct		s_elem
@@ -104,14 +105,9 @@ void		ft_test(char *line);
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 */
 
-<<<<<<< HEAD
-char				**ft_get_env(void);
-t_ctx				*ft_get_ctx(void);
-int					ft_get_fd(void);
-=======
 char		**ft_get_env(void);
 t_ctx		*ft_get_ctx(void);
->>>>>>> develop
+int			ft_get_fd(void);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -209,8 +205,8 @@ void		ft_exit(int n);
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 */
 
-void				setup_signal(void);
-void				reset_signal(void);
+void		setup_signal(void);
+void		reset_signal(void);
 
 void		print_tree(t_btree *node, int level, int dir); /* TODO delete */
 

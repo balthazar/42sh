@@ -6,7 +6,7 @@
 /*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/26 15:09:26 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/01 18:51:04 by fbeck            ###   ########.fr       */
+/*   Updated: 2014/03/02 17:42:41 by fbeck            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,16 @@ static void			ft_ctrl_c(int i)
 {
 	(void)i;
 	ft_putchar('\n');
-	/* DISPLAY PROMPT */
+	CTX->prompt = 0;
+	// DO NOT LAUNCH CMD OR INSERT INTO HISTORY
+	ft_aff_prompt();
 }
 
-static void			ft_ctrl_d(int i)
+static void			ft_quit(int i)
 {
 	(void)i;
 	ft_putchar('\n');
-	/* CLOSE TERM */
-	exit (0);
+	ft_exit(0);
 }
 
 static void			ft_resize(int sig)
@@ -45,12 +46,11 @@ static void			ft_resize(int sig)
 	env = ft_get_ctx();
 	env->cols = w.ws_col;
 	env->rows = w.ws_row;
-	/* DISPLAY */
 }
 
 void				setup_signal(void)
 {
-	if ((signal(SIGQUIT, ft_ctrl_d) == SIG_ERR)
+	if ((signal(SIGQUIT, ft_quit) == SIG_ERR)
 			|| (signal(SIGINT, ft_ctrl_c) == SIG_ERR)
 			|| (signal(SIGTSTP, ft_nothing) == SIG_ERR)
 			|| (signal(SIGCONT, ft_nothing) == SIG_ERR)
