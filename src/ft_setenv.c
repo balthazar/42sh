@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/23 14:31:20 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/01 18:57:53 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/02 14:27:59 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ void		ft_setenv(t_btree *node)
 
 	if (!GETT(node, cmd)[1])
 		ft_env(node);
-//	if (GETT(node, cmd)[1] && GETT(node, cmd)[2] && GETT(node, cmd)[3])
-//		ft_err("Too many arguments.");
 	if ((GETT(node, cmd)[1] && GETT(node, cmd)[2] && GETT(node, cmd)[3])
 		|| (!GETT(node, cmd)[1]))
 		return ;
