@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/23 14:30:41 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/02 17:36:31 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/02 17:49:32 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ void		ft_rmline_tab(char *value, char ***arr)
 	i = 0;
 	j = 0;
 	len = ft_tab_len(*arr);
-	new = (char **) malloc(sizeof(char *) * len);
+	new = (char **) malloc(sizeof(char *) * (len + 1));
 	tmp = ft_strjoin(value, "=");
 	while (*arr && (*arr)[i])
 	{
