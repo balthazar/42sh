@@ -9,6 +9,7 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/context.c \
 					  $(DIR_SRC)/error.c \
 					  $(DIR_SRC)/signals.c \
+					  $(DIR_SRC)/ft_clean.c \
 					  $(DIR_SRC)/ft_loop.c \
 					  $(DIR_SRC)/ft_lexer.c \
 					  $(DIR_SRC)/ft_parser.c \

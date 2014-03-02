@@ -196,6 +196,7 @@ void				if_end(t_btree **tree, t_btree *node);
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 */
 
+void				ft_clean(t_btree **tree, t_dlist **dlist);
 int					ft_launch(t_btree *tree, t_dlist *dlist);
 void				ft_fork_and_exec(t_btree *node);
 int					ft_exec(t_btree *node);
