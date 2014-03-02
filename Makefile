@@ -9,6 +9,7 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/context.c \
 					  $(DIR_SRC)/error.c \
 					  $(DIR_SRC)/signals.c \
+					  $(DIR_SRC)/ft_loop.c \
 					  $(DIR_SRC)/ft_lexer.c \
 					  $(DIR_SRC)/ft_parser.c \
 					  $(DIR_SRC)/ft_parser_tree.c \
@@ -33,7 +34,7 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/print_tree.c \
 					  $(DIR_SRC)/ft_term_init.c \
 					  $(DIR_SRC)/ft_term_mode.c \
-					  $(DIR_SRC)/ft_prompt.c \
+					  $(DIR_SRC)/ft_aff_prompt.c \
 					  $(DIR_SRC)/ft_launch.c \
 					  $(DIR_SRC)/ft_has_char.c \
 					  $(DIR_SRC)/ft_is_valid.c \

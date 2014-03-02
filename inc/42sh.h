@@ -61,6 +61,7 @@ typedef struct		s_ctx
 {
 	char			**env;
 	char			line[LINE_LEN];
+	char			buf[BUF_LEN];
 	int				i;
 	int				cols;
 	int				rows;
@@ -141,6 +142,7 @@ int					treat_key_left(void);
 int					treat_key_right(void);
 int					treat_key_ctrld(void);
 int					ft_has_char(char *str);
+int					ft_loop(void);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

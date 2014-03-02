@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_prompt.c                                        :+:      :+:    :+:   */
+/*   ft_loop.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: janteuni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/01 15:41:53 by janteuni          #+#    #+#             */
-/*   Updated: 2014/03/02 18:34:10 by fbeck            ###   ########.fr       */
+/*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
+/*   Updated: 2014/03/02 22:58:39 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,11 @@ static int			st_isprint(char *buf)
 			&& buf[4] == 0 && buf[5] == 0);
 }
 
-void				ft_aff_prompt(void)
+int					ft_loop(void)
 {
-	if (CTX->prompt)
-		return ;
-	ft_putstr("YOLO-Shell> ");
-	CTX->prompt = 1;
+	char			*buf;
 
-}
-
-void				ft_prompt(void)
-{
-	char			buf[BUF_LEN + 1];
-
-	ft_bzero(ft_get_ctx()->line, LINE_LEN);
-	ft_aff_prompt();
+	buf = CTX->buf;
 	while (1)
 	{
 		ft_bzero(buf, BUF_LEN + 1);
@@ -47,6 +37,5 @@ void				ft_prompt(void)
 		}
 		else
 			ft_treat_key(buf);
-		/*				printf("%d %d %d %d %d %d\n", buf[0], buf[1], buf[2], buf[3], buf[4], buf[5]);*/
 	}
 }
