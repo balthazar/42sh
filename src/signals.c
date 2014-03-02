@@ -6,7 +6,7 @@
 /*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/26 15:09:26 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/02 17:42:41 by fbeck            ###   ########.fr       */
+/*   Updated: 2014/03/02 18:46:18 by fbeck            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 #include <signal.h>
 #include <sys/ioctl.h>
 #include "42sh.h"
+
+// TODO Manage SIGSTOP and SIGCONT properly
+// TODO NORM : 6 functions
 
 static void			ft_nothing(int sig)
 {
@@ -25,7 +28,8 @@ static void			ft_ctrl_c(int i)
 	(void)i;
 	ft_putchar('\n');
 	CTX->prompt = 0;
-	// DO NOT LAUNCH CMD OR INSERT INTO HISTORY
+	ft_bzero(CTX->line, LINE_LEN);
+	CTX->i = 0;
 	ft_aff_prompt();
 }
 
