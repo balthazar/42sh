@@ -1,29 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   context.c                                          :+:      :+:    :+:   */
+/*   ft_treat_key.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/02/28 15:07:16 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/02 17:13:31 by mpillet          ###   ########.fr       */
+/*   Created: 2014/03/02 16:22:32 by mpillet           #+#    #+#             */
+/*   Updated: 2014/03/02 17:24:36 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "42sh.h"
 
-t_ctx				*ft_get_ctx(void)
+int					ft_treat_key(char *buf)
 {
-	static t_ctx	*ctx = NULL;
+	int				i;
+	t_key			keys[NB_KEYS] = {
+		{ K_ENTER, treat_key_enter },
+		{ K_LEFT, treat_key_left },
+		{ K_RIGHT, treat_key_right },
+		{ K_ENTER, treat_key_enter },
+		{ K_ENTER, treat_key_enter },
+		{ K_ENTER, treat_key_enter }
+	};
 
-	if (NULL == ctx)
+	i = 0;
+	while (i < NB_KEYS)
 	{
-		if (!(ctx = (t_ctx *) malloc(sizeof(t_ctx))))
-			ft_error("Can't malloc 'ctx'");
-		ctx->env = NULL;
-		ctx->i = 0;
-		ctx->len = 0;
+		if (0 == ft_strcmp(keys[i].key, buf))
+			return (keys[i].fn());
+		++i;
 	}
-	return (ctx);
+	return (ERR);
 }
