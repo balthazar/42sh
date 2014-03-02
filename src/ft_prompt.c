@@ -6,7 +6,7 @@
 /*   By: janteuni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 15:41:53 by janteuni          #+#    #+#             */
-/*   Updated: 2014/03/02 17:05:50 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/02 18:51:44 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,14 @@ static int			st_isprint(char *buf)
 
 void				ft_aff_prompt(void)
 {
-	ft_putstr("YOLO-Shell> ");
+	t_ctx	*ctx;
+
+	ctx = CTX;
+	ft_psone(ctx->env);
+	if (PS->str)
+		ft_putstr(PS->str);
+	else
+		ft_putstr("YOLO-Shell> ");
 }
 
 void				ft_prompt(void)
@@ -43,6 +50,6 @@ void				ft_prompt(void)
 		}
 		else
 			ft_treat_key(buf);
-		/*				printf("%d %d %d %d %d %d\n", buf[0], buf[1], buf[2], buf[3], buf[4], buf[5]);*/
+		/*	printf("%d %d %d %d %d %d\n", buf[0], buf[1], buf[2], buf[3], buf[4], buf[5]);*/
 	}
 }

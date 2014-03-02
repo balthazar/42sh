@@ -6,7 +6,8 @@
 # include <term.h>
 # include "libft.h"
 
-#include <stdio.h> /* TODO delete */
+# include <stdio.h> /* TODO delete */
+# include <time.h>
 
 # define BUF_LEN		6
 # define LINE_LEN		2048
@@ -56,12 +57,25 @@
 # define NBTIME			7
 # define NBBS			6
 
+typedef struct		s_stime
+{
+	char			*type;
+	char			*(*fn)(struct tm *local);
+}					t_stime;
+
+typedef struct		s_psone
+{
+	char			*str;
+	int				realsize;
+}					t_psone;
+
 typedef struct		s_ctx
 {
 	char			**env;
 	char			line[LINE_LEN];
 	int				i;
 	int				len;
+	t_psone			*psone;
 }					t_ctx;
 
 typedef struct		s_elem
@@ -199,6 +213,20 @@ int					treat_end(t_btree *node);
 int					treat_and(t_btree *node);
 int					treat_or(t_btree *node);
 int					treat_chev(t_btree *node);
+
+/*
+** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+** PS1 & time
+** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+*/
+void				ft_psone(char **env);
+void				ft_timepurpose(t_ctx *ctx);
+char				*ft_time_majd(struct tm *l);
+char				*ft_time_majw(struct tm *l);
+char				*ft_time_majt(struct tm *l);
+char				*ft_time_w(struct tm *l);
+char				*ft_time_star(struct tm *l);
+char				*ft_time_twelve(struct tm *l);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
