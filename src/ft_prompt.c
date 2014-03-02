@@ -6,7 +6,7 @@
 /*   By: janteuni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 15:41:53 by janteuni          #+#    #+#             */
-/*   Updated: 2014/03/02 15:24:37 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/02 15:51:40 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,10 @@ void				ft_prompt(void)
 		else if (buf[0] == 10 && buf[1] == 0 && buf[2] == 0 && buf[3] == 0 && buf[4] == 0 && buf[5] == 0)
 		{
 			if (is_full_cmd(CTX->line))
+			{
+				// TODO sauvegarder CTX->line dans histo
 				ft_launch();
+			}
 			else if (ft_is_valid(CTX->line))
 			{
 				if (!ft_odd_quotes(CTX->line))
@@ -70,6 +73,7 @@ void				ft_prompt(void)
 			}
 			else
 			{
+				// TODO sauvegarder CTX->line dans histo
 				ft_bzero(CTX->line, LINE_LEN);
 				CTX->i = 0;
 				ft_aff_prompt();
