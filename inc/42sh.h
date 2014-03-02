@@ -40,7 +40,7 @@
 # define C(EL)			((t_cmd *) EL->content)
 # define CH(X)			(((t_chev *)X->content))
 
-# define NB_KEYS		7
+# define NB_KEYS		6
 # define K_LEFT			tgetstr("kl", NULL)
 # define K_RIGHT		tgetstr("kr", NULL)
 # define K_DOWN			tgetstr("kd", NULL)
@@ -137,12 +137,15 @@ void				ft_prompt(void);
 void				ft_aff_prompt(void);
 int					ft_odd_quotes(char *line);
 int					ft_treat_key(char *buf);
+int					ft_has_char(char *str);
+int					ft_loop(void);
+
 int					treat_key_enter(void);
 int					treat_key_left(void);
 int					treat_key_right(void);
 int					treat_key_ctrld(void);
-int					ft_has_char(char *str);
-int					ft_loop(void);
+int					treat_key_delete(void);
+int					treat_key_backsp(void);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

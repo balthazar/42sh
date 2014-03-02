@@ -53,6 +53,8 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/treat_key_left.c \
 					  $(DIR_SRC)/treat_key_right.c \
 					  $(DIR_SRC)/treat_key_ctrld.c \
+					  $(DIR_SRC)/treat_key_delete.c \
+					  $(DIR_SRC)/treat_key_backsp.c \
 
 # ---------------------------------------------------------------------------- #
 
