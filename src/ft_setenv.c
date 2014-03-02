@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/23 14:31:20 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/02 16:45:03 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/02 17:35:38 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void		ft_setenv(t_btree *node)
 	//	ft_err("Too many arguments");
 	else
 	{
-		ctx = ft_get_ctx();
+		ctx = CTX;
 		len = ft_tab_len(ctx->env);
 		ft_rmline_tab(GETT(node, cmd)[1], &ctx->env);
 		new = (char **) malloc(sizeof(char *) * (len + 2));
@@ -66,7 +66,7 @@ void		ft_setenv_b(char *name, char *value, char ***env)
 	new = (char **) malloc(sizeof(char *) * (len + 2));
 	while (*env && (*env)[i])
 	{
-		new[i] = (*env)[i];
+		new[i] = ft_strdup((*env)[i]);
 		++i;
 	}
 	new[i] = ft_multijoin(2, name, "=", value);

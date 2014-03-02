@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/23 14:30:41 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/02 16:32:29 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/02 17:36:31 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void		ft_unsetenv(t_btree *node)
 
 	if (!GETT(node, cmd)[1])
 		return ;
-	ctx = ft_get_ctx();
+	ctx = CTX;
 	len = ft_tab_len(ctx->env) + 1 - ft_count_unset(ctx, node);
 	new = (char **) malloc(sizeof(char *) * len);
 	ft_unsetenv_aux(&new, node, ctx);

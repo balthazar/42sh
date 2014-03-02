@@ -45,12 +45,10 @@
 */
 # define GETT(E, T)	((t_cmd *) (E)->content)->T
 # define CMU		(GETT(node, cmd)[1])
+# define NMI		(ft_strcmp(GETT(node, cmd)[1], "-i"))
 # define PS			ctx->psone
 # define NBTIME		7
 # define NBBS		6
-# define LEN1		(ft_strlen(GETT(node, cmd)[1]) + 15)
-# define LEN2		(ft_strlen(ft_getvar_env("HOME", ctx->env)) + 15)
-# define NMI		(ft_strcmp(GETT(node, cmd)[1], "-i"))
 
 typedef struct		s_ctx
 {

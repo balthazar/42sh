@@ -6,7 +6,7 @@
 /*   By: bgronon <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/12/28 16:49:54 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/02 16:20:15 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/02 16:52:21 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	ft_env_extra(t_btree *node)
 
 	i = 1;
 	customenv = NULL;
-	ft_copy_tab(&customenv, ft_get_ctx()->env);
+	ft_copy_tab(&customenv, CTX->env);
 	while (GETT(node, cmd)[i] && ft_charin(GETT(node, cmd)[i], '='))
 	{
 		split = ft_strsplit(GETT(node, cmd)[i], '=');
@@ -61,7 +61,7 @@ void		ft_env(t_btree *node)
 	if (!GETT(node, cmd)[1])
 		ft_printab(CTX->env);
 //	else if (NMI && !ft_charin(GETT(node, cmd)[1], '='))
-//		ft_redirect(node, ft_get_ctx()->env);
+//		ft_redirect(node, CTX->env);
 	else if (!NMI && !GETT(node, cmd)[2])
 		return ;
 	else if (!NMI && GETT(node, cmd)[2] && ft_charin(GETT(node, cmd)[2], '='))
