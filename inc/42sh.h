@@ -40,12 +40,13 @@
 # define C(EL)			((t_cmd *) EL->content)
 # define CH(X)			(((t_chev *)X->content))
 
-# define NB_KEYS		6
+# define NB_KEYS		7
 # define K_LEFT			tgetstr("kl", NULL)
 # define K_RIGHT		tgetstr("kr", NULL)
 # define K_DOWN			tgetstr("kd", NULL)
 # define K_UP			tgetstr("ku", NULL)
 # define K_DELETE		tgetstr("kD", NULL)
+# define K_BACKSP		"\177"
 # define K_ENTER		tgetstr("cr", NULL)
 
 # define GETT(E, T)		((t_cmd *) (E)->content)->T
