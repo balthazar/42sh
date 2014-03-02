@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_has_char.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/02 15:00:32 by mpillet          ###   ########.fr       */
+/*   Created: 2014/03/01 18:49:27 by mpillet           #+#    #+#             */
+/*   Updated: 2014/03/01 18:49:40 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "42sh.h"
 
-void		ft_exit(int n)
+int					ft_has_char(char *str)
 {
-	ft_reset_term();
-	exit(n);
-}
-
-void		ft_error(char *msg)
-{
-	ft_putstr_fd("\033[0;31m", 2);
-	ft_putstr_fd("Error: ", 2);
-	ft_putendl_fd(msg, 2);
-	ft_putstr_fd("\033[0m", 2);
-	ft_exit(1);
-}
-
-int			ft_err(char *msg)
-{
-	ft_putstr_fd("\033[0;31m", 2);
-	ft_putstr_fd("Error: ", 2);
-	ft_putendl_fd(msg, 2);
-	ft_putstr_fd("\033[0m", 2);
-	return (ERR);
+	while (*str)
+	{
+		if (*str != ' ')
+			return (TRUE);
+		++str;
+	}
+	return (FALSE);
 }

@@ -10,10 +10,6 @@
 #                                                                              #
 # **************************************************************************** #
 
-# ============================================================================ #
-# oo                                 libft                                  oo #
-# ============================================================================ #
-
 NAME               = libft.a
 
 CC                 = clang
@@ -99,6 +95,8 @@ SRC                = $(DIR_SRC)/ft_memset.c \
 					 $(DIR_SRC)/btree_insert_data.c \
 					 $(DIR_SRC)/btree_print.c \
 					 $(DIR_SRC)/ft_free_tab.c \
+					 $(DIR_SRC)/ft_multijoin.c \
+					 $(DIR_SRC)/ft_printab.c \
 
 DIR_SRC            = src
 DIR_INC            = inc

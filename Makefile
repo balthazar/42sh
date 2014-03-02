@@ -1,19 +1,3 @@
-#* ************************************************************************** *#
-#*                                                                            *#
-#*                                                        :::      ::::::::   *#
-#*   Makefile                                           :+:      :+:    :+:   *#
-#*                                                    +:+ +:+         +:+     *#
-#*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        *#
-#*                                                +#+#+#+#+#+   +#+           *#
-#*   Created: 2014/01/23 23:45:20 by mpillet           #+#    #+#             *#
-#    Updated: 2014/03/01 18:50:46 by fbeck            ###   ########.fr        #
-#*                                                                            *#
-#* ************************************************************************** *#
-
-# ============================================================================ #
-# oo                               42sh                                     oo #
-# ============================================================================ #
-
 NAME				= 42sh
 
 CC					= clang
@@ -51,6 +35,17 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_term_mode.c \
 					  $(DIR_SRC)/ft_prompt.c \
 					  $(DIR_SRC)/ft_launch.c \
+					  $(DIR_SRC)/ft_has_char.c \
+					  $(DIR_SRC)/ft_is_valid.c \
+					  $(DIR_SRC)/ft_builtin.c \
+					  $(DIR_SRC)/ft_cd.c \
+					  $(DIR_SRC)/ft_exit_builtin.c \
+					  $(DIR_SRC)/ft_env.c \
+					  $(DIR_SRC)/ft_setenv.c \
+					  $(DIR_SRC)/ft_unsetenv.c \
+					  $(DIR_SRC)/ft_echo.c \
+					  $(DIR_SRC)/ft_getvar_env.c \
+					  $(DIR_SRC)/ft_odd_quotes.c \
 
 # ---------------------------------------------------------------------------- #
 
@@ -82,10 +77,10 @@ $(NAME): $(DIR_OBJ) $(OBJ)
 
 $(DIR_OBJ) :
 	@/bin/mkdir $(DIR_OBJ); \
-		for DIR in $(DIR_LIST); \
-		do \
+	for DIR in $(DIR_LIST); \
+	do \
 		/bin/mkdir $(DIR_OBJ)/$$DIR; \
-		done
+	done
 
 clean:
 	@$(MAKE) -C libft $@

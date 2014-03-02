@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/02/28 22:05:18 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/01 19:19:38 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,14 @@
 
 int					treat_cmd(t_btree *node)
 {
-	if (ERR == ft_redirect(node) || ERR == ft_fill_path(C(node)))
-		C(node)->fail = TRUE;
+	if (ft_detect_builtin(GETT(node, cmd)[0]))
+		ft_exec_builtin(node);
 	else
-		ft_fork_and_exec(node);
+	{
+		if (ERR == ft_redirect(node) || ERR == ft_fill_path(C(node)))
+			C(node)->fail = TRUE;
+		else
+			ft_fork_and_exec(node);
+	}
 	return (OK);
 }
