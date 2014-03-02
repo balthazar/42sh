@@ -45,6 +45,7 @@ SRC                = $(DIR_SRC)/ft_memset.c \
 					 $(DIR_SRC)/ft_toupper.c \
 					 $(DIR_SRC)/ft_tolower.c \
 					 $(DIR_SRC)/ft_tab_len.c \
+					 $(DIR_SRC)/ft_copy_tab.c \
 					 $(DIR_SRC)/ft_atoi.c \
 					 $(DIR_SRC)/ft_memalloc.c \
 					 $(DIR_SRC)/ft_memdel.c \
@@ -96,6 +97,8 @@ SRC                = $(DIR_SRC)/ft_memset.c \
 					 $(DIR_SRC)/btree_print.c \
 					 $(DIR_SRC)/ft_free_tab.c \
 					 $(DIR_SRC)/ft_multijoin.c \
+					 $(DIR_SRC)/ft_struntil.c \
+					 $(DIR_SRC)/ft_streplace.c \
 					 $(DIR_SRC)/ft_printab.c \
 
 DIR_SRC            = src

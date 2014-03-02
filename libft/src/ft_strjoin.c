@@ -6,7 +6,7 @@
 /*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/22 10:23:53 by mpillet           #+#    #+#             */
-/*   Updated: 2013/12/10 16:15:18 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/02 16:44:22 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*out;
 
 	out = NULL;
-	if (s1 && s2)
+	if (s1 && !s2)
+		out = ft_strdup(s1);
+	else if (!s1 && s2)
+		out = ft_strdup(s2);
+	else if (s1 && s2)
 	{
 		length = ft_strlen(s1) + ft_strlen(s2);
 		out = (char *) malloc(sizeof(char) * (length + 1));

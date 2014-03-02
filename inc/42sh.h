@@ -116,6 +116,13 @@ void		ft_raw_term(void);
 void		ft_term_init(void);
 void		ft_prompt(void);
 void		ft_aff_prompt(void);
+int			ft_putput(int c);
+void		ft_reset_term(void);
+void		ft_raw_term(void);
+void		ft_term_init(void);
+void		ft_prompt(void);
+void		ft_aff_prompt(void);
+int			ft_has_char(char *str);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -127,20 +134,14 @@ int			ft_detect_builtin(char *cmd);
 void		ft_exec_builtin(t_btree *node);
 void		ft_env(t_btree *node);
 void		ft_unsetenv(t_btree *node);
-void		ft_unsetenv_b(char *name, char ***env);
+void		ft_rmline_tab(char *name, char ***arr);
 void		ft_setenv(t_btree *node);
 void		ft_setenv_b(char *name, char *value, char ***env);
 char		*ft_getvar_env(char *name, char **env);
 void		ft_cd(t_btree *node);
 void		ft_echo(t_btree *node);
 void		ft_exit_builtin(t_btree *node);
-int			ft_putput(int c);
-void		ft_reset_term(void);
-void		ft_raw_term(void);
-void		ft_term_init(void);
-void		ft_prompt(void);
-void		ft_aff_prompt(void);
-int			ft_has_char(char *str);
+
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

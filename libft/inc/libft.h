@@ -6,7 +6,7 @@
 /*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 12:24:11 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/01 19:07:18 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/02 16:16:08 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,14 +100,17 @@ int			ft_isascii(int c);
 int			ft_isprint(int c);
 int			ft_toupper(int c);
 int			ft_tolower(int c);
-void		ft_free_tab(void ***arr);
 char		*ft_multijoin(int count, ...);
+char		*ft_struntil(char *str, char *stop);
+void		ft_streplace(char **str, char *pattern, char *replace);
 
 /*
 ** tabs
 */
 int			ft_tab_len(char **array);
 void		ft_printab(char **array);
+void		ft_free_tab(void ***arr);
+void		ft_copy_tab(char ***dest, char **arr);
 
 /*
 ** output
