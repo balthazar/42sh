@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/23 14:31:20 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/02 14:27:59 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/02 14:35:44 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,17 @@ static void	ft_setenv_init(t_ctx **ctx, int *i, int *len)
 	*i = 0;
 	*ctx = ft_get_ctx();
 	*len = ft_tab_len((*ctx)->env);
+}
+
+static char	*st_join(char *str1, char *str2)
+{
+	char	*tmp;
+	char	*res;
+
+	tmp = ft_strjoin(str1, "=");
+	res = (str2) ? ft_strjoin(tmp, str2) : ft_strdup(tmp);
+	free(tmp);
+	return (res);
 }
 
 void		ft_setenv(t_btree *node)
@@ -41,7 +52,7 @@ void		ft_setenv(t_btree *node)
 		i++;
 		ctx->env++;
 	}
-	new[i] = ft_multijoin(2, GETT(node, cmd)[1], "=", GETT(node, cmd)[2]);
+	new[i] = st_join(GETT(node, cmd)[1], GETT(node, cmd)[2]);
 	new[i + 1] = NULL;
 	ctx->env = new;
 }
