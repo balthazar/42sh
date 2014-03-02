@@ -19,6 +19,7 @@
 # define END		3
 # define AND		4
 # define OR			5
+# define QUOTE		6
 # define STR		-1
 
 # define TRUE		1
@@ -190,6 +191,7 @@ int			treat_chev(t_btree *node);
 */
 
 void		ft_error(char *msg);
+int			ft_err(char *msg);
 void		ft_exit(int n);
 
 void		print_tree(t_btree *node, int level, int dir); /* TODO delete */

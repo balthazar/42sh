@@ -6,7 +6,7 @@
 /*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 13:04:21 by fbeck             #+#    #+#             */
-/*   Updated: 2014/02/28 15:01:35 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/02 14:52:54 by janteuni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ int				ft_fill_path(t_cmd *cmd)
 	int			i;
 
 	i = 0;
+	if (0 == ft_strcmp(cmd->cmd[0], ""))
+		return (ft_err("Command not found"));
 	if (ft_strchr(cmd->cmd[0], '/'))
 	{
 		if (ft_check_access(cmd->cmd[0]) == 1)
@@ -99,10 +101,7 @@ int				ft_fill_path(t_cmd *cmd)
 	ft_check_paths(cmd, paths);
 	ft_free_tab((void ***)&paths);
 	if (!cmd->path)
-	{
-		ft_putendl_fd("Error: Command not found", 2);
-		return (ERR);
-	}
+		return (ft_err("Command not found"));
 	return (OK);
 }
 
