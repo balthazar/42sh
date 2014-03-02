@@ -1,25 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_treat_key.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/02 18:28:11 by fbeck            ###   ########.fr       */
+/*   Created: 2014/03/02 16:22:32 by mpillet           #+#    #+#             */
+/*   Updated: 2014/03/02 18:34:17 by fbeck            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "42sh.h"
 
-int					main(int ac, char **av, char **env)
+int					ft_treat_key(char *buf)
 {
-	(void) ac;
-	(void) av;
-	ft_copy_tab(&ft_get_ctx()->env, env);
-	ft_term_init();
-	ft_prompt();
-	ft_reset_term();
-	return (0);
+	int				i;
+	t_key			keys[NB_KEYS] = {
+		{ K_ENTER, treat_key_enter },
+		{ K_LEFT, treat_key_left },
+		{ K_RIGHT, treat_key_right },
+		{ K_ENTER, treat_key_enter },
+		{ K_ENTER, treat_key_enter },
+		{ K_ENTER, treat_key_enter }
+	};
+
+	i = 0;
+	while (i < NB_KEYS)
+	{
+		if (0 == ft_strcmp(keys[i].key, buf))
+			return (keys[i].fn());
+		++i;
+	}
+	return (ERR);
 }

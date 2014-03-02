@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/23 14:38:45 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/01 18:41:33 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/02 17:38:59 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ static void	ft_errors_cd(char *str)
 		ft_putstr("CD: Permission Denied: ");
 		ft_putendl(str);
 	}
+	else if (errno == 14)
+		ft_putendl("You've unset some variables, you're a real hacker...");
+	else
+		ft_putendl("CD failed for a random reason.");
 }
 
 static void	ft_chdir(t_ctx *ctx, t_btree *node, int *ret)
@@ -42,25 +46,18 @@ void		ft_cd(t_btree *node)
 {
 	int		ret;
 	t_ctx	*ctx;
-	char	*newpwd;
+	char	cwd[1024];
 
-	ctx = ft_get_ctx();
-	newpwd = NULL;
+	ctx = CTX;
 	ret = 0;
-	if (GETT(node, cmd)[1] && GETT(node, cmd)[2])
-		ft_putendl("CD: Too Many Arguments");
+	ft_chdir(ctx, node, &ret);
+	if (ret == -1)
+		ft_errors_cd(GETT(node, cmd)[1]);
 	else
 	{
-		ft_chdir(ctx, node, &ret);
-		if (ret == -1 && GETT(node, cmd)[1])
-			ft_errors_cd(GETT(node, cmd)[1]);
-		else
-		{
-			ft_setenv_b("OLDPWD", ft_getvar_env("PWD", ctx->env), &ctx->env);
-			if (GETT(node, cmd)[1])
-				ft_setenv_b("PWD", getcwd(newpwd, LEN1), &ctx->env);
-			else
-				ft_setenv_b("PWD", getcwd(newpwd, LEN2), &ctx->env);
-		}
+		ft_setenv_b("OLDPWD", ft_getvar_env("PWD", ctx->env), &ctx->env);
+		getcwd(cwd, sizeof(cwd));
+		cwd[1023] = '\0';
+		ft_setenv_b("PWD", cwd, &ctx->env);
 	}
 }

@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   treat_key_right.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/22 15:11:37 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/02 17:37:33 by bgronon          ###   ########.fr       */
+/*   Created: 2014/03/02 17:12:26 by mpillet           #+#    #+#             */
+/*   Updated: 2014/03/02 17:13:14 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "42sh.h"
 
-void	ft_putendl(char const *s)
+int					treat_key_right(void)
 {
-	if (s)
-		ft_putstr(s);
-	ft_putchar('\n');
+	if (CTX->i < CTX->len)
+	{
+		tputs(tgetstr("nd", NULL), 1, ft_putput);
+		++CTX->i;
+	}
+	return (OK);
 }

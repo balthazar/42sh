@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   ft_add_char.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/22 15:11:37 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/02 17:37:33 by bgronon          ###   ########.fr       */
+/*   Created: 2014/03/02 17:04:30 by mpillet           #+#    #+#             */
+/*   Updated: 2014/03/02 17:13:42 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "42sh.h"
 
-void	ft_putendl(char const *s)
+void				ft_add_char(char c)
 {
-	if (s)
-		ft_putstr(s);
-	ft_putchar('\n');
+	CTX->line[CTX->i] = c;
+	++CTX->i;
+	++CTX->len;
 }
