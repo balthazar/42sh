@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_dlstdelone.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/21 19:04:40 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/02 23:54:08 by mpillet          ###   ########.fr       */
+/*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
+/*   Updated: 2014/03/02 23:42:20 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-void	ft_memdel(void **ap)
+void	ft_dlstdelone(t_dlist **alst, void (*del)(void *, size_t))
 {
-	if (ap && *ap)
-		free(*ap);
-	*ap = NULL;
+	if (*alst)
+	{
+		del((void *)((*alst)->content), (*alst)->content_size);
+		free(*alst);
+		*alst = NULL;
+	}
 }
