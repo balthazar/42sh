@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/23 14:38:45 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/02 17:38:59 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/02 18:17:46 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,19 @@ void		ft_cd(t_btree *node)
 {
 	int		ret;
 	t_ctx	*ctx;
+	char	oldcwd[1024];
 	char	cwd[1024];
 
 	ctx = CTX;
 	ret = 0;
+	getcwd(oldcwd, sizeof(oldcwd));
 	ft_chdir(ctx, node, &ret);
 	if (ret == -1)
 		ft_errors_cd(GETT(node, cmd)[1]);
 	else
 	{
-		ft_setenv_b("OLDPWD", ft_getvar_env("PWD", ctx->env), &ctx->env);
 		getcwd(cwd, sizeof(cwd));
-		cwd[1023] = '\0';
+		ft_setenv_b("OLDPWD", oldcwd, &ctx->env);
 		ft_setenv_b("PWD", cwd, &ctx->env);
 	}
 }
