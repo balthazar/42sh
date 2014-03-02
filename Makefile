@@ -1,4 +1,4 @@
-NAME				= 42sh
+NAME				= yolosh
 
 CC					= clang
 FLAG				= -Wall -Werror -Wextra -pedantic
@@ -16,7 +16,6 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_parser_node.c \
 					  $(DIR_SRC)/ft_parser_error.c \
 					  $(DIR_SRC)/ft_treat_node.c \
-					  $(DIR_SRC)/ft_make_cmd.c \
 					  $(DIR_SRC)/ft_fill_path.c \
 					  $(DIR_SRC)/ft_exec.c \
 					  $(DIR_SRC)/ft_fork_and_exec.c \
