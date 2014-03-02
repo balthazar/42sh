@@ -43,6 +43,7 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_unsetenv.c \
 					  $(DIR_SRC)/ft_echo.c \
 					  $(DIR_SRC)/ft_getvar_env.c \
+					  $(DIR_SRC)/ft_odd_quotes.c \
 
 # ---------------------------------------------------------------------------- #
 
