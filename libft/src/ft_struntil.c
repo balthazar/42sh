@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_struntil.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/02 14:59:26 by bgronon          ###   ########.fr       */
+/*   Created: 2014/03/01 16:43:36 by bgronon           #+#    #+#             */
+/*   Updated: 2014/03/01 16:43:50 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "42sh.h"
+#include "libft.h"
 
-int					main(int ac, char **av, char **env)
+char	*ft_struntil(char *str, char *stop)
 {
-	(void) ac;
-	(void) av;
-	ft_copy_tab(&ft_get_ctx()->env, env);
-	ft_term_init();
-	ft_prompt();
-	ft_reset_term();
-	return (0);
+	int		i;
+
+	i = 0;
+	while (str && str[i])
+	{
+		if (!ft_strncmp(str + i, stop, ft_strlen(stop)))
+			return (ft_strsub(str, 0, i));
+		++i;
+	}
+	return (NULL);
 }

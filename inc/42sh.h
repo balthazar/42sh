@@ -135,6 +135,7 @@ int					ft_treat_key(char *buf);
 int					treat_key_enter(void);
 int					treat_key_left(void);
 int					treat_key_right(void);
+int					ft_has_char(char *str);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -160,6 +161,7 @@ void				ft_term_init(void);
 void				ft_prompt(void);
 void				ft_aff_prompt(void);
 int					ft_has_char(char *str);
+void				ft_rmline_tab(char *name, char ***arr);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
