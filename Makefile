@@ -8,6 +8,7 @@ LIBS				= -L libft -lft -L /usr/lib -ltermcap
 SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/context.c \
 					  $(DIR_SRC)/error.c \
+					  $(DIR_SRC)/signals.c \
 					  $(DIR_SRC)/ft_lexer.c \
 					  $(DIR_SRC)/ft_parser.c \
 					  $(DIR_SRC)/ft_parser_tree.c \
@@ -20,6 +21,7 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_fork_and_exec.c \
 					  $(DIR_SRC)/ft_redirect.c \
 					  $(DIR_SRC)/ft_get_env.c \
+					  $(DIR_SRC)/ft_get_fd.c \
 					  $(DIR_SRC)/ft_create_files.c \
 					  $(DIR_SRC)/ft_test.c \
 					  $(DIR_SRC)/treat_cmd.c \
@@ -49,6 +51,7 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/treat_key_enter.c \
 					  $(DIR_SRC)/treat_key_left.c \
 					  $(DIR_SRC)/treat_key_right.c \
+					  $(DIR_SRC)/treat_key_ctrld.c \
 
 # ---------------------------------------------------------------------------- #
 

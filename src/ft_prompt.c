@@ -6,7 +6,7 @@
 /*   By: janteuni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 15:41:53 by janteuni          #+#    #+#             */
-/*   Updated: 2014/03/02 17:05:50 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/02 18:34:10 by fbeck            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,11 @@ static int			st_isprint(char *buf)
 
 void				ft_aff_prompt(void)
 {
+	if (CTX->prompt)
+		return ;
 	ft_putstr("YOLO-Shell> ");
+	CTX->prompt = 1;
+
 }
 
 void				ft_prompt(void)

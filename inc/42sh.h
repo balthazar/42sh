@@ -40,13 +40,14 @@
 # define C(EL)			((t_cmd *) EL->content)
 # define CH(X)			(((t_chev *)X->content))
 
-# define NB_KEYS		6
+# define NB_KEYS		7
 # define K_LEFT			tgetstr("kl", NULL)
 # define K_RIGHT		tgetstr("kr", NULL)
 # define K_DOWN			tgetstr("kd", NULL)
 # define K_UP			tgetstr("ku", NULL)
 # define K_DELETE		tgetstr("kD", NULL)
 # define K_ENTER		tgetstr("cr", NULL)
+# define K_CTRLD		("\004")
 
 # define GETT(E, T)		((t_cmd *) (E)->content)->T
 # define CMU			(GETT(node, cmd)[1])
@@ -60,6 +61,9 @@ typedef struct		s_ctx
 	char			**env;
 	char			line[LINE_LEN];
 	int				i;
+	int				cols;
+	int				rows;
+	int				prompt;
 	int				len;
 }					t_ctx;
 
@@ -112,6 +116,7 @@ void				ft_test(char *line);
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 */
 
+int					ft_get_fd(void);
 char				**ft_get_env(void);
 t_ctx				*ft_get_ctx(void);
 
@@ -133,6 +138,7 @@ int					ft_treat_key(char *buf);
 int					treat_key_enter(void);
 int					treat_key_left(void);
 int					treat_key_right(void);
+int					treat_key_ctrld(void);
 int					ft_has_char(char *str);
 
 /*
@@ -209,6 +215,15 @@ void				ft_error(char *msg);
 int					ft_err(char *msg);
 void				ft_exit(int n);
 
-void				print_tree(t_btree *node, int level, int dir); /* TODO delete */
+/*
+** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+** Signals
+** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+*/
+
+void				setup_signal(void);
+void				reset_signal(void);
+
+void		print_tree(t_btree *node, int level, int dir); /* TODO delete */
 
 #endif /* !A42SH_H */

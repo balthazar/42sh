@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_get_fd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/02 18:42:17 by fbeck            ###   ########.fr       */
+/*   Created: 2014/03/01 18:45:30 by fbeck             #+#    #+#             */
+/*   Updated: 2014/03/01 18:50:00 by fbeck            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <fcntl.h>
 #include "42sh.h"
 
-int					main(int ac, char **av, char **env)
+int					ft_get_fd(void)
 {
-	(void) ac;
-	(void) av;
-	setup_signal();
-	ft_copy_tab(&ft_get_ctx()->env, env);
-	ft_term_init();
-	ft_prompt();
-	ft_reset_term();
-	return (0);
+	static int		fd = -1;
+
+	if (fd == -1)
+	{
+		fd = open("/dev/tty", O_RDWR);
+		if (fd == -1)
+		{
+			ft_error("failed to open /dev/tty");
+		}
+	}
+	return (fd);
 }
