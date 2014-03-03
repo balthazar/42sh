@@ -49,6 +49,7 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_getvar_env.c \
 					  $(DIR_SRC)/ft_odd_quotes.c \
 					  $(DIR_SRC)/ft_add_char.c \
+					  $(DIR_SRC)/ft_del_char.c \
 					  $(DIR_SRC)/ft_treat_key.c \
 					  $(DIR_SRC)/treat_key_enter.c \
 					  $(DIR_SRC)/treat_key_left.c \
