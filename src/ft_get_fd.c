@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fork_and_exec.c                                 :+:      :+:    :+:   */
+/*   ft_get_fd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/02/28 14:24:03 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/01 19:19:00 by bgronon          ###   ########.fr       */
+/*   Created: 2014/03/01 18:45:30 by fbeck             #+#    #+#             */
+/*   Updated: 2014/03/01 18:50:00 by fbeck            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <unistd.h>
-#include <wait.h>
+#include <fcntl.h>
 #include "42sh.h"
 
-void				ft_fork_and_exec(t_btree *node)
+int					ft_get_fd(void)
 {
-	pid_t			father;
+	static int		fd = -1;
 
-	if (-1 == (father = fork()))
-		ft_error("fork failed");
-	else if (!father)
-		ft_exec(node);
-	wait(NULL);
+	if (fd == -1)
+	{
+		fd = open("/dev/tty", O_RDWR);
+		if (fd == -1)
+		{
+			ft_error("failed to open /dev/tty");
+		}
+	}
+	return (fd);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_prompt.c                                        :+:      :+:    :+:   */
+/*   ft_loop.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: janteuni <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 15:41:53 by janteuni          #+#    #+#             */
-/*   Updated: 2014/03/02 18:51:44 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/03 13:08:39 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int			st_isprint(char *buf)
 			&& buf[4] == 0 && buf[5] == 0);
 }
 
-void				ft_aff_prompt(void)
+int					ft_loop(void)
 {
 	t_ctx	*ctx;
 
@@ -35,10 +35,9 @@ void				ft_aff_prompt(void)
 
 void				ft_prompt(void)
 {
-	char			buf[BUF_LEN + 1];
+	char			*buf;
 
-	ft_bzero(ft_get_ctx()->line, LINE_LEN);
-	ft_aff_prompt();
+	buf = CTX->buf;
 	while (1)
 	{
 		ft_bzero(buf, BUF_LEN + 1);
@@ -50,6 +49,5 @@ void				ft_prompt(void)
 		}
 		else
 			ft_treat_key(buf);
-		/*	printf("%d %d %d %d %d %d\n", buf[0], buf[1], buf[2], buf[3], buf[4], buf[5]);*/
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/02 17:00:23 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/02 17:04:56 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/03 00:18:52 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ int					treat_key_enter(void)
 	if (is_full_cmd(CTX->line))
 	{
 		// TODO sauvegarder CTX->line dans histo
-		ft_launch();
+		ft_launch(NULL, NULL);
+		CTX->prompt = 0;
 	}
 	else if (ft_is_valid(CTX->line))
 	{

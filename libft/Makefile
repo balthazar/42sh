@@ -6,7 +6,7 @@
 #    By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/02/15 18:48:46 by mpillet           #+#    #+#              #
-#*   Updated: 2014/02/27 20:03:03 by mpillet          ###   ########.fr       *#
+#*   Updated: 2014/03/02 23:43:02 by mpillet          ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,9 @@ SRC                = $(DIR_SRC)/ft_memset.c \
 					 $(DIR_SRC)/ft_lstnew.c \
 					 $(DIR_SRC)/ft_dlstnew.c \
 					 $(DIR_SRC)/ft_lstdelone.c \
+					 $(DIR_SRC)/ft_dlstdelone.c \
 					 $(DIR_SRC)/ft_lstdel.c \
+					 $(DIR_SRC)/ft_dlstdel.c \
 					 $(DIR_SRC)/ft_lstadd.c \
 					 $(DIR_SRC)/ft_dlstadd.c \
 					 $(DIR_SRC)/ft_lstiter.c \

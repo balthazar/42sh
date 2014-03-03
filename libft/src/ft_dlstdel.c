@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fork_and_exec.c                                 :+:      :+:    :+:   */
+/*   ft_dlstdel.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/02/28 14:24:03 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/01 19:19:00 by bgronon          ###   ########.fr       */
+/*   Created: 2013/11/26 16:50:47 by mpillet           #+#    #+#             */
+/*   Updated: 2014/03/02 23:42:30 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <unistd.h>
-#include <wait.h>
-#include "42sh.h"
+#include "libft.h"
 
-void				ft_fork_and_exec(t_btree *node)
+void	ft_dlstdel(t_dlist **alst, void (*del)(void *, size_t))
 {
-	pid_t			father;
+	t_dlist		*tmp;
 
-	if (-1 == (father = fork()))
-		ft_error("fork failed");
-	else if (!father)
-		ft_exec(node);
-	wait(NULL);
+	while (*alst)
+	{
+		tmp = (*alst)->next;
+		ft_dlstdelone(alst, del);
+		*alst = tmp;
+	}
 }

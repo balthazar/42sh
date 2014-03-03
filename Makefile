@@ -1,4 +1,4 @@
-NAME				= 42sh
+NAME				= yolosh
 
 CC					= clang
 FLAG				= -Wall -Werror -Wextra -pedantic
@@ -8,18 +8,21 @@ LIBS				= -L libft -lft -L /usr/lib -ltermcap
 SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/context.c \
 					  $(DIR_SRC)/error.c \
+					  $(DIR_SRC)/signals.c \
+					  $(DIR_SRC)/ft_clean.c \
+					  $(DIR_SRC)/ft_loop.c \
 					  $(DIR_SRC)/ft_lexer.c \
 					  $(DIR_SRC)/ft_parser.c \
 					  $(DIR_SRC)/ft_parser_tree.c \
 					  $(DIR_SRC)/ft_parser_node.c \
 					  $(DIR_SRC)/ft_parser_error.c \
 					  $(DIR_SRC)/ft_treat_node.c \
-					  $(DIR_SRC)/ft_make_cmd.c \
 					  $(DIR_SRC)/ft_fill_path.c \
 					  $(DIR_SRC)/ft_exec.c \
 					  $(DIR_SRC)/ft_fork_and_exec.c \
 					  $(DIR_SRC)/ft_redirect.c \
 					  $(DIR_SRC)/ft_get_env.c \
+					  $(DIR_SRC)/ft_get_fd.c \
 					  $(DIR_SRC)/ft_create_files.c \
 					  $(DIR_SRC)/ft_test.c \
 					  $(DIR_SRC)/treat_cmd.c \
@@ -31,7 +34,7 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/print_tree.c \
 					  $(DIR_SRC)/ft_term_init.c \
 					  $(DIR_SRC)/ft_term_mode.c \
-					  $(DIR_SRC)/ft_prompt.c \
+					  $(DIR_SRC)/ft_aff_prompt.c \
 					  $(DIR_SRC)/ft_launch.c \
 					  $(DIR_SRC)/ft_has_char.c \
 					  $(DIR_SRC)/ft_is_valid.c \
@@ -52,6 +55,9 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/treat_key_enter.c \
 					  $(DIR_SRC)/treat_key_left.c \
 					  $(DIR_SRC)/treat_key_right.c \
+					  $(DIR_SRC)/treat_key_ctrld.c \
+					  $(DIR_SRC)/treat_key_delete.c \
+					  $(DIR_SRC)/treat_key_backsp.c \
 
 # ---------------------------------------------------------------------------- #
 

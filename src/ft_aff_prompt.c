@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_treat_key.c                                     :+:      :+:    :+:   */
+/*   ft_aff_prompt.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/02 16:22:32 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/02 23:19:56 by mpillet          ###   ########.fr       */
+/*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
+/*   Updated: 2014/03/02 23:08:56 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
 
-int					ft_treat_key(char *buf)
+void				ft_aff_prompt(void)
 {
-	int				i;
-	t_key			keys[NB_KEYS] = {
-		{ K_ENTER, treat_key_enter },
-		{ K_LEFT, treat_key_left },
-		{ K_RIGHT, treat_key_right },
-		{ K_CTRLD, treat_key_ctrld },
-		{ K_DELETE, treat_key_delete },
-		{ K_BACKSP, treat_key_backsp }
-	};
-
-	i = 0;
-	while (i < NB_KEYS)
-	{
-		if (0 == ft_strcmp(keys[i].key, buf))
-			return (keys[i].fn());
-		++i;
-	}
-	return (ERR);
+	if (CTX->prompt)
+		return ;
+	ft_putstr("YOLO-Shell> ");
+	CTX->prompt = 1;
 }
