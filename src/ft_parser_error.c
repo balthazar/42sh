@@ -6,7 +6,7 @@
 /*   By: janteuni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 11:12:07 by janteuni          #+#    #+#             */
-/*   Updated: 2014/03/01 12:42:17 by janteuni         ###   ########.fr       */
+/*   Updated: 2014/03/03 14:22:17 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,17 @@
 
 int			ft_parser_print_err(char c)
 {
-	ft_putstr("YOLO-SHELL: parse error near '");
-	ft_putchar(c);;
-	ft_putendl("'");
+	char	*tmp;
+	char	*tmp2;
+	char	ch[2];
+
+	ch[0] = c;
+	ch[1] = '\0';
+	tmp = ft_strjoin("Parse error near '", ch);
+	tmp2 = ft_strjoin(tmp, "'");
+	ft_memdel((void **) &tmp);
+	ft_err(tmp2);
+	ft_memdel((void **) &tmp2);
 	return (ERR);
 }
 
