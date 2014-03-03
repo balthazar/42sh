@@ -14,8 +14,15 @@
 
 void				ft_aff_prompt(void)
 {
-	if (CTX->prompt)
+	t_ctx	*ctx;
+
+	ctx = CTX;
+	if (ctx->prompt)
 		return ;
-	ft_putstr("YOLO-Shell> ");
-	CTX->prompt = 1;
+	ft_psone(ctx->env);
+	if (PS->str)
+		ft_putstr(PS->str);
+	else
+		ft_putstr("YOLO-Shell> ");
+	ctx->prompt = 1;
 }

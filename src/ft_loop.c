@@ -23,19 +23,6 @@ static int			st_isprint(char *buf)
 
 int					ft_loop(void)
 {
-	t_ctx	*ctx;
-
-	ctx = CTX;
-	ft_psone(ctx->env);
-	if (PS->str)
-		ft_putstr(PS->str);
-	else
-		ft_putstr("YOLO-Shell> ");
-	return (0);
-}
-
-void				ft_prompt(void)
-{
 	char			*buf;
 
 	buf = CTX->buf;
@@ -51,4 +38,5 @@ void				ft_prompt(void)
 		else
 			ft_treat_key(buf);
 	}
+	return (OK);
 }
