@@ -31,6 +31,7 @@ int					ft_loop(void)
 		ft_putstr(PS->str);
 	else
 		ft_putstr("YOLO-Shell> ");
+	return (0);
 }
 
 void				ft_prompt(void)
