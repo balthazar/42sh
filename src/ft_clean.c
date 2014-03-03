@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/03 00:34:25 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/03 11:01:05 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ void				st_del_tree(t_btree **tree)
 	cmd = (*tree)->content;
 	if (cmd->type == CMD)
 	{
-		ft_lstdel(&cmd->in, st_del_simple_list);
-		ft_lstdel(&cmd->out, st_del_simple_list);
 		ft_free_tab((void ***) &cmd->cmd);
 		ft_memdel((void **) &cmd->path);
 	}
