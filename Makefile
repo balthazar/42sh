@@ -3,7 +3,7 @@ NAME				= yolosh
 CC					= clang
 FLAG				= -Wall -Werror -Wextra -pedantic
 INCS				= -I inc -I ./inc -I libft/inc
-LIBS				= -L libft -lft -L /usr/lib -ltermcap
+LIBS				= -L libft -lft -L /usr/lib -lncurses -ltermcap
 
 SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/context.c \
