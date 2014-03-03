@@ -81,9 +81,7 @@ static int		st_err_cmd(char *name)
 int				ft_fill_path(t_cmd *cmd)
 {
 	char		**paths;
-	int			i;
 
-	i = 0;
 	if (0 == ft_strcmp(cmd->cmd[0], ""))
 		return (st_err_cmd(cmd->cmd[0]));
 	if (ft_strchr(cmd->cmd[0], '/'))

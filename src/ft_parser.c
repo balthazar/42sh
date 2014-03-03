@@ -107,7 +107,7 @@ static void		create_and_push_cmd(t_dlist *list, int index, t_cmd *cmd, t_btree *
 		list = list->next;
 	}
 	if (cmd->cmd)
-		cmd->cmd[k] = '\0';
+		cmd->cmd[k] = NULL;
 	cmd->type = CMD;
 	add_node(tr, cmd, sizeof(t_cmd));
 }

@@ -12,6 +12,7 @@
 
 #include <stdlib.h>
 #include <unistd.h>
+#include <wait.h>
 #include "42sh.h"
 
 void				ft_fork_and_exec(t_btree *node)

@@ -30,8 +30,8 @@ static void	ft_env_null_extra(t_btree *node)
 	}
 	if (!GETT(node, cmd)[i])
 		ft_printab(customenv);
-//	else
-//		ft_redirect(node, customenv);
+/*	else
+		ft_redirect(node, customenv);*/
 }
 
 static void	ft_env_extra(t_btree *node)
@@ -52,22 +52,22 @@ static void	ft_env_extra(t_btree *node)
 	}
 	if (!GETT(node, cmd)[i])
 		ft_printab(customenv);
-//	else
-//		ft_redirect(node, customenv);
+/*	else
+		ft_redirect(node, customenv);*/
 }
 
 void		ft_env(t_btree *node)
 {
 	if (!GETT(node, cmd)[1])
 		ft_printab(CTX->env);
-//	else if (NMI && !ft_charin(GETT(node, cmd)[1], '='))
-//		ft_redirect(node, CTX->env);
+/*	else if (NMI && !ft_charin(GETT(node, cmd)[1], '='))
+		ft_redirect(node, CTX->env);*/
 	else if (!NMI && !GETT(node, cmd)[2])
 		return ;
 	else if (!NMI && GETT(node, cmd)[2] && ft_charin(GETT(node, cmd)[2], '='))
 		ft_env_null_extra(node);
-//	else if (!NMI && GETT(node, cmd)[2] && !ft_charin(GETT(node, cmd)[2], '='))
-//		ft_redirect(node, NULL);
+/*	else if (!NMI && GETT(node, cmd)[2] && !ft_charin(GETT(node, cmd)[2], '='))
+		ft_redirect(node, NULL);*/
 	else if (ft_charin(GETT(node, cmd)[1], '='))
 		ft_env_extra(node);
 }
