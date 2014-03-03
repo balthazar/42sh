@@ -6,7 +6,7 @@
 /*   By: janteuni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 15:12:47 by janteuni          #+#    #+#             */
-/*   Updated: 2014/03/02 17:23:52 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/03 14:54:57 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void				ft_reset_term(void)
 	tattr.c_cflag |= (CSIZE | PARENB);
 	tcsetattr(STDIN_FILENO, TCSADRAIN, &tattr);
 	tputs(tgetstr("ei", NULL), 1, ft_putput);
+	tputs(tgetstr("ke", NULL), 1, ft_putput);
 }
 
 void				ft_raw_term(void)
@@ -45,6 +46,5 @@ void				ft_raw_term(void)
 	tattr.c_cc[VMIN] = 1;
 	tattr.c_cc[VTIME] = 0;
 	tcsetattr(STDIN_FILENO, TCSADRAIN, &tattr);
-	tputs(tgetstr("im", NULL), 1, ft_putput);
 	tputs(tgetstr("ks", NULL), 1, ft_putput);
 }
