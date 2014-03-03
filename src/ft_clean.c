@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/03 11:01:05 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/03 14:48:36 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,25 @@ void				st_del_list(void *content, size_t content_size)
 	ft_memdel((void **) &el);
 }
 
-void				st_del_simple_list(void *content, size_t content_size)
+void				st_del_simple_list(t_list **alist)
 {
-	(void) content_size;
-	ft_memdel((void **) content);
+	t_list			*ptr;
+	t_list			*next;
+	t_chev			*ch;
+
+	if (*alist)
+	{
+		ptr = *alist;
+		while (ptr)
+		{
+			next = ptr->next;
+			ch = (t_chev *) ptr->content;
+			ft_memdel((void **) &ch->file);
+			ft_memdel((void **) &ch);
+			ft_memdel((void **) &ptr);
+			ptr = next;
+		}
+	}
 }
 
 void				st_del_tree(t_btree **tree)
@@ -39,6 +54,8 @@ void				st_del_tree(t_btree **tree)
 	cmd = (*tree)->content;
 	if (cmd->type == CMD)
 	{
+		st_del_simple_list(&cmd->in);
+		st_del_simple_list(&cmd->out);
 		ft_free_tab((void ***) &cmd->cmd);
 		ft_memdel((void **) &cmd->path);
 	}
