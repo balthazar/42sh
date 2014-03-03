@@ -17,9 +17,7 @@ void				ft_test(char *line)
 	static int		num = 0;
 	t_btree			*tree;
 	t_dlist			*dlist;
-	t_ctx			*ctx;
 
-	ctx = ft_get_ctx();
 	tree = NULL;
 	dlist = NULL;
 	ft_lexer(line, &dlist);

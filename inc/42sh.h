@@ -90,6 +90,8 @@ typedef struct		s_cmd
 	char			**env;
 	t_list			*in;
 	t_list			*out;
+	int				fd_in;
+	int				fd_out;
 	int				fail;
 }					t_cmd;
 
@@ -130,6 +132,7 @@ t_ctx				*ft_get_ctx(void);
 */
 
 void				ft_add_char(char c);
+void				ft_del_char(void);
 int					ft_putput(int c);
 void				ft_reset_term(void);
 void				ft_raw_term(void);
@@ -211,6 +214,7 @@ int					treat_end(t_btree *node);
 int					treat_and(t_btree *node);
 int					treat_or(t_btree *node);
 int					treat_chev(t_btree *node);
+int					ft_close_files(t_btree *node);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

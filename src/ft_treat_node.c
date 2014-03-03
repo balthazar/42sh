@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/01 16:30:21 by fbeck            ###   ########.fr       */
+/*   Updated: 2014/03/03 13:09:28 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,7 @@ int					ft_treat_node(t_btree *node)
 		C(node)->fail = TRUE;
 		return (ERR);
 	}
-	return (p[C(node)->type](node));
+	p[C(node)->type](node);
+	ft_close_files(node);
+	return (OK);
 }
