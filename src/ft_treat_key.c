@@ -21,6 +21,8 @@ int					ft_treat_key(char *buf)
 		{ K_RIGHT, treat_key_right },
 		{ K_CTRLD, treat_key_ctrld },
 		{ K_DELETE, treat_key_delete },
+		{ K_DOWN, treat_key_down },
+		{ K_UP, treat_key_up },
 		{ K_BACKSP, treat_key_backsp }
 	};
 

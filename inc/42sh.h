@@ -40,7 +40,7 @@
 # define C(EL)			((t_cmd *) EL->content)
 # define CH(X)			(((t_chev *)X->content))
 
-# define NB_KEYS		6
+# define NB_KEYS		8
 # define K_LEFT			tgetstr("kl", NULL)
 # define K_RIGHT		tgetstr("kr", NULL)
 # define K_DOWN			tgetstr("kd", NULL)
@@ -153,6 +153,8 @@ int					treat_key_right(void);
 int					treat_key_ctrld(void);
 int					treat_key_delete(void);
 int					treat_key_backsp(void);
+int					treat_key_up(void);
+int					treat_key_down(void);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
