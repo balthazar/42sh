@@ -14,5 +14,8 @@
 
 int				treat_key_delete(void)
 {
+	t_ctx	*ctx;
+
+	ctx = CTX;
 	return (OK);
 }

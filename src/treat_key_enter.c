@@ -27,7 +27,8 @@ int					treat_key_enter(void)
 {
 	if (is_full_cmd(CTX->line))
 	{
-		ft_add_history(CTX->line);
+		if (ft_strcmp(CTX->line, ""))
+			ft_add_history(CTX->line);
 		ft_launch(NULL, NULL);
 		CTX->prompt = 0;
 	}
