@@ -56,6 +56,8 @@
 # define PS				ctx->psone
 # define NBTIME			7
 # define NBBS			6
+# define UP				1
+# define DOWN			2
 
 typedef struct		s_ctx
 {
@@ -67,6 +69,8 @@ typedef struct		s_ctx
 	int				rows;
 	int				prompt;
 	int				len;
+	t_dlist			*history;
+	t_dlist			*current;
 }					t_ctx;
 
 typedef struct		s_elem
@@ -214,6 +218,16 @@ int					treat_and(t_btree *node);
 int					treat_or(t_btree *node);
 int					treat_chev(t_btree *node);
 int					ft_close_files(t_btree *node);
+
+/*
+** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+** History
+** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+*/
+void				ft_add_history(char *str);
+char				*ft_get_string(int key);
+void				ft_load_history(t_ctx *ctx);
+
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

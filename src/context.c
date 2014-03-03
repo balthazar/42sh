@@ -31,6 +31,8 @@ t_ctx				*ft_get_ctx(void)
 		ctx->i = 0;
 		ctx->prompt = 0;
 		ctx->len = 0;
+		ctx->history = NULL;
+		ctx->current = NULL;
 		ft_bzero(ctx->line, LINE_LEN);
 		ft_bzero(ctx->buf, BUF_LEN);
 	}

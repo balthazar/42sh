@@ -20,6 +20,7 @@ int					main(int ac, char **av, char **env)
 	ft_term_init();
 	setup_signal();
 	ft_copy_tab(&ft_get_ctx()->env, env);
+	ft_load_history(CTX);
 	ft_aff_prompt();
 	ft_loop();
 	ft_reset_term();

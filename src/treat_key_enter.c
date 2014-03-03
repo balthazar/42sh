@@ -27,7 +27,7 @@ int					treat_key_enter(void)
 {
 	if (is_full_cmd(CTX->line))
 	{
-		// TODO sauvegarder CTX->line dans histo
+		ft_add_history(CTX->line);
 		ft_launch(NULL, NULL);
 		CTX->prompt = 0;
 	}
@@ -39,7 +39,8 @@ int					treat_key_enter(void)
 	}
 	else
 	{
-		// TODO sauvegarder CTX->line dans histo
+		//don't think we need to add here
+		//ft_add_history(CTX->line);
 		ft_bzero(CTX->line, LINE_LEN);
 		CTX->i = 0;
 		ft_aff_prompt();
