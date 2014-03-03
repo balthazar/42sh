@@ -24,6 +24,7 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_get_env.c \
 					  $(DIR_SRC)/ft_get_fd.c \
 					  $(DIR_SRC)/ft_create_files.c \
+					  $(DIR_SRC)/ft_close_files.c \
 					  $(DIR_SRC)/ft_test.c \
 					  $(DIR_SRC)/treat_cmd.c \
 					  $(DIR_SRC)/treat_pipe.c \

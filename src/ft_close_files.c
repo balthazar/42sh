@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_treat_node.c                                    :+:      :+:    :+:   */
+/*   ft_close_files.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/03 13:09:28 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/03 13:21:52 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include "42sh.h"
 
-int					ft_treat_node(t_btree *node)
+static void			st_close_fd(int fd)
 {
-	static int		(*p[6]) (t_btree *) = {
-		treat_cmd,
-		treat_chev,
-		treat_pipe,
-		treat_end,
-		treat_and,
-		treat_or
-	};
-
-	if (ft_create_files(node) == ERR)
+	if (fd != -1)
 	{
-		C(node)->fail = TRUE;
-		return (ERR);
+		if (-1 == close(fd))
+			ft_error("Can't close file descriptor.");
 	}
-	p[C(node)->type](node);
-	ft_close_files(node);
+}
+
+int					ft_close_files(t_btree *node)
+{
+	st_close_fd(C(node)->fd_in);
+	st_close_fd(C(node)->fd_out);
 	return (OK);
 }
