@@ -1,13 +1,13 @@
 #ifndef A42SH_H
 # define A42SH_H
 
+# include <stdio.h> /* TODO delete */
+
 # include <termios.h>
 # include <curses.h>
 # include <term.h>
-# include "libft.h"
-
-# include <stdio.h> /* TODO delete */
 # include <time.h>
+# include "libft.h"
 
 # define BUF_LEN		6
 # define LINE_LEN		2048

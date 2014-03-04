@@ -6,7 +6,7 @@
 /*   By: janteuni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/25 17:57:52 by janteuni          #+#    #+#             */
-/*   Updated: 2014/03/04 15:34:31 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/04 16:12:18 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void			print_cmd(t_cmd *cmd)
 		}
 	}
 }
-
 
 void			ft_fill_redirection(t_cmd *cmd, t_dlist *list)
 {

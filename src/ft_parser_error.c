@@ -6,7 +6,7 @@
 /*   By: janteuni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 11:12:07 by janteuni          #+#    #+#             */
-/*   Updated: 2014/03/03 14:22:17 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/04 16:15:16 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ int			ft_parser_print_err(char c)
 	ft_memdel((void **) &tmp2);
 	return (ERR);
 }
-
 
 int			ft_treat_sep(t_dlist **tmp)
 {

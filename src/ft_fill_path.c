@@ -6,12 +6,12 @@
 /*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 13:04:21 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/04 15:53:50 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/04 16:12:30 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "42sh.h"
 #include <unistd.h>
+#include "42sh.h"
 
 static int		ft_check_access(char *path)
 {
