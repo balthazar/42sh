@@ -1,6 +1,14 @@
-/*
-** Laule don't have the header generator
-*/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_history.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/03/03 11:01:11 by bgronon           #+#    #+#             */
+/*   Updated: 2014/03/04 11:15:51 by bgronon          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -22,7 +30,7 @@ char	*ft_get_string(int key)
 			if (ctx->current)
 				return (ctx->current->content);
 		}
-		else if (key == DOWN)
+		else if (key == DOWN && ctx->current)
 		{
 			ctx->current = ctx->current->next;
 			if (ctx->current)
@@ -55,21 +63,13 @@ void	ft_add_history(char *str)
 		fd = open(tmp, O_CREAT | O_WRONLY | O_APPEND, 0604);
 		free(tmp);
 		if (fd == -1)
-		{
-			//err
-		}
+			ft_err("Can't open your history file.");
 		else
 		{
 			ft_putendl_fd(str, fd);
 			close(fd);
 		}
 	}
-	else
-	{
-		//err
-	}
-	//	if(ctx->current->prev)
-	//		printf("\n\ncurr %s\n", ctx->current->prev->content);
 }
 
 void	ft_load_history(t_ctx *ctx)
@@ -96,5 +96,9 @@ void	ft_load_history(t_ctx *ctx)
 			free(tmp);
 			close(fd);
 		}
+		else
+			ft_err("Your history will reset after this session.");
 	}
+	else
+		ft_err("Your history will reset after this session.");
 }

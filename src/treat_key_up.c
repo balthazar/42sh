@@ -1,6 +1,14 @@
-/*
-** Laule don't have header generator Gne
-*/
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   treat_key_up.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/03/03 11:01:31 by bgronon           #+#    #+#             */
+/*   Updated: 2014/03/04 11:21:36 by bgronon          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "42sh.h"
 
@@ -15,12 +23,7 @@ int		treat_key_up(void)
 	if (res)
 	{
 		i = 0;
-		while (ctx->i > 0)
-		{
-			tputs(tgetstr("kl", NULL), 1, ft_putput);
-			--ctx->i;
-		}
-		tputs(tgetstr("ce", NULL), 1, ft_putput);
+		ft_clean_line();
 		ft_bzero(ctx->line, LINE_LEN);
 		while (res[i] != '\0')
 		{

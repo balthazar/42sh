@@ -71,6 +71,8 @@ typedef struct		s_ctx
 	int				len;
 	t_dlist			*history;
 	t_dlist			*current;
+	int				flag_end;
+	char			save[LINE_LEN];
 }					t_ctx;
 
 typedef struct		s_elem
@@ -146,6 +148,7 @@ int					ft_odd_quotes(char *line);
 int					ft_treat_key(char *buf);
 int					ft_has_char(char *str);
 int					ft_loop(void);
+void				ft_clean_line(void);
 
 int					treat_key_enter(void);
 int					treat_key_left(void);
