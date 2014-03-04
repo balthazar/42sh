@@ -51,7 +51,7 @@
 # define K_DOWN			tgetstr("kd", NULL)
 # define K_UP			tgetstr("ku", NULL)
 # define K_DELETE		tgetstr("kD", NULL)
-# define K_BACKSP		"\177"
+# define K_BACKSP		("\177")
 # define K_ENTER		tgetstr("cr", NULL)
 # define K_CTRLD		("\004")
 
