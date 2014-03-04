@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/04 12:45:09 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/04 12:59:04 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,5 @@ void				ft_del_char(void)
 		ctx->line[tmp] = ctx->line[tmp + 1];
 		++tmp;
 	}
+	--CTX->len;
 }
