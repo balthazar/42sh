@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/04 23:07:29 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/04 23:49:21 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,11 @@ static void			st_clear_bloc(void)
 	tputs(tgetstr("ce", NULL), 1, ft_putput);
 	tputs(tgoto(tgetstr("cm", NULL), CTX->cols - 11, 6), 1, ft_putput);
 	tputs(tgetstr("ce", NULL), 1, ft_putput);
+	tputs(tgoto(tgetstr("cm", NULL), CTX->cols - 11, 7), 1, ft_putput);
+	tputs(tgetstr("ce", NULL), 1, ft_putput);
 }
 
-static void			st_log(t_pos *pos)
+static void			st_log(t_pos *pos, t_ctx *ctx)
 {
 	tputs(tgoto(tgetstr("cm", NULL), CTX->cols - 9, 0), 1, ft_putput);
 	tputs("| W ", 1, ft_putput);
@@ -52,6 +54,9 @@ static void			st_log(t_pos *pos)
 	tputs("| L ", 1, ft_putput);
 	tputs(ft_itoa(CTX->len), 1, ft_putput);
 	tputs(tgoto(tgetstr("cm", NULL), CTX->cols - 9, 6), 1, ft_putput);
+	tputs("| X ", 1, ft_putput);
+	tputs(ft_itoa((int) ft_strlen(PS->str) + ctx->len), 1, ft_putput);
+	tputs(tgoto(tgetstr("cm", NULL), CTX->cols - 9, 7), 1, ft_putput);
 	tputs("+--------", 1, ft_putput);
 }
 
@@ -62,7 +67,7 @@ void				ft_logpos(void)
 	tputs(tgetstr("sc", NULL), 1, ft_putput);
 	pos = &CTX->pos;
 	st_clear_bloc();
-	st_log(pos);
+	st_log(pos, CTX);
 	tputs(tgetstr("rc", NULL), 1, ft_putput);
 	tputs(tgetstr("im", NULL), 1, ft_putput);
 }
