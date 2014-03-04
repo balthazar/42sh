@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/03 15:08:58 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/04 12:45:09 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 
 void				ft_del_char(void)
 {
-	printf("\n");
-	printf("deleting char\n");
+	t_ctx			*ctx;
+	int				tmp;
+
+	ctx = CTX;
+	tmp = ctx->i;
+	while (ctx->line[tmp])
+	{
+		ctx->line[tmp] = ctx->line[tmp + 1];
+		++tmp;
+	}
 }

@@ -14,7 +14,10 @@
 
 void				ft_add_char(char c)
 {
-	CTX->line[CTX->i] = c;
-	++CTX->i;
-	++CTX->len;
+	t_ctx	*ctx;
+
+	ctx = CTX;
+	ctx->line[ctx->i] = c;
+	++ctx->i;
+	++ctx->len;
 }
