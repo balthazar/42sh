@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/02 17:07:52 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/02 17:25:26 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/04 22:00:59 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int					treat_key_left(void)
 	{
 		tputs(tgetstr("le", NULL), 1, ft_putput);
 		--CTX->i;
+		--CTX->pos.x;
 	}
 	return (OK);
 }

@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/03 15:08:37 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/04 21:55:39 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int				treat_key_backsp(void)
 		tputs(tgetstr("le", NULL), 1, ft_putput);
 		tputs(tgetstr("dc", NULL), 1, ft_putput);
 		--CTX->i;
+		--CTX->pos.x;
 		ft_del_char();
 	}
 	return (OK);
