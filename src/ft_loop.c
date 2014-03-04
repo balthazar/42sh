@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 15:41:53 by janteuni          #+#    #+#             */
-/*   Updated: 2014/03/04 22:34:13 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/04 23:18:54 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,7 @@ int					ft_loop(void)
 		ft_bzero(buf, BUF_LEN + 1);
 		read(STDIN_FILENO, buf, BUF_LEN);
 		if (st_isprint(buf))
-		{
 			ft_add_char(buf[0]);
-			ft_putchar(buf[0]);
-		}
 		else
 			ft_treat_key(buf);
 		ft_move_cursor();
