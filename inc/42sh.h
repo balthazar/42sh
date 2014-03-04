@@ -301,5 +301,6 @@ void				ft_fg(int i);
 void				ft_ctrlz(int sig);
 
 void		print_tree(t_btree *node, int level, int dir); /* TODO delete */
+void		ft_logpos(void);
 
 #endif /* !A42SH_H */
