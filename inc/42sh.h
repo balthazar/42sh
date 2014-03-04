@@ -76,15 +76,21 @@ typedef struct		s_psone
 	int				realsize;
 }					t_psone;
 
+typedef struct		s_pos
+{
+	int				x;
+	int				y;
+}					t_pos;
+
 typedef struct		s_ctx
 {
 	char			**env;
 	char			line[LINE_LEN];
 	char			buf[BUF_LEN];
-	int				i;
 	int				cols;
 	int				rows;
 	int				prompt;
+	int				i;
 	int				len;
 	t_psone			*psone;
 	t_dlist			*history;
@@ -93,6 +99,7 @@ typedef struct		s_ctx
 	char			save[LINE_LEN];
 	pid_t			child;
 	t_list			*jobs;
+	t_pos			pos;
 }					t_ctx;
 
 typedef struct		s_elem

@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 15:07:16 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/04 13:18:23 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/04 21:10:59 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static void			st_set_defaults(t_ctx *ctx)
 	ctx->cols = w.ws_col;
 	ctx->rows = w.ws_row;
 	ctx->env = NULL;
-	ctx->i = 0;
 	ctx->prompt = 0;
 	ctx->len = 0;
 	ctx->history = NULL;
