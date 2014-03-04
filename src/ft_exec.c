@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/01 19:18:43 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/04 15:36:00 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 
 int					ft_exec(t_btree *node)
 {
-	execve(C(node)->path, C(node)->cmd, C(node)->env);
+	if (GETT(node, force_null))
+		execve(C(node)->path, C(node)->cmd, NULL);
+	else if (GETT(node, custom))
+		execve(C(node)->path, C(node)->cmd, C(node)->custom);
+	else
+		execve(C(node)->path, C(node)->cmd, C(node)->env);
 	return (0);
 }

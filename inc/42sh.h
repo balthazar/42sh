@@ -57,7 +57,7 @@
 
 # define GETT(E, T)		((t_cmd *) (E)->content)->T
 # define CMU			(GETT(node, cmd)[1])
-# define NMI			(ft_strcmp(GETT(node, cmd)[1], "-i"))
+# define CNIL			(!ft_strcmp(GETT(node, cmd)[1], "-i"))
 # define PS				ctx->psone
 # define NBTIME			7
 # define NBBS			7
@@ -113,11 +113,13 @@ typedef struct		s_cmd
 	char			*path;
 	char			**cmd;
 	char			**env;
+	char			**custom;
 	t_list			*in;
 	t_list			*out;
 	int				fd_in;
 	int				fd_out;
 	int				fail;
+	int				force_null;
 }					t_cmd;
 
 typedef struct		s_key
@@ -138,14 +140,6 @@ typedef struct		s_jobs
 	int				first;
 	int				nb;
 }					t_jobs;
-
-/*
-** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-** Testing
-** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-*/
-
-void				ft_test(char *line);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
