@@ -6,10 +6,11 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/04 15:59:04 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/04 17:49:27 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/04 18:58:44 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "42sh.h"
 
 char		*ft_return_specific(char *str)
@@ -19,12 +20,14 @@ char		*ft_return_specific(char *str)
 	int		nb;
 	int		cpt;
 
-	if (str)
+	if (str && str[0] != '\0')
 	{
 		ctx = CTX;
 		cpt = 0;
 		tmp = ctx->history;
 		nb = ft_atoi(str);
+		printf("pute [%s]\n", str);
+		free(str);
 		while (tmp)
 		{
 			if (cpt == nb)

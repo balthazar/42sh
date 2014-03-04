@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 11:01:11 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/04 12:54:16 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/04 19:04:48 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,7 @@ void	ft_add_history(char *str)
 		tmp = ft_strjoin(tmp, "/.yolosh_history");
 		fd = open(tmp, O_WRONLY | O_APPEND | O_CREAT, 0604);
 		free(tmp);
-		if (fd == -1)
-			ft_err("Can't open your history file.");
-		else
+		if (fd != -1)
 		{
 			ft_putendl_fd(str, fd);
 			close(fd);
