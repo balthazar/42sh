@@ -5,8 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2014/03/04 15:04:43 by fbeck             #+#    #+#             */
+/*   Updated: 2014/03/04 16:34:46 by fbeck            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   signals.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/26 15:09:26 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/04 12:46:55 by janteuni         ###   ########.fr       */
+/*   Updated: 2014/03/04 14:56:27 by fbeck            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +55,10 @@ void				print_toto(void)
 void				ft_ctrlz(int sig)
 {
 	(void)sig;
+	printf("IN FT_CRTL_Z\n");
 	if (CTX->jobs)
 	{
+		printf("IM HERE LOLS\n");
 		signal(SIGTSTP, SIG_DFL);
 		if (kill(((t_jobs *)CTX->jobs->content)->pid, SIGTSTP) != -1)
 		{
@@ -57,17 +71,24 @@ void				ft_ctrlz(int sig)
 	}
 }
 
+void				ft_child(int sig)
+{
+	ft_putendl("sigchild");
+	(void)sig;
+}
+
 void				ft_fg(int i)
 {
 	(void)i;
 	if (CTX->jobs)
 	{
+		print_toto();
 		signal(SIGCONT, SIG_DFL);
 		if (kill(((t_jobs *)CTX->jobs->content)->pid, SIGCONT) == -1)
 			CTX->prompt = 0;
 		else
 		{
-			/*DELETE element de la liste*/
+		//	DELETE element de la liste
 			ft_putendl("fg: current: no such job");
 		}
 	}
@@ -109,6 +130,7 @@ void				setup_signal(void)
 			|| (signal(SIGINT, ft_ctrl_c) == SIG_ERR)
 			|| (signal(SIGTSTP, ft_ctrlz) == SIG_ERR)
 			|| (signal(SIGCONT, ft_fg) == SIG_ERR)
+			|| (signal(SIGCHLD, ft_child) == SIG_ERR)
 			|| (signal(SIGWINCH, ft_resize) == SIG_ERR))
 		ft_error("failed to setup signals");
 }

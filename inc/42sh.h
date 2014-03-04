@@ -30,7 +30,8 @@
 
 # define FIRST			1
 # define SECOND			2
-# define LOOSER			3
+# define LOSER			3
+# define JOB(X)			((t_jobs *)X->content)
 
 # define LIST			((t_elem *)list->content)
 # define PREV			((t_elem *)list->prev->content)
