@@ -179,6 +179,7 @@ int					ft_loop(void);
 void				ft_clean_line(void);
 void				ft_clear_line(void);
 void				ft_move_cursor(void);
+void				ft_rewrite(void);
 
 int					treat_key_enter(void);
 int					treat_key_left(void);

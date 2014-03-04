@@ -65,6 +65,7 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_clear_line.c \
 					  $(DIR_SRC)/ft_logpos.c \
 					  $(DIR_SRC)/ft_move_cursor.c \
+					  $(DIR_SRC)/ft_rewrite.c \
 
 # ---------------------------------------------------------------------------- #
 
