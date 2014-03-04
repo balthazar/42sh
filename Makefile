@@ -32,7 +32,6 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/treat_chev.c \
 					  $(DIR_SRC)/treat_or.c \
 					  $(DIR_SRC)/print_tree.c \
-					  $(DIR_SRC)/ft_term_init.c \
 					  $(DIR_SRC)/ft_term_mode.c \
 					  $(DIR_SRC)/ft_aff_prompt.c \
 					  $(DIR_SRC)/ft_launch.c \
