@@ -231,10 +231,10 @@ int					ft_close_files(t_btree *node);
 ** History
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 */
+void				ft_load_history(t_ctx *ctx, int fd, char *tmp, t_dlist *n);
 void				ft_add_history(char *str);
 char				*ft_get_string(int key);
-void				ft_load_history(t_ctx *ctx);
-void				ft_reset_line(t_ctx *ctx);
+void				ft_reset_line(t_ctx *ctx, int flag);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
