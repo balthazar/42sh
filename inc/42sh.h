@@ -41,7 +41,7 @@
 # define C(EL)			((t_cmd *) EL->content)
 # define CH(X)			(((t_chev *)X->content))
 
-# define NB_KEYS		6
+# define NB_KEYS		8
 # define K_LEFT			tgetstr("kl", NULL)
 # define K_RIGHT		tgetstr("kr", NULL)
 # define K_DOWN			tgetstr("kd", NULL)
@@ -56,7 +56,9 @@
 # define NMI			(ft_strcmp(GETT(node, cmd)[1], "-i"))
 # define PS				ctx->psone
 # define NBTIME			7
-# define NBBS			6
+# define NBBS			7
+# define UP				1
+# define DOWN			2
 
 typedef struct		s_stime
 {
@@ -81,6 +83,11 @@ typedef struct		s_ctx
 	int				prompt;
 	int				len;
 	t_psone			*psone;
+	t_dlist			*history;
+	t_dlist			*cur_h;
+	t_dlist			*end_h;
+	char			save[LINE_LEN];
+	pid_t			child;
 }					t_ctx;
 
 typedef struct		s_elem
@@ -145,6 +152,7 @@ t_ctx				*ft_get_ctx(void);
 */
 
 void				ft_add_char(char c);
+void				ft_del_char(void);
 int					ft_putput(int c);
 void				ft_reset_term(void);
 void				ft_raw_term(void);
@@ -155,6 +163,8 @@ int					ft_odd_quotes(char *line);
 int					ft_treat_key(char *buf);
 int					ft_has_char(char *str);
 int					ft_loop(void);
+void				ft_clean_line(void);
+void				ft_clear_line(void);
 
 int					treat_key_enter(void);
 int					treat_key_left(void);
@@ -162,6 +172,8 @@ int					treat_key_right(void);
 int					treat_key_ctrld(void);
 int					treat_key_delete(void);
 int					treat_key_backsp(void);
+int					treat_key_up(void);
+int					treat_key_down(void);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -244,6 +256,16 @@ char				*ft_time_twelve(struct tm *l);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+** History
+** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+*/
+void				ft_load_history(t_ctx *ctx, int fd, char *tmp, t_dlist *n);
+void				ft_add_history(char *str);
+char				*ft_get_string(int key);
+void				ft_reset_line(t_ctx *ctx, int flag);
+
+/*
+** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ** Error
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 */
@@ -260,6 +282,8 @@ void				ft_exit(int n);
 
 void				setup_signal(void);
 void				reset_signal(void);
+void				ft_fg(int i);
+void				ft_ctrlz(int sig);
 
 void		print_tree(t_btree *node, int level, int dir); /* TODO delete */
 

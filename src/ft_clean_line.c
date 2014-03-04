@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   treat_key_delete.c                                 :+:      :+:    :+:   */
+/*   ft_clean_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/02 23:21:55 by mpillet          ###   ########.fr       */
+/*   Created: 2014/03/04 11:19:58 by bgronon           #+#    #+#             */
+/*   Updated: 2014/03/04 12:18:57 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
 
-int				treat_key_delete(void)
+void	ft_clean_line(void)
 {
 	t_ctx	*ctx;
 
 	ctx = CTX;
-	return (OK);
+	while (ctx->i > 0)
+	{
+		tputs(tgetstr("le", NULL), 1, ft_putput);
+		--ctx->i;
+	}
+	ctx->len = 0;
+	tputs(tgetstr("ce", NULL), 1, ft_putput);
 }

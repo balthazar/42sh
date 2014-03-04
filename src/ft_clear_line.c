@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   treat_key_delete.c                                 :+:      :+:    :+:   */
+/*   ft_clear_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: janteuni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/02 23:21:55 by mpillet          ###   ########.fr       */
+/*   Created: 2014/03/04 11:27:43 by janteuni          #+#    #+#             */
+/*   Updated: 2014/03/04 11:32:24 by janteuni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
 
-int				treat_key_delete(void)
+void				ft_clear_line(void)
 {
-	t_ctx	*ctx;
-
-	ctx = CTX;
-	return (OK);
+	ft_bzero(ft_get_ctx()->line, LINE_LEN);
+	CTX->i = 0;
+	CTX->len = 0;
 }

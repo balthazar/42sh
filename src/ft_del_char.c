@@ -1,21 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   treat_key_delete.c                                 :+:      :+:    :+:   */
+/*   ft_del_char.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/02 23:21:55 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/04 12:45:09 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
 
-int				treat_key_delete(void)
+void				ft_del_char(void)
 {
-	t_ctx	*ctx;
+	t_ctx			*ctx;
+	int				tmp;
 
 	ctx = CTX;
-	return (OK);
+	tmp = ctx->i;
+	while (ctx->line[tmp])
+	{
+		ctx->line[tmp] = ctx->line[tmp + 1];
+		++tmp;
+	}
 }
