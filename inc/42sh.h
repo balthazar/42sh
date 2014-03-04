@@ -70,8 +70,8 @@ typedef struct		s_ctx
 	int				prompt;
 	int				len;
 	t_dlist			*history;
-	t_dlist			*current;
-	int				flag_end;
+	t_dlist			*cur_h;
+	t_dlist			*end_h;
 	char			save[LINE_LEN];
 }					t_ctx;
 
@@ -232,7 +232,7 @@ int					ft_close_files(t_btree *node);
 void				ft_add_history(char *str);
 char				*ft_get_string(int key);
 void				ft_load_history(t_ctx *ctx);
-
+void				ft_reset_line(t_ctx *ctx);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

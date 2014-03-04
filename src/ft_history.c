@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 11:01:11 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/04 11:15:51 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/04 12:28:48 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,17 @@
 #include <unistd.h>
 #include "42sh.h"
 
-char	*ft_get_string(int key)
+void	ft_reset_line(t_ctx *ctx)
 {
-	t_ctx	*ctx;
+	int		i;
 
-	ctx = CTX;
-	if (ctx->history)
-	{
-		if (key == UP && ctx->current)
-		{
-			ctx->current = ctx->current->prev;
-			if (ctx->current)
-				return (ctx->current->content);
-		}
-		else if (key == DOWN && ctx->current)
-		{
-			ctx->current = ctx->current->next;
-			if (ctx->current)
-				return (ctx->current->content);
-		}
-	}
-	return (NULL);
+	ft_clean_line();
+	ft_bzero(ctx->line, LINE_LEN);
+	ft_strcpy(ctx->line, ctx->cur_h->content);
+	i = ft_strlen(ctx->line);
+	ctx->i = i;
+	ctx->len = i;
+	ft_putstr(ctx->line);
 }
 
 void	ft_add_history(char *str)
@@ -55,7 +45,8 @@ void	ft_add_history(char *str)
 	  free(ctx->current);
 	  ctx->current = NULL;
 	}*/
-	ctx->current = new;
+	ctx->cur_h = NULL;
+	ctx->end_h = new;
 	tmp = ft_getvar_env("HOME", ctx->env);
 	if (tmp)
 	{
@@ -92,7 +83,8 @@ void	ft_load_history(t_ctx *ctx)
 				ft_dlstpush(&ctx->history, new);
 				free(tmp);
 			}
-			ctx->current = new;
+			ctx->end_h = new;
+			ctx->cur_h = NULL;
 			free(tmp);
 			close(fd);
 		}

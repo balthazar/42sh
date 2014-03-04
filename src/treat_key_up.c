@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 11:01:31 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/04 11:21:36 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/04 12:29:11 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,24 @@
 int		treat_key_up(void)
 {
 	t_ctx	*ctx;
-	char	*res;
-	int		i;
 
 	ctx = CTX;
-	res = ft_get_string(UP);
-	if (res)
+	if (!ctx->history)
+		return (1);
+	if (!ctx->cur_h)
 	{
-		i = 0;
-		ft_clean_line();
-		ft_bzero(ctx->line, LINE_LEN);
-		while (res[i] != '\0')
+		if (ctx->line)
 		{
-			ctx->line[i] = res[i];
-			++i;
+			ft_bzero(ctx->save, LINE_LEN);
+			ft_strcpy(ctx->save, ctx->line);
 		}
-		ctx->i = i;
-		ctx->len = i;
-		ft_putstr(res);
+		ctx->cur_h = ctx->end_h;
+		ft_reset_line(ctx);
+	}
+	else if (ctx->cur_h->prev)
+	{
+		ctx->cur_h = ctx->cur_h->prev;
+		ft_reset_line(ctx);
 	}
 	return (OK);
 }
