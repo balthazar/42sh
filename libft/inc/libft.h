@@ -6,7 +6,7 @@
 /*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 12:24:11 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/02 23:44:47 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/04 15:07:48 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ void		ft_streplace(char **str, char *pattern, char *replace);
 int			ft_tab_len(char **array);
 void		ft_printab(char **array);
 void		ft_free_tab(void ***arr);
+void		ft_trunc_tab(char ***arr, int nb);
 void		ft_copy_tab(char ***dest, char **arr);
 
 /*

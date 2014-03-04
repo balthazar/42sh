@@ -25,7 +25,6 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_get_fd.c \
 					  $(DIR_SRC)/ft_create_files.c \
 					  $(DIR_SRC)/ft_close_files.c \
-					  $(DIR_SRC)/ft_test.c \
 					  $(DIR_SRC)/treat_cmd.c \
 					  $(DIR_SRC)/treat_pipe.c \
 					  $(DIR_SRC)/treat_end.c \
@@ -33,7 +32,6 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/treat_chev.c \
 					  $(DIR_SRC)/treat_or.c \
 					  $(DIR_SRC)/print_tree.c \
-					  $(DIR_SRC)/ft_term_init.c \
 					  $(DIR_SRC)/ft_term_mode.c \
 					  $(DIR_SRC)/ft_aff_prompt.c \
 					  $(DIR_SRC)/ft_launch.c \
@@ -46,6 +44,9 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_setenv.c \
 					  $(DIR_SRC)/ft_unsetenv.c \
 					  $(DIR_SRC)/ft_echo.c \
+					  $(DIR_SRC)/ft_time_utils.c \
+					  $(DIR_SRC)/ft_time_utils_two.c \
+					  $(DIR_SRC)/ft_psone.c \
 					  $(DIR_SRC)/ft_getvar_env.c \
 					  $(DIR_SRC)/ft_history.c \
 					  $(DIR_SRC)/ft_odd_quotes.c \

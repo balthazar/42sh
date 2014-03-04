@@ -1,12 +1,13 @@
 #ifndef A42SH_H
 # define A42SH_H
 
+# include <stdio.h> /* TODO delete */
+
 # include <termios.h>
 # include <curses.h>
 # include <term.h>
+# include <time.h>
 # include "libft.h"
-
-#include <stdio.h> /* TODO delete */
 
 # define BUF_LEN		6
 # define LINE_LEN		2048
@@ -56,12 +57,24 @@
 
 # define GETT(E, T)		((t_cmd *) (E)->content)->T
 # define CMU			(GETT(node, cmd)[1])
-# define NMI			(ft_strcmp(GETT(node, cmd)[1], "-i"))
+# define CNIL			(!ft_strcmp(GETT(node, cmd)[1], "-i"))
 # define PS				ctx->psone
 # define NBTIME			7
 # define NBBS			7
 # define UP				1
 # define DOWN			2
+
+typedef struct		s_stime
+{
+	char			*type;
+	char			*(*fn)(struct tm *local);
+}					t_stime;
+
+typedef struct		s_psone
+{
+	char			*str;
+	int				realsize;
+}					t_psone;
 
 typedef struct		s_ctx
 {
@@ -73,6 +86,7 @@ typedef struct		s_ctx
 	int				rows;
 	int				prompt;
 	int				len;
+	t_psone			*psone;
 	t_dlist			*history;
 	t_dlist			*cur_h;
 	t_dlist			*end_h;
@@ -99,11 +113,13 @@ typedef struct		s_cmd
 	char			*path;
 	char			**cmd;
 	char			**env;
+	char			**custom;
 	t_list			*in;
 	t_list			*out;
 	int				fd_in;
 	int				fd_out;
 	int				fail;
+	int				force_null;
 }					t_cmd;
 
 typedef struct		s_key
@@ -124,14 +140,6 @@ typedef struct		s_jobs
 	int				first;
 	int				nb;
 }					t_jobs;
-
-/*
-** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-** Testing
-** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-*/
-
-void				ft_test(char *line);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -173,6 +181,14 @@ int					treat_key_backsp(void);
 int					treat_key_up(void);
 int					treat_key_down(void);
 
+int					ft_putput(int c);
+void				ft_reset_term(void);
+void				ft_raw_term(void);
+void				ft_term_init(void);
+void				ft_prompt(void);
+void				ft_aff_prompt(void);
+int					ft_has_char(char *str);
+
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ** Builtins
@@ -190,13 +206,6 @@ char				*ft_getvar_env(char *name, char **env);
 void				ft_cd(t_btree *node);
 void				ft_echo(t_btree *node);
 void				ft_exit_builtin(t_btree *node);
-int					ft_putput(int c);
-void				ft_reset_term(void);
-void				ft_raw_term(void);
-void				ft_term_init(void);
-void				ft_prompt(void);
-void				ft_aff_prompt(void);
-int					ft_has_char(char *str);
 void				ft_rmline_tab(char *name, char ***arr);
 
 /*
@@ -237,6 +246,21 @@ int					treat_and(t_btree *node);
 int					treat_or(t_btree *node);
 int					treat_chev(t_btree *node);
 int					ft_close_files(t_btree *node);
+
+/*
+** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+** PS1 & time
+** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+*/
+
+void				ft_psone(char **env);
+void				ft_timepurpose(t_ctx *ctx);
+char				*ft_time_majd(struct tm *l);
+char				*ft_time_majw(struct tm *l);
+char				*ft_time_majt(struct tm *l);
+char				*ft_time_w(struct tm *l);
+char				*ft_time_star(struct tm *l);
+char				*ft_time_twelve(struct tm *l);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

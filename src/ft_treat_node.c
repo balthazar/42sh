@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/03 13:09:28 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/04 15:19:04 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int					ft_treat_node(t_btree *node)
 		treat_or
 	};
 
+	if (!node)
+		return (OK);
 	if (ft_create_files(node) == ERR)
 	{
 		C(node)->fail = TRUE;

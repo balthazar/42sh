@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/02 23:08:56 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/04 16:05:14 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,16 @@
 
 void				ft_aff_prompt(void)
 {
-	if (CTX->prompt)
+	t_ctx	*ctx;
+
+	ctx = CTX;
+	if (ctx->prompt)
 		return ;
-	ft_putstr("YOLO-Shell> ");
-	CTX->prompt = 1;
+	ft_psone(ctx->env);
+	if (PS->str)
+		ft_putstr(PS->str);
+	else
+		ft_putstr("YOLO-Shell> ");
+	ctx->prompt = 1;
+	tputs(tgetstr("im", NULL), 1, ft_putput);
 }

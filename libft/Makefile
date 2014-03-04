@@ -102,6 +102,7 @@ SRC                = $(DIR_SRC)/ft_memset.c \
 					 $(DIR_SRC)/ft_struntil.c \
 					 $(DIR_SRC)/ft_streplace.c \
 					 $(DIR_SRC)/ft_printab.c \
+					 $(DIR_SRC)/ft_trunc_tab.c \
 
 DIR_SRC            = src
 DIR_INC            = inc
