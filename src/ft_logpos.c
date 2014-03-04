@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/04 22:28:53 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/04 23:07:29 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static void			st_clear_bloc(void)
 	tputs(tgoto(tgetstr("cm", NULL), CTX->cols - 11, 4), 1, ft_putput);
 	tputs(tgetstr("ce", NULL), 1, ft_putput);
 	tputs(tgoto(tgetstr("cm", NULL), CTX->cols - 11, 5), 1, ft_putput);
+	tputs(tgetstr("ce", NULL), 1, ft_putput);
+	tputs(tgoto(tgetstr("cm", NULL), CTX->cols - 11, 6), 1, ft_putput);
 	tputs(tgetstr("ce", NULL), 1, ft_putput);
 }
 
@@ -47,6 +49,9 @@ static void			st_log(t_pos *pos)
 	tputs("| i ", 1, ft_putput);
 	tputs(ft_itoa(CTX->i), 1, ft_putput);
 	tputs(tgoto(tgetstr("cm", NULL), CTX->cols - 9, 5), 1, ft_putput);
+	tputs("| L ", 1, ft_putput);
+	tputs(ft_itoa(CTX->len), 1, ft_putput);
+	tputs(tgoto(tgetstr("cm", NULL), CTX->cols - 9, 6), 1, ft_putput);
 	tputs("+--------", 1, ft_putput);
 }
 
