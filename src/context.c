@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 15:07:16 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/03 14:54:55 by fbeck            ###   ########.fr       */
+/*   Updated: 2014/03/04 12:41:11 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ t_ctx				*ft_get_ctx(void)
 	static t_ctx	*ctx = NULL;
 	struct winsize	w;
 
-
-	if (NULL == ctx)
+	if (!ctx)
 	{
 		if (!(ctx = (t_ctx *) malloc(sizeof(t_ctx))))
 			ft_error("Can't malloc 'ctx'");
@@ -31,6 +30,9 @@ t_ctx				*ft_get_ctx(void)
 		ctx->i = 0;
 		ctx->prompt = 0;
 		ctx->len = 0;
+		ctx->history = NULL;
+		ctx->cur_h = NULL;
+		ctx->end_h = NULL;
 		ctx->child = -1;
 		ft_bzero(ctx->line, LINE_LEN);
 		ft_bzero(ctx->buf, BUF_LEN);

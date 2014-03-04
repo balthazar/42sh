@@ -40,7 +40,7 @@
 # define C(EL)			((t_cmd *) EL->content)
 # define CH(X)			(((t_chev *)X->content))
 
-# define NB_KEYS		6
+# define NB_KEYS		8
 # define K_LEFT			tgetstr("kl", NULL)
 # define K_RIGHT		tgetstr("kr", NULL)
 # define K_DOWN			tgetstr("kd", NULL)
@@ -56,6 +56,8 @@
 # define PS				ctx->psone
 # define NBTIME			7
 # define NBBS			7
+# define UP				1
+# define DOWN			2
 
 typedef struct		s_ctx
 {
@@ -67,6 +69,10 @@ typedef struct		s_ctx
 	int				rows;
 	int				prompt;
 	int				len;
+	t_dlist			*history;
+	t_dlist			*cur_h;
+	t_dlist			*end_h;
+	char			save[LINE_LEN];
 	pid_t			child;
 }					t_ctx;
 
@@ -143,6 +149,7 @@ int					ft_odd_quotes(char *line);
 int					ft_treat_key(char *buf);
 int					ft_has_char(char *str);
 int					ft_loop(void);
+void				ft_clean_line(void);
 void				ft_clear_line(void);
 
 int					treat_key_enter(void);
@@ -151,6 +158,8 @@ int					treat_key_right(void);
 int					treat_key_ctrld(void);
 int					treat_key_delete(void);
 int					treat_key_backsp(void);
+int					treat_key_up(void);
+int					treat_key_down(void);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -216,6 +225,16 @@ int					treat_and(t_btree *node);
 int					treat_or(t_btree *node);
 int					treat_chev(t_btree *node);
 int					ft_close_files(t_btree *node);
+
+/*
+** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+** History
+** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+*/
+void				ft_load_history(t_ctx *ctx, int fd, char *tmp, t_dlist *n);
+void				ft_add_history(char *str);
+char				*ft_get_string(int key);
+void				ft_reset_line(t_ctx *ctx, int flag);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

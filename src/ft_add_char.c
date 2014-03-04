@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/02 17:04:30 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/04 12:57:48 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/04 13:02:00 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void				ft_add_char(char c)
 		ctx->line[tmp] = ctx->line[tmp - 1];
 		--tmp;
 	}
-	CTX->line[CTX->i] = c;
-	++CTX->i;
-	++CTX->len;
+	ctx->line[CTX->i] = c;
+	++ctx->i;
+	++ctx->len;
 }
