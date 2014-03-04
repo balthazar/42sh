@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/02 17:00:23 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/02 17:04:56 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/04 12:43:44 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,10 @@ int					treat_key_enter(void)
 {
 	if (is_full_cmd(CTX->line))
 	{
-		// TODO sauvegarder CTX->line dans histo
-		ft_launch();
+		if (ft_strcmp(CTX->line, ""))
+			ft_add_history(CTX->line);
+		ft_launch(NULL, NULL);
+		CTX->prompt = 0;
 	}
 	else if (ft_is_valid(CTX->line))
 	{
@@ -38,9 +40,11 @@ int					treat_key_enter(void)
 	}
 	else
 	{
-		// TODO sauvegarder CTX->line dans histo
+		//don't think we need to add here
+		//ft_add_history(CTX->line);
 		ft_bzero(CTX->line, LINE_LEN);
 		CTX->i = 0;
+		ft_clear_line();
 		ft_aff_prompt();
 	}
 	return (OK);

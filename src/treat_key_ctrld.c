@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_add_char.c                                      :+:      :+:    :+:   */
+/*   treat_key_ctrld.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/02 17:04:30 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/02 17:13:42 by mpillet          ###   ########.fr       */
+/*   Created: 2014/03/02 18:49:14 by fbeck             #+#    #+#             */
+/*   Updated: 2014/03/02 18:54:48 by fbeck            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
 
-void				ft_add_char(char c)
+int					treat_key_ctrld(void)
 {
-	t_ctx	*ctx;
-
-	ctx = CTX;
-	ctx->line[ctx->i] = c;
-	++ctx->i;
-	++ctx->len;
+	ft_putchar('\n');
+	ft_exit(0);
+	return (OK);
 }

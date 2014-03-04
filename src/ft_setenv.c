@@ -36,8 +36,8 @@ void		ft_setenv(t_btree *node)
 
 	if (!GETT(node, cmd)[1])
 		ft_env(node);
-	//else if (GETT(node, cmd)[1] && GETT(node, cmd)[2] && GETT(node, cmd)[3])
-	//	ft_err("Too many arguments");
+	/*else if (GETT(node, cmd)[1] && GETT(node, cmd)[2] && GETT(node, cmd)[3])
+		ft_err("Too many arguments");*/
 	else
 	{
 		ctx = CTX;

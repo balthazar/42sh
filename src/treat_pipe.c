@@ -6,12 +6,13 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/02/28 22:36:15 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/03 13:02:57 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include <unistd.h>
+#include <sys/wait.h>
 #include "42sh.h"
 
 static void				st_child(int *fdes, t_btree *node1)

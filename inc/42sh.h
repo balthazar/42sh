@@ -40,7 +40,7 @@
 # define C(EL)			((t_cmd *) EL->content)
 # define CH(X)			(((t_chev *)X->content))
 
-# define NB_KEYS		7
+# define NB_KEYS		8
 # define K_LEFT			tgetstr("kl", NULL)
 # define K_RIGHT		tgetstr("kr", NULL)
 # define K_DOWN			tgetstr("kd", NULL)
@@ -48,20 +48,32 @@
 # define K_DELETE		tgetstr("kD", NULL)
 # define K_BACKSP		"\177"
 # define K_ENTER		tgetstr("cr", NULL)
+# define K_CTRLD		("\004")
 
 # define GETT(E, T)		((t_cmd *) (E)->content)->T
 # define CMU			(GETT(node, cmd)[1])
 # define NMI			(ft_strcmp(GETT(node, cmd)[1], "-i"))
 # define PS				ctx->psone
 # define NBTIME			7
-# define NBBS			6
+# define NBBS			7
+# define UP				1
+# define DOWN			2
 
 typedef struct		s_ctx
 {
 	char			**env;
 	char			line[LINE_LEN];
+	char			buf[BUF_LEN];
 	int				i;
+	int				cols;
+	int				rows;
+	int				prompt;
 	int				len;
+	t_dlist			*history;
+	t_dlist			*cur_h;
+	t_dlist			*end_h;
+	char			save[LINE_LEN];
+	pid_t			child;
 }					t_ctx;
 
 typedef struct		s_elem
@@ -84,6 +96,8 @@ typedef struct		s_cmd
 	char			**env;
 	t_list			*in;
 	t_list			*out;
+	int				fd_in;
+	int				fd_out;
 	int				fail;
 }					t_cmd;
 
@@ -113,6 +127,7 @@ void				ft_test(char *line);
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 */
 
+int					ft_get_fd(void);
 char				**ft_get_env(void);
 t_ctx				*ft_get_ctx(void);
 
@@ -123,6 +138,7 @@ t_ctx				*ft_get_ctx(void);
 */
 
 void				ft_add_char(char c);
+void				ft_del_char(void);
 int					ft_putput(int c);
 void				ft_reset_term(void);
 void				ft_raw_term(void);
@@ -131,10 +147,19 @@ void				ft_prompt(void);
 void				ft_aff_prompt(void);
 int					ft_odd_quotes(char *line);
 int					ft_treat_key(char *buf);
+int					ft_has_char(char *str);
+int					ft_loop(void);
+void				ft_clean_line(void);
+void				ft_clear_line(void);
+
 int					treat_key_enter(void);
 int					treat_key_left(void);
 int					treat_key_right(void);
-int					ft_has_char(char *str);
+int					treat_key_ctrld(void);
+int					treat_key_delete(void);
+int					treat_key_backsp(void);
+int					treat_key_up(void);
+int					treat_key_down(void);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -185,11 +210,11 @@ void				if_end(t_btree **tree, t_btree *node);
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 */
 
-int					ft_launch(void);
+void				ft_clean(t_btree **tree, t_dlist **dlist);
+int					ft_launch(t_btree *tree, t_dlist *dlist);
 void				ft_fork_and_exec(t_btree *node);
 int					ft_exec(t_btree *node);
 int					ft_fill_path(t_cmd *cmd);
-t_cmd				*ft_make_cmd(char *path, char *e1, char *e2, char *e3, char **env);
 int					ft_treat_node(t_btree *node);
 int					ft_redirect(t_btree *node);
 int					ft_create_files(t_btree *node);
@@ -199,6 +224,17 @@ int					treat_end(t_btree *node);
 int					treat_and(t_btree *node);
 int					treat_or(t_btree *node);
 int					treat_chev(t_btree *node);
+int					ft_close_files(t_btree *node);
+
+/*
+** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+** History
+** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+*/
+void				ft_load_history(t_ctx *ctx, int fd, char *tmp, t_dlist *n);
+void				ft_add_history(char *str);
+char				*ft_get_string(int key);
+void				ft_reset_line(t_ctx *ctx, int flag);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -210,6 +246,17 @@ void				ft_error(char *msg);
 int					ft_err(char *msg);
 void				ft_exit(int n);
 
-void				print_tree(t_btree *node, int level, int dir); /* TODO delete */
+/*
+** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+** Signals
+** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+*/
+
+void				setup_signal(void);
+void				reset_signal(void);
+void				ft_fg(int i);
+void				ft_ctrlz(int sig);
+
+void		print_tree(t_btree *node, int level, int dir); /* TODO delete */
 
 #endif /* !A42SH_H */

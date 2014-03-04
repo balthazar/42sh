@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_add_char.c                                      :+:      :+:    :+:   */
+/*   ft_dlstdel.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/02 17:04:30 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/02 17:13:42 by mpillet          ###   ########.fr       */
+/*   Created: 2013/11/26 16:50:47 by mpillet           #+#    #+#             */
+/*   Updated: 2014/03/02 23:42:30 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "42sh.h"
+#include <stdlib.h>
+#include "libft.h"
 
-void				ft_add_char(char c)
+void	ft_dlstdel(t_dlist **alst, void (*del)(void *, size_t))
 {
-	t_ctx	*ctx;
+	t_dlist		*tmp;
 
-	ctx = CTX;
-	ctx->line[ctx->i] = c;
-	++ctx->i;
-	++ctx->len;
+	while (*alst)
+	{
+		tmp = (*alst)->next;
+		ft_dlstdelone(alst, del);
+		*alst = tmp;
+	}
 }

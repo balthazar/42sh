@@ -1,23 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_add_char.c                                      :+:      :+:    :+:   */
+/*   ft_clear_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: janteuni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/02 17:04:30 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/02 17:13:42 by mpillet          ###   ########.fr       */
+/*   Created: 2014/03/04 11:27:43 by janteuni          #+#    #+#             */
+/*   Updated: 2014/03/04 11:32:24 by janteuni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
 
-void				ft_add_char(char c)
+void				ft_clear_line(void)
 {
-	t_ctx	*ctx;
-
-	ctx = CTX;
-	ctx->line[ctx->i] = c;
-	++ctx->i;
-	++ctx->len;
+	ft_bzero(ft_get_ctx()->line, LINE_LEN);
+	CTX->i = 0;
+	CTX->len = 0;
 }

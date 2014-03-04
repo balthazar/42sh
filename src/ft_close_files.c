@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_make_cmd.c                                      :+:      :+:    :+:   */
+/*   ft_close_files.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/02/28 14:56:03 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/03 14:11:03 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <unistd.h>
 #include "42sh.h"
 
-t_cmd				*ft_make_cmd(char *path, char *e1, char *e2, char *e3, char **env)
+static void			st_close_fd(int fd)
 {
-	t_cmd			*cmd;
+	if (fd != -1)
+	{
+		if (-1 == close(fd))
+			ft_error("Can't close file descriptor.");
+	}
+}
 
-	if (!(cmd = (t_cmd *) malloc(sizeof(t_cmd))))
-		ft_error("Can't malloc 'cmd'");
-	cmd->type = CMD;
-	cmd->path = path;
-	if (!(cmd->cmd = (char **) malloc(sizeof(char *))))
-		ft_error("Can't malloc 'cmd->cmd'");
-	cmd->cmd[0] = e1;
-	cmd->cmd[1] = e2;
-	cmd->cmd[2] = e3;
-	cmd->cmd[3] = NULL;
-	cmd->env = env;
-	cmd->in = NULL;
-	cmd->out = NULL;
-	cmd->fail = FALSE;
-	return (cmd);
+int					ft_close_files(t_btree *node)
+{
+	st_close_fd(C(node)->fd_in);
+	st_close_fd(C(node)->fd_out);
+	dup2(ft_get_fd(), 1);
+	return (OK);
 }

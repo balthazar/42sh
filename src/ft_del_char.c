@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_del_char.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/04 12:54:48 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/04 12:45:09 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "42sh.h"
 
-int					main(int ac, char **av, char **env)
+void				ft_del_char(void)
 {
-	t_ctx	*ctx;
+	t_ctx			*ctx;
+	int				tmp;
 
 	ctx = CTX;
-	(void) ac;
-	(void) av;
-	ft_term_init();
-	setup_signal();
-	ft_copy_tab(&ctx->env, env);
-	ft_load_history(ctx, 0, NULL, NULL);
-	ft_aff_prompt();
-	ft_loop();
-	ft_reset_term();
-	return (0);
+	tmp = ctx->i;
+	while (ctx->line[tmp])
+	{
+		ctx->line[tmp] = ctx->line[tmp + 1];
+		++tmp;
+	}
 }
