@@ -6,7 +6,7 @@
 /*   By: janteuni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/25 17:57:52 by janteuni          #+#    #+#             */
-/*   Updated: 2014/03/03 13:17:01 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/04 15:34:31 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,11 +80,13 @@ static void		init_safe(t_cmd *cmd)
 	cmd->path = NULL;
 	cmd->cmd = NULL;
 	cmd->env = ft_get_env();
+	cmd->custom = NULL;
 	cmd->fd_in = -1;
 	cmd->fd_out = -1;
 	cmd->in = NULL;
 	cmd->out = NULL;
 	cmd->fail = FALSE;
+	cmd->force_null = 0;
 }
 
 static void		create_and_push_cmd(t_dlist *list, int index, t_cmd *cmd, t_btree **tr)
