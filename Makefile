@@ -46,6 +46,9 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_setenv.c \
 					  $(DIR_SRC)/ft_unsetenv.c \
 					  $(DIR_SRC)/ft_echo.c \
+					  $(DIR_SRC)/ft_time_utils.c \
+					  $(DIR_SRC)/ft_time_utils_two.c \
+					  $(DIR_SRC)/ft_psone.c \
 					  $(DIR_SRC)/ft_getvar_env.c \
 					  $(DIR_SRC)/ft_history.c \
 					  $(DIR_SRC)/ft_odd_quotes.c \

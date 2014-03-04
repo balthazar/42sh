@@ -6,7 +6,8 @@
 # include <term.h>
 # include "libft.h"
 
-#include <stdio.h> /* TODO delete */
+# include <stdio.h> /* TODO delete */
+# include <time.h>
 
 # define BUF_LEN		6
 # define LINE_LEN		2048
@@ -27,6 +28,10 @@
 
 # define OP_S			1
 # define OP_D			2
+
+# define FIRST			1
+# define SECOND			2
+# define LOOSER			3
 
 # define LIST			((t_elem *)list->content)
 # define PREV			((t_elem *)list->prev->content)
@@ -59,6 +64,18 @@
 # define UP				1
 # define DOWN			2
 
+typedef struct		s_stime
+{
+	char			*type;
+	char			*(*fn)(struct tm *local);
+}					t_stime;
+
+typedef struct		s_psone
+{
+	char			*str;
+	int				realsize;
+}					t_psone;
+
 typedef struct		s_ctx
 {
 	char			**env;
@@ -69,11 +86,13 @@ typedef struct		s_ctx
 	int				rows;
 	int				prompt;
 	int				len;
+	t_psone			*psone;
 	t_dlist			*history;
 	t_dlist			*cur_h;
 	t_dlist			*end_h;
 	char			save[LINE_LEN];
 	pid_t			child;
+	t_list			*jobs;
 }					t_ctx;
 
 typedef struct		s_elem
@@ -112,6 +131,13 @@ typedef struct		s_built
 	char			*name;
 	void			(*fn)();
 }					t_built;
+
+typedef struct		s_jobs
+{
+	pid_t			pid;
+	int				first;
+	int				nb;
+}					t_jobs;
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -225,6 +251,20 @@ int					treat_and(t_btree *node);
 int					treat_or(t_btree *node);
 int					treat_chev(t_btree *node);
 int					ft_close_files(t_btree *node);
+
+/*
+** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+** PS1 & time
+** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+*/
+void				ft_psone(char **env);
+void				ft_timepurpose(t_ctx *ctx);
+char				*ft_time_majd(struct tm *l);
+char				*ft_time_majw(struct tm *l);
+char				*ft_time_majt(struct tm *l);
+char				*ft_time_w(struct tm *l);
+char				*ft_time_star(struct tm *l);
+char				*ft_time_twelve(struct tm *l);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

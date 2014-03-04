@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/04 12:54:48 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/04 13:07:06 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int					main(int ac, char **av, char **env)
 	ctx = CTX;
 	(void) ac;
 	(void) av;
+	ctx = CTX;
 	ft_term_init();
 	setup_signal();
 	ft_copy_tab(&ctx->env, env);
