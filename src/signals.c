@@ -6,7 +6,7 @@
 /*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/26 15:09:26 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/04 11:33:18 by janteuni         ###   ########.fr       */
+/*   Updated: 2014/03/04 12:46:55 by janteuni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,30 @@ static void			ft_nothing(int sig)
 	(void)sig;
 }
 */
+
+void				print_toto(void)
+{
+	t_list			*list;
+
+	list = CTX->jobs;
+	while (list)
+	{
+		printf("----------------------------------------\n");
+		printf("PID [%d]\n", ((t_jobs *)list->content)->pid);
+		printf("First or not  [%d]\n", ((t_jobs *)list->content)->first);
+		printf("NB [%d]\n", ((t_jobs *)list->content)->nb);
+		printf("----------------------------------------\n");
+		list = list->next;
+	}
+}
+
 void				ft_ctrlz(int sig)
 {
 	(void)sig;
-	if (CTX->child != -1)
+	if (CTX->jobs)
 	{
 		signal(SIGTSTP, SIG_DFL);
-		if (kill(CTX->child, SIGTSTP) != -1)
+		if (kill(((t_jobs *)CTX->jobs->content)->pid, SIGTSTP) != -1)
 		{
 			ft_putendl("[1]+  Stopped(SIGTSTP)\n");
 			CTX->prompt = 0;
@@ -43,13 +60,16 @@ void				ft_ctrlz(int sig)
 void				ft_fg(int i)
 {
 	(void)i;
-	if (CTX->child != -1)
+	if (CTX->jobs)
 	{
 		signal(SIGCONT, SIG_DFL);
-		if (kill(CTX->child, SIGCONT) != -1)
+		if (kill(((t_jobs *)CTX->jobs->content)->pid, SIGCONT) == -1)
 			CTX->prompt = 0;
 		else
+		{
+			/*DELETE element de la liste*/
 			ft_putendl("fg: current: no such job");
+		}
 	}
 	else
 		ft_putendl("fg: current: no such job");

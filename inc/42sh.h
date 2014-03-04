@@ -28,6 +28,10 @@
 # define OP_S			1
 # define OP_D			2
 
+# define FIRST			1
+# define SECOND			2
+# define LOOSER			3
+
 # define LIST			((t_elem *)list->content)
 # define PREV			((t_elem *)list->prev->content)
 # define NEXT			((t_elem *)list->next->content)
@@ -74,6 +78,7 @@ typedef struct		s_ctx
 	t_dlist			*end_h;
 	char			save[LINE_LEN];
 	pid_t			child;
+	t_list			*jobs;
 }					t_ctx;
 
 typedef struct		s_elem
@@ -112,6 +117,13 @@ typedef struct		s_built
 	char			*name;
 	void			(*fn)();
 }					t_built;
+
+typedef struct		s_jobs
+{
+	pid_t			pid;
+	int				first;
+	int				nb;
+}					t_jobs;
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

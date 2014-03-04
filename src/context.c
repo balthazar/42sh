@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 15:07:16 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/04 13:11:16 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/04 13:12:27 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static void			st_set_defaults(t_ctx *ctx)
 	ctx->cur_h = NULL;
 	ctx->end_h = NULL;
 	ctx->child = -1;
+	ctx->jobs = NULL;
 	ft_bzero(ctx->line, LINE_LEN);
 	ft_bzero(ctx->buf, BUF_LEN);
 }
