@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/02 17:00:23 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/03 00:18:52 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/04 11:32:42 by janteuni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,7 @@ int					treat_key_enter(void)
 	else
 	{
 		// TODO sauvegarder CTX->line dans histo
-		ft_bzero(CTX->line, LINE_LEN);
-		CTX->i = 0;
+		ft_clear_line();
 		ft_aff_prompt();
 	}
 	return (OK);

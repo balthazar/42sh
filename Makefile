@@ -57,6 +57,7 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/treat_key_ctrld.c \
 					  $(DIR_SRC)/treat_key_delete.c \
 					  $(DIR_SRC)/treat_key_backsp.c \
+					  $(DIR_SRC)/ft_clear_line.c \
 
 # ---------------------------------------------------------------------------- #
 

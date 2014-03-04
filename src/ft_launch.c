@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 17:37:07 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/03 00:33:00 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/04 11:30:01 by janteuni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ int					ft_launch(t_btree *tree, t_dlist *dlist)
 		}
 	}
 	ft_clean(&tree, &dlist);
-	ft_bzero(ft_get_ctx()->line, LINE_LEN);
-	CTX->i = 0;
+	ft_clear_line();
 	ft_raw_term();
 	ft_aff_prompt();
 	return (OK);

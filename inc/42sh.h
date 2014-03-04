@@ -143,6 +143,7 @@ int					ft_odd_quotes(char *line);
 int					ft_treat_key(char *buf);
 int					ft_has_char(char *str);
 int					ft_loop(void);
+void				ft_clear_line(void);
 
 int					treat_key_enter(void);
 int					treat_key_left(void);

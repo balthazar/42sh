@@ -6,7 +6,7 @@
 /*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/26 15:09:26 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/03 16:13:19 by fbeck            ###   ########.fr       */
+/*   Updated: 2014/03/04 11:33:18 by janteuni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ void				ft_ctrlz(int sig)
 		{
 			ft_putendl("[1]+  Stopped(SIGTSTP)\n");
 			CTX->prompt = 0;
-			ft_bzero(CTX->line, LINE_LEN);
-			CTX->i = 0;
+			ft_clear_line();
 			ft_aff_prompt();
 		}
 		signal(SIGTSTP, ft_ctrlz);
@@ -61,8 +60,7 @@ static void			ft_ctrl_c(int i)
 	(void)i;
 	ft_putchar('\n');
 	CTX->prompt = 0;
-	ft_bzero(CTX->line, LINE_LEN);
-	CTX->i = 0;
+	ft_clear_line();
 	ft_aff_prompt();
 }
 
