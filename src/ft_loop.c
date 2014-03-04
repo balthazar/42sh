@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 15:41:53 by janteuni          #+#    #+#             */
-/*   Updated: 2014/03/04 22:01:27 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/04 22:34:13 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int					ft_loop(void)
 		}
 		else
 			ft_treat_key(buf);
+		ft_move_cursor();
 		ft_logpos();
 	}
 	return (OK);
