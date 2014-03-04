@@ -60,7 +60,7 @@
 # define CNIL			(!ft_strcmp(GETT(node, cmd)[1], "-i"))
 # define PS				ctx->psone
 # define NBTIME			7
-# define NBBS			7
+# define NBBS			8
 # define UP				1
 # define DOWN			2
 
@@ -206,7 +206,9 @@ char				*ft_getvar_env(char *name, char **env);
 void				ft_cd(t_btree *node);
 void				ft_echo(t_btree *node);
 void				ft_exit_builtin(t_btree *node);
-void				ft_rmline_tab(char *name, char ***arr);
+void				ft_rmline_tab(char *name, char ***arr, int len);
+void				ft_history_builtin(t_btree *node);
+char				*ft_return_specific(char *str);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

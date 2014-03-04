@@ -6,7 +6,7 @@
 /*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 12:24:11 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/04 15:07:48 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/04 16:18:49 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ int			ft_tolower(int c);
 char		*ft_multijoin(int count, ...);
 char		*ft_struntil(char *str, char *stop);
 void		ft_streplace(char **str, char *pattern, char *replace);
+int			ft_stronly(char *str, int (*fn)(int c));
 
 /*
 ** tabs

@@ -6,7 +6,7 @@
 /*   By: janteuni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/25 17:57:52 by janteuni          #+#    #+#             */
-/*   Updated: 2014/03/04 15:34:31 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/04 17:45:37 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ void			print_cmd(t_cmd *cmd)
 	}
 }
 
-
 void			ft_fill_redirection(t_cmd *cmd, t_dlist *list)
 {
 	t_chev		chev;
@@ -72,7 +71,6 @@ void			ft_fill_redirection(t_cmd *cmd, t_dlist *list)
 		ft_lstpush(&cmd->in, ft_lstnew(&chev, sizeof(t_chev)));
 	else
 		ft_lstpush(&cmd->out, ft_lstnew(&chev, sizeof(t_chev)));
-
 }
 
 static void		init_safe(t_cmd *cmd)

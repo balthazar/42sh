@@ -6,7 +6,7 @@
 #    By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/02/15 18:48:46 by mpillet           #+#    #+#              #
-#*   Updated: 2014/03/02 23:43:02 by mpillet          ###   ########.fr       *#
+#*   Updated: 2014/03/04 16:13:02 by bgronon          ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -103,6 +103,7 @@ SRC                = $(DIR_SRC)/ft_memset.c \
 					 $(DIR_SRC)/ft_streplace.c \
 					 $(DIR_SRC)/ft_printab.c \
 					 $(DIR_SRC)/ft_trunc_tab.c \
+					 $(DIR_SRC)/ft_stronly.c \
 
 DIR_SRC            = src
 DIR_INC            = inc
