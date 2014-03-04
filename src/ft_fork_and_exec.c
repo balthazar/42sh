@@ -6,7 +6,7 @@
 /*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 14:24:03 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/03 13:02:35 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/03 16:15:51 by fbeck            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,16 @@
 void				ft_fork_and_exec(t_btree *node)
 {
 	pid_t			father;
+	int				status;
 
 	if (-1 == (father = fork()))
 		ft_error("fork failed");
 	else if (!father)
+	{
+		if ((signal(SIGTSTP, SIG_DFL) == SIG_ERR))
+			ft_error("signal error");
 		ft_exec(node);
-	wait(NULL);
+	}
+	CTX->child = father;
+	waitpid(father, &status, WUNTRACED);
 }

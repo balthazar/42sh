@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 11:01:11 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/04 12:33:57 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/04 12:39:45 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,6 @@ void	ft_add_history(char *str)
 	ctx = CTX;
 	new = ft_dlstnew(str, sizeof(char) * (ft_strlen(str) + 1));
 	ft_dlstpush(&ctx->history, new);
-	/*if (ctx->current)
-	{
-	  free(ctx->current);
-	  ctx->current = NULL;
-	}*/
 	ctx->cur_h = NULL;
 	ctx->end_h = new;
 	tmp = ft_getvar_env("HOME", ctx->env);
@@ -73,7 +68,7 @@ void	ft_load_history(t_ctx *ctx)
 	if (tmp)
 	{
 		tmp = ft_strjoin(tmp, "/.yolosh_history");
-		fd = open(tmp, O_RDONLY | O_CREAT);
+		fd = open(tmp, O_RDONLY | O_CREAT, 0604);
 		free(tmp);
 		if (fd != -1)
 		{

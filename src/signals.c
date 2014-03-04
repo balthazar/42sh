@@ -6,7 +6,7 @@
 /*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/26 15:09:26 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/02 18:46:18 by fbeck            ###   ########.fr       */
+/*   Updated: 2014/03/04 11:33:18 by janteuni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,42 @@
 
 // TODO Manage SIGSTOP and SIGCONT properly
 // TODO NORM : 6 functions
-
+/*
 static void			ft_nothing(int sig)
 {
 	(void)sig;
+}
+*/
+void				ft_ctrlz(int sig)
+{
+	(void)sig;
+	if (CTX->child != -1)
+	{
+		signal(SIGTSTP, SIG_DFL);
+		if (kill(CTX->child, SIGTSTP) != -1)
+		{
+			ft_putendl("[1]+  Stopped(SIGTSTP)\n");
+			CTX->prompt = 0;
+			ft_clear_line();
+			ft_aff_prompt();
+		}
+		signal(SIGTSTP, ft_ctrlz);
+	}
+}
+
+void				ft_fg(int i)
+{
+	(void)i;
+	if (CTX->child != -1)
+	{
+		signal(SIGCONT, SIG_DFL);
+		if (kill(CTX->child, SIGCONT) != -1)
+			CTX->prompt = 0;
+		else
+			ft_putendl("fg: current: no such job");
+	}
+	else
+		ft_putendl("fg: current: no such job");
 }
 
 static void			ft_ctrl_c(int i)
@@ -28,8 +60,7 @@ static void			ft_ctrl_c(int i)
 	(void)i;
 	ft_putchar('\n');
 	CTX->prompt = 0;
-	ft_bzero(CTX->line, LINE_LEN);
-	CTX->i = 0;
+	ft_clear_line();
 	ft_aff_prompt();
 }
 
@@ -56,8 +87,8 @@ void				setup_signal(void)
 {
 	if ((signal(SIGQUIT, ft_quit) == SIG_ERR)
 			|| (signal(SIGINT, ft_ctrl_c) == SIG_ERR)
-			|| (signal(SIGTSTP, ft_nothing) == SIG_ERR)
-			|| (signal(SIGCONT, ft_nothing) == SIG_ERR)
+			|| (signal(SIGTSTP, ft_ctrlz) == SIG_ERR)
+			|| (signal(SIGCONT, ft_fg) == SIG_ERR)
 			|| (signal(SIGWINCH, ft_resize) == SIG_ERR))
 		ft_error("failed to setup signals");
 }

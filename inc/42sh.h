@@ -55,7 +55,7 @@
 # define NMI			(ft_strcmp(GETT(node, cmd)[1], "-i"))
 # define PS				ctx->psone
 # define NBTIME			7
-# define NBBS			6
+# define NBBS			7
 # define UP				1
 # define DOWN			2
 
@@ -73,6 +73,7 @@ typedef struct		s_ctx
 	t_dlist			*cur_h;
 	t_dlist			*end_h;
 	char			save[LINE_LEN];
+	pid_t			child;
 }					t_ctx;
 
 typedef struct		s_elem
@@ -149,6 +150,7 @@ int					ft_treat_key(char *buf);
 int					ft_has_char(char *str);
 int					ft_loop(void);
 void				ft_clean_line(void);
+void				ft_clear_line(void);
 
 int					treat_key_enter(void);
 int					treat_key_left(void);
@@ -252,6 +254,8 @@ void				ft_exit(int n);
 
 void				setup_signal(void);
 void				reset_signal(void);
+void				ft_fg(int i);
+void				ft_ctrlz(int sig);
 
 void		print_tree(t_btree *node, int level, int dir); /* TODO delete */
 
