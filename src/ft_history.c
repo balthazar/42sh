@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 11:01:11 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/04 12:28:48 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/04 12:33:57 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	ft_load_history(t_ctx *ctx)
 	if (tmp)
 	{
 		tmp = ft_strjoin(tmp, "/.yolosh_history");
-		fd = open(tmp, O_RDONLY);
+		fd = open(tmp, O_RDONLY | O_CREAT);
 		free(tmp);
 		if (fd != -1)
 		{
