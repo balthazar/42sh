@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 15:07:16 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/04 13:06:43 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/04 13:12:34 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ t_ctx				*ft_get_ctx(void)
 		ctx->cur_h = NULL;
 		ctx->end_h = NULL;
 		ctx->child = -1;
+		ctx->jobs = NULL;
 		ft_bzero(ctx->line, LINE_LEN);
 		ft_bzero(ctx->buf, BUF_LEN);
 		if (!(ctx->psone = (t_psone *) malloc(sizeof(t_psone))))
