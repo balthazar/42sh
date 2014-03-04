@@ -181,6 +181,14 @@ int					treat_key_backsp(void);
 int					treat_key_up(void);
 int					treat_key_down(void);
 
+int					ft_putput(int c);
+void				ft_reset_term(void);
+void				ft_raw_term(void);
+void				ft_term_init(void);
+void				ft_prompt(void);
+void				ft_aff_prompt(void);
+int					ft_has_char(char *str);
+
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ** Builtins
@@ -198,13 +206,6 @@ char				*ft_getvar_env(char *name, char **env);
 void				ft_cd(t_btree *node);
 void				ft_echo(t_btree *node);
 void				ft_exit_builtin(t_btree *node);
-int					ft_putput(int c);
-void				ft_reset_term(void);
-void				ft_raw_term(void);
-void				ft_term_init(void);
-void				ft_prompt(void);
-void				ft_aff_prompt(void);
-int					ft_has_char(char *str);
 void				ft_rmline_tab(char *name, char ***arr);
 
 /*
@@ -251,6 +252,7 @@ int					ft_close_files(t_btree *node);
 ** PS1 & time
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 */
+
 void				ft_psone(char **env);
 void				ft_timepurpose(t_ctx *ctx);
 char				*ft_time_majd(struct tm *l);
