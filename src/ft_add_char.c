@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/02 17:04:30 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/06 00:05:46 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/06 00:42:01 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void				ft_add_char(char c)
 	ft_putchar(c);
 	++ctx->pos.x;
 	if (ft_exceed())
-		ft_rewrite();
+		ft_rewrite(FALSE);
 	if (ctx->pos.x >= ctx->cols)
 		ft_move_cursor();
 }

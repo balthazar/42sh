@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/06 00:17:43 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/06 00:42:13 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int					treat_key_backsp(void)
 			--ctx->pos.y;
 		}
 		if (ft_exceed())
-			ft_rewrite();
+			ft_rewrite(FALSE);
 	}
 	return (OK);
 }
