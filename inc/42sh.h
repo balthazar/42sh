@@ -13,6 +13,7 @@
 # define LINE_LEN		2048
 
 # define CTX			ft_get_ctx()
+# define ENV			CTX->env
 
 # define CMD			0
 # define CHEV			1
@@ -208,7 +209,6 @@ void				ft_echo(t_btree *node);
 void				ft_exit_builtin(t_btree *node);
 void				ft_rmline_tab(char *name, char ***arr, int len);
 void				ft_history_builtin(t_btree *node);
-char				*ft_return_specific(char *str);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -266,13 +266,14 @@ char				*ft_time_twelve(struct tm *l);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-** History
+** History & Exclamation
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 */
 void				ft_load_history(t_ctx *ctx, int fd, char *tmp, t_dlist *n);
 void				ft_add_history(char *str);
-char				*ft_get_string(int key);
 void				ft_reset_line(t_ctx *ctx, int flag);
+
+char				*ft_return_specific(char *str);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

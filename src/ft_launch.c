@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 17:37:07 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/05 17:11:06 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/05 17:49:29 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,19 @@
 #include <stdlib.h>
 #include "42sh.h"
 
-static int		ft_string_rep(char **str, int i, int cpt)
+static int		ft_string_rep(char **str, int i, int cpt, int *len)
 {
 	char	*first;
 	char	*last;
 	char	*rep;
 
 	if ((*str)[i] == '!')
-		rep = ft_return_specific(ft_struntil((*str) + i + 1, ' '));
+		rep = ft_return_specific(ft_struntil_fn((*str) + i + 1, ft_isalpha));
 	else
-		rep = ft_getvar_env(ft_struntil((*str) + i + 1, ' '), CTX->env);
+		rep = ft_getvar_env(ft_struntil_fn((*str) + i + 1, ft_isalpha), ENV);
 	if (!rep && (*str)[i] == '!')
 		return (-1);
+	*len = ft_strlen(rep);
 	first = ft_strsub(*str, 0, i);
 	last = ft_strsub(*str, i + cpt, ft_strlen(*str) - i - cpt);
 	*str = ft_multijoin(2, first, rep, last);
@@ -39,6 +40,7 @@ static int		ft_string_rep(char **str, int i, int cpt)
 static int		ft_replacements(char *str, t_ctx *ctx, int i)
 {
 	int		cpt;
+	int		len;
 
 	while (str && str[i])
 	{
@@ -47,7 +49,7 @@ static int		ft_replacements(char *str, t_ctx *ctx, int i)
 		{
 			while (str[i + cpt] != ' ')
 				++cpt;
-			if (ft_string_rep(&str, i, cpt) == -1)
+			if (ft_string_rep(&str, i, cpt, &len) == -1)
 				return (0);
 			if (str)
 			{
@@ -59,8 +61,8 @@ static int		ft_replacements(char *str, t_ctx *ctx, int i)
 		}
 		++i;
 	}
-	if ((int)ft_strlen(str) > (i + cpt))
-		ft_replacements(ctx->line, ctx, i + cpt);
+	if ((int)ft_strlen(str) > i + len)
+		ft_replacements(ctx->line, ctx, i + len);
 	return (1);
 }
 

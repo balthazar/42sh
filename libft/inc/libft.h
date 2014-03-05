@@ -6,7 +6,7 @@
 /*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 12:24:11 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/05 11:44:33 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/05 17:38:17 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ int			ft_toupper(int c);
 int			ft_tolower(int c);
 char		*ft_multijoin(int count, ...);
 char		*ft_struntil(char *str, char stop);
+char		*ft_struntil_fn(char *str, int (*fn)(int c));
 void		ft_streplace(char **str, char *pattern, char *replace);
 int			ft_stronly(char *str, int (*fn)(int c));
 

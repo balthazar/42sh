@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/04 15:59:04 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/05 17:11:08 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/05 18:10:25 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,32 @@ static void	ft_print_hist(void)
 	}
 }
 
+static void	ft_delete_history(void)
+{
+	t_ctx	*ctx;
+	t_dlist	*tmp;
+
+	ctx = CTX;
+	tmp = ctx->history;
+	while (tmp)
+	{
+		free(tmp->content);
+		tmp = tmp->next;
+	}
+	free(ctx->history);
+	ctx->history = NULL;
+	ctx->cur_h = NULL;
+	ctx->end_h = NULL;
+}
+
 void		ft_history_builtin(t_btree *node)
 {
 	int		nb;
 
 	if (!GETT(node, cmd[1]))
 		ft_print_hist();
+	else if (!ft_strcmp(GETT(node, cmd)[1], "-c"))
+		ft_delete_history();
 	else if (GETT(node, cmd)[1] && GETT(node, cmd)[2])
 		ft_err("Too many arguments.");
 	else
@@ -97,30 +117,4 @@ void		ft_history_builtin(t_btree *node)
 				ft_err("Invalid argument.");
 		}
 	}
-}
-
-char		*ft_return_specific(char *str)
-{
-	t_ctx	*ctx;
-	t_dlist	*tmp;
-	int		nb;
-	int		cpt;
-
-	if (str && str[0] != '\0')
-	{
-		ctx = CTX;
-		cpt = 0;
-		tmp = ctx->history;
-		nb = ft_atoi(str);
-		free(str);
-		while (tmp)
-		{
-			if (cpt == nb)
-				return (tmp->content);
-			++cpt;
-			tmp = tmp->next;
-		}
-	}
-	ft_err("No such event.");
-	return (NULL);
 }
