@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 17:37:07 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/05 12:06:37 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/05 12:34:03 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,57 @@
 #include <stdlib.h>
 #include "42sh.h"
 
+static char			*ft_string_rep(char *str, int i, int cpt, int flag)
+{
+	char	*out;
+	char	*first;
+	char	*last;
+	char	*rep;
+
+	rep = NULL;
+	out = NULL;
+	if (flag == 1)
+		rep = ft_return_specific(ft_struntil(str + i + 1, ' '));
+	else if (flag == 2)
+		rep = ft_strdup(ft_getvar_env(ft_struntil(str + i + 1, ' '), CTX->env));
+	if (rep)
+	{
+		first = ft_strsub(str, 0, i);
+		last = ft_strsub(str, i + cpt, ft_strlen(str) - i - cpt);
+		out = ft_multijoin(2, first, rep, last);
+		free(rep);
+		if (first)
+			free(first);
+		if (last)
+			free(last);
+	}
+	return (out);
+}
+
 static int			ft_replacements(char *str, t_ctx *ctx)
 {
 	int		i;
 	int		cpt;
-	char	*first;
-	char	*last;
-	char	*rep;
 
 	i = 0;
 	while (str && str[i])
 	{
 		cpt = 0;
-		first = NULL;
-		last = NULL;
 		if (str[i] == '!')
 		{
 			while (str[i + cpt] != ' ')
 				++cpt;
-			first = ft_strsub(str, 0, i);
-			rep = ft_return_specific(ft_struntil(str + i + 1, ' '));
-			last = ft_strsub(str, i + cpt, ft_strlen(str) - i - cpt);
-			str = ft_multijoin(2, first, rep, last);
-			free(first);
-			free(rep);
-			free(last);
+			str = ft_string_rep(str, i, cpt, 1);
+			ft_bzero(ctx->line, LINE_LEN);
+			ft_strcpy(ctx->line, str);
+			free(str);
+		}
+		if (str[i] == '$')
+		{
+			while (str[i + cpt] != ' ')
+				++cpt;
+			str = ft_string_rep(str, i, cpt, 2);
+			ft_bzero(ctx->line, LINE_LEN);
 			ft_strcpy(ctx->line, str);
 			free(str);
 		}
