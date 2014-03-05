@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/04 15:59:04 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/04 18:58:44 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/05 11:27:22 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,26 +40,46 @@ char		*ft_return_specific(char *str)
 	return (NULL);
 }
 
+static int	ft_count_history(void)
+{
+	int		cpt;
+	t_ctx	*ctx;
+	t_dlist	*tmp;
+
+	ctx = CTX;
+	tmp = ctx->history;
+	cpt = 0;
+	while (tmp)
+	{
+		++cpt;
+		tmp = tmp->next;
+	}
+	return (cpt);
+}
+
 static void	ft_print_hist_from(int number)
 {
 	t_ctx	*ctx;
 	t_dlist	*tmp;
 	int		cpt;
+	int		len;
 
 	ctx = CTX;
-	tmp = ctx->end_h;
+	tmp = ctx->history;
 	cpt = 0;
+	len = ft_count_history();
 	while (tmp)
 	{
-		if (cpt < number)
+		if (len <= number)
 		{
 			ft_putstr("    ");
 			ft_putnbr(cpt);
 			ft_putstr("  ");
 			ft_putendl(tmp->content);
 		}
-		tmp = tmp->prev;
+		tmp = tmp->next;
 		++cpt;
+		--len;
 	}
 }
 
