@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/05 18:52:50 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/05 19:11:40 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void				ft_rewrite(void)
 	ctx = CTX;
 	tputs(tgetstr("sc", NULL), 1, ft_putput);
 	tputs(tgetstr("ei", NULL), 1, ft_putput);
+	tputs(tgetstr("ce", NULL), 1, ft_putput);
 	i = ctx->i;
 	while (ctx->line[i])
 	{
