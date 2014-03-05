@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 11:01:11 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/05 18:23:16 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/05 18:43:34 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ void	ft_load_history(t_ctx *ctx, int fd, char *tmp, t_dlist *new)
 				new = ft_dlstnew(tmp, sizeof(char) * (ft_strlen(tmp) + 1));
 				ft_dlstpush(&ctx->history, new);
 				free(tmp);
+				++ctx->cpt_h;
 			}
 			ctx->end_h = new;
 			ctx->cur_h = NULL;

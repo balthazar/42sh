@@ -91,6 +91,7 @@ typedef struct		s_ctx
 	t_dlist			*history;
 	t_dlist			*cur_h;
 	t_dlist			*end_h;
+	int				cpt_h;
 	char			save[LINE_LEN];
 	pid_t			child;
 	t_list			*jobs;
@@ -270,6 +271,9 @@ char				*ft_time_twelve(struct tm *l);
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 */
 void				ft_load_history(t_ctx *ctx, int fd, char *tmp, t_dlist *n);
+int					ft_count_history(void);
+void				ft_print_history(void);
+void				ft_print_hist_from(int number);
 void				ft_add_history(char *str);
 void				ft_reset_line(t_ctx *ctx, int flag);
 

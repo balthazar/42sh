@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/04 15:59:04 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/05 18:22:29 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/05 19:16:20 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,84 +15,21 @@
 #include <stdlib.h>
 #include "42sh.h"
 
-static int	ft_count_history(void)
+static void	ft_delete_history(t_ctx *ctx)
 {
-	int		cpt;
-	t_ctx	*ctx;
 	t_dlist	*tmp;
-
-	ctx = CTX;
-	tmp = ctx->history;
-	cpt = 0;
-	while (tmp)
-	{
-		++cpt;
-		tmp = tmp->next;
-	}
-	return (cpt);
-}
-
-static void	ft_print_hist_from(int number)
-{
-	t_ctx	*ctx;
-	t_dlist	*tmp;
-	int		cpt;
-	int		len;
-
-	ctx = CTX;
-	tmp = ctx->history;
-	cpt = 0;
-	len = ft_count_history();
-	while (tmp)
-	{
-		if (len <= number)
-		{
-			ft_putstr("    ");
-			ft_putnbr(cpt);
-			ft_putstr("  ");
-			ft_putendl(tmp->content);
-		}
-		tmp = tmp->next;
-		++cpt;
-		--len;
-	}
-}
-
-static void	ft_print_hist(void)
-{
-	t_ctx	*ctx;
-	t_dlist	*tmp;
-	int		cpt;
-
-	ctx = CTX;
-	tmp = ctx->history;
-	cpt = 0;
-	while (tmp)
-	{
-		ft_putstr("    ");
-		ft_putnbr(cpt);
-		ft_putstr("  ");
-		ft_putendl(tmp->content);
-		tmp = tmp->next;
-		++cpt;
-	}
-}
-
-static void	ft_delete_history(void)
-{
-	t_ctx	*ctx;
-	t_dlist	*tmp;
+	t_dlist	*swap;
 	char	*path;
 	int		fd;
 
-	ctx = CTX;
 	tmp = ctx->history;
 	while (tmp)
 	{
-		free(tmp->content);
+		swap = tmp;
 		tmp = tmp->next;
+		free(swap->content);
+		free(swap);
 	}
-	free(ctx->history);
 	path = ft_getvar_env("HOME", ctx->env);
 	if (path)
 	{
@@ -107,14 +44,43 @@ static void	ft_delete_history(void)
 	ctx->end_h = NULL;
 }
 
+static void	ft_delete_specific_history(t_ctx *ctx, char *str)
+{
+	t_dlist	*tmp;
+	t_dlist	*swap;
+	int		nb;
+	int		cpt;
+
+	cpt = 0;
+	nb = ft_atoi(str);
+	tmp = ctx->history;
+	while (tmp)
+	{
+		if (cpt == nb)
+		{
+			swap = tmp;
+			tmp->next->prev = tmp->prev;
+			tmp->prev->next = tmp->next;
+			free(swap->content);
+			free(swap);
+			break ;
+		}
+		tmp = tmp->next;
+		++cpt;
+	}
+	ctx->cur_h = NULL;
+}
+
 void		ft_history_builtin(t_btree *node)
 {
 	int		nb;
 
 	if (!GETT(node, cmd[1]))
-		ft_print_hist();
+		ft_print_history();
 	else if (!ft_strcmp(GETT(node, cmd)[1], "-c"))
-		ft_delete_history();
+		ft_delete_history(CTX);
+	else if (!ft_strcmp(GETT(node, cmd)[1], "-d"))
+		ft_delete_specific_history(CTX, GETT(node, cmd)[2]);
 	else if (GETT(node, cmd)[1] && GETT(node, cmd)[2])
 		ft_err("Too many arguments.");
 	else
