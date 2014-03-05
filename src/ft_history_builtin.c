@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/04 15:59:04 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/05 12:30:48 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/05 16:18:28 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ char		*ft_return_specific(char *str)
 		while (tmp)
 		{
 			if (cpt == nb)
-				return (ft_strdup(tmp->content));
+				return (tmp->content);
 			++cpt;
 			tmp = tmp->next;
 		}
