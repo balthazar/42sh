@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 17:37:07 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/05 16:43:26 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/05 17:11:06 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,10 @@ static int		ft_string_rep(char **str, int i, int cpt)
 	return (1);
 }
 
-static int			ft_replacements(char *str, t_ctx *ctx)
+static int		ft_replacements(char *str, t_ctx *ctx, int i)
 {
-	int		i;
 	int		cpt;
 
-	i = 0;
 	while (str && str[i])
 	{
 		cpt = 0;
@@ -56,19 +54,22 @@ static int			ft_replacements(char *str, t_ctx *ctx)
 				ft_bzero(ctx->line, LINE_LEN);
 				ft_strcpy(ctx->line, str);
 				free(str);
+				break ;
 			}
 		}
 		++i;
 	}
+	if ((int)ft_strlen(str) > (i + cpt))
+		ft_replacements(ctx->line, ctx, i + cpt);
 	return (1);
 }
 
-int					ft_launch(t_btree *tree, t_dlist *dlist)
+int				ft_launch(t_btree *tree, t_dlist *dlist)
 {
 	ft_reset_term();
 	ft_putchar('\n');
 	CTX->prompt = 0;
-	if (ft_replacements(CTX->line, CTX) && ft_has_char(CTX->line))
+	if (ft_replacements(CTX->line, CTX, 0) && ft_has_char(CTX->line))
 	{
 		ft_lexer(CTX->line, &dlist);
 		if (OK == ft_lexer_check_err(dlist))
