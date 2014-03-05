@@ -6,7 +6,7 @@
 /*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/04 15:04:43 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/04 16:34:46 by fbeck            ###   ########.fr       */
+/*   Updated: 2014/03/04 17:40:30 by fbeck            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,22 +35,6 @@ static void			ft_nothing(int sig)
 	(void)sig;
 }
 */
-
-void				print_toto(void)
-{
-	t_list			*list;
-
-	list = CTX->jobs;
-	while (list)
-	{
-		printf("----------------------------------------\n");
-		printf("PID [%d]\n", ((t_jobs *)list->content)->pid);
-		printf("First or not  [%d]\n", ((t_jobs *)list->content)->first);
-		printf("NB [%d]\n", ((t_jobs *)list->content)->nb);
-		printf("----------------------------------------\n");
-		list = list->next;
-	}
-}
 
 void				ft_ctrlz(int sig)
 {
@@ -82,7 +66,6 @@ void				ft_fg(int i)
 	(void)i;
 	if (CTX->jobs)
 	{
-		print_toto();
 		signal(SIGCONT, SIG_DFL);
 		if (kill(((t_jobs *)CTX->jobs->content)->pid, SIGCONT) == -1)
 			CTX->prompt = 0;

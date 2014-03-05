@@ -6,12 +6,30 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 17:37:07 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/04 15:16:58 by fbeck            ###   ########.fr       */
+/*   Updated: 2014/03/04 18:05:28 by fbeck            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include "42sh.h"
+
+void				print_toto(void)
+{
+	t_list			*list;
+
+	list = CTX->jobs;
+	if (!list)
+		printf("LIST IS NULL\n");
+	while (list)
+	{
+		printf("----------------------------------------\n");
+		printf("PID [%d]\n", ((t_jobs *)list->content)->pid);
+		printf("First or not  [%d]\n", ((t_jobs *)list->content)->first);
+		printf("NB [%d]\n", ((t_jobs *)list->content)->nb);
+		printf("----------------------------------------\n");
+		list = list->next;
+	}
+}
 
 int					ft_launch(t_btree *tree, t_dlist *dlist)
 {
@@ -27,6 +45,7 @@ int					ft_launch(t_btree *tree, t_dlist *dlist)
 			ft_treat_node(tree);
 		}
 	}
+	print_toto();
 	ft_clean(&tree, &dlist);
 	ft_clear_line();
 	ft_raw_term();
