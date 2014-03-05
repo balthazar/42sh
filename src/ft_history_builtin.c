@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/04 15:59:04 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/05 19:16:20 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/05 19:36:07 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,12 @@ static void	ft_delete_history(t_ctx *ctx)
 	ctx->end_h = NULL;
 }
 
-static void	ft_delete_specific_history(t_ctx *ctx, char *str)
+static void	ft_delete_specific_history(t_ctx *ctx, char *str, int cpt)
 {
 	t_dlist	*tmp;
 	t_dlist	*swap;
 	int		nb;
-	int		cpt;
 
-	cpt = 0;
 	nb = ft_atoi(str);
 	tmp = ctx->history;
 	while (tmp)
@@ -59,6 +57,20 @@ static void	ft_delete_specific_history(t_ctx *ctx, char *str)
 		if (cpt == nb)
 		{
 			swap = tmp;
+			if (tmp == ctx->history)
+			{
+				free(swap->content);
+				free(swap);
+				ctx->history = ctx->history->next;
+				break ;
+			}
+			else if (tmp == ctx->end_h)
+			{
+				free(swap->content);
+				free(swap);
+				ctx->end_h = ctx->end_h->prev;
+				break ;
+			}
 			tmp->next->prev = tmp->prev;
 			tmp->prev->next = tmp->next;
 			free(swap->content);
@@ -68,6 +80,8 @@ static void	ft_delete_specific_history(t_ctx *ctx, char *str)
 		tmp = tmp->next;
 		++cpt;
 	}
+	if (cpt < nb || nb < 0)
+		ft_err("History position out of range.");
 	ctx->cur_h = NULL;
 }
 
@@ -80,7 +94,7 @@ void		ft_history_builtin(t_btree *node)
 	else if (!ft_strcmp(GETT(node, cmd)[1], "-c"))
 		ft_delete_history(CTX);
 	else if (!ft_strcmp(GETT(node, cmd)[1], "-d"))
-		ft_delete_specific_history(CTX, GETT(node, cmd)[2]);
+		ft_delete_specific_history(CTX, GETT(node, cmd)[2], 0);
 	else if (GETT(node, cmd)[1] && GETT(node, cmd)[2])
 		ft_err("Too many arguments.");
 	else
