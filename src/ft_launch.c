@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 17:37:07 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/05 12:34:03 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/05 12:45:51 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,18 +55,24 @@ static int			ft_replacements(char *str, t_ctx *ctx)
 			while (str[i + cpt] != ' ')
 				++cpt;
 			str = ft_string_rep(str, i, cpt, 1);
-			ft_bzero(ctx->line, LINE_LEN);
-			ft_strcpy(ctx->line, str);
-			free(str);
+			if (str)
+			{
+				ft_bzero(ctx->line, LINE_LEN);
+				ft_strcpy(ctx->line, str);
+				free(str);
+			}
 		}
 		if (str[i] == '$')
 		{
 			while (str[i + cpt] != ' ')
 				++cpt;
 			str = ft_string_rep(str, i, cpt, 2);
-			ft_bzero(ctx->line, LINE_LEN);
-			ft_strcpy(ctx->line, str);
-			free(str);
+			if (str)
+			{
+				ft_bzero(ctx->line, LINE_LEN);
+				ft_strcpy(ctx->line, str);
+				free(str);
+			}
 		}
 		++i;
 	}
