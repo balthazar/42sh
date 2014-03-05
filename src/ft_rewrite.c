@@ -6,21 +6,28 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/05 17:15:02 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/05 18:52:50 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
 
-static int			st_exceed(void)
-{
-	t_ctx			*ctx;
-
-	ctx = CTX;
-	return (ctx->pos.x + ctx->len - ctx->i > ctx->cols);
-}
-
 void				ft_rewrite(void)
 {
-	ft_putstr("rewriting");
+	t_ctx			*ctx;
+	int				i;
+
+	ctx = CTX;
+	tputs(tgetstr("sc", NULL), 1, ft_putput);
+	tputs(tgetstr("ei", NULL), 1, ft_putput);
+	i = ctx->i;
+	while (ctx->line[i])
+	{
+		ft_putchar(ctx->line[i]);
+		++i;
+	}
+	ft_putchar(' ');
+	tputs(tgetstr("im", NULL), 1, ft_putput);
+	tputs(tgetstr("rc", NULL), 1, ft_putput);
+	ft_logpos();
 }

@@ -6,7 +6,7 @@
 /*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/26 15:09:26 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/04 17:00:17 by janteuni         ###   ########.fr       */
+/*   Updated: 2014/03/05 17:44:32 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ static void			ft_resize(int sig)
 	env = ft_get_ctx();
 	env->cols = w.ws_col;
 	env->rows = w.ws_row;
+	ft_logpos();
 }
 
 void				setup_signal(void)
