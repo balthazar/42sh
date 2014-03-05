@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/05 19:22:57 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/06 00:17:43 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void			st_go_end(int cols)
 	int				i;
 
 	i = 0;
-	while (i < cols)
+	while (i < cols - 1)
 	{
 		tputs(tgetstr("nd", NULL), 1, ft_putput);
 		++i;
@@ -40,9 +40,7 @@ int					treat_key_backsp(void)
 		{
 			tputs(tgetstr("up", NULL), 1, ft_putput);
 			st_go_end(ctx->cols);
-			tputs(tgetstr("le", NULL), 1, ft_putput);
 			tputs(tgetstr("dc", NULL), 1, ft_putput);
-			tputs(tgetstr("nd", NULL), 1, ft_putput);
 			ctx->pos.x = ctx->cols - 1;
 			--ctx->pos.y;
 		}

@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/02 17:07:52 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/04 22:56:43 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/05 23:46:15 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void			st_go_end(int cols)
 	int				i;
 
 	i = 0;
-	while (i < cols)
+	while (i < cols - 1)
 	{
 		tputs(tgetstr("nd", NULL), 1, ft_putput);
 		++i;
