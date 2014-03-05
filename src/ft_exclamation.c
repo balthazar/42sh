@@ -6,12 +6,19 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/05 17:50:13 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/05 18:01:03 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/05 18:28:12 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "42sh.h"
+
+int			ft_isexcl(int c)
+{
+	if (ft_isdigit(c) || ft_isalpha(c) || c == '-')
+		return (1);
+	return (0);
+}
 
 char		*ft_return_specific(char *str)
 {

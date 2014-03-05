@@ -6,10 +6,12 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/04 15:59:04 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/05 18:10:25 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/05 18:22:29 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <fcntl.h>
+#include <unistd.h>
 #include <stdlib.h>
 #include "42sh.h"
 
@@ -80,6 +82,8 @@ static void	ft_delete_history(void)
 {
 	t_ctx	*ctx;
 	t_dlist	*tmp;
+	char	*path;
+	int		fd;
 
 	ctx = CTX;
 	tmp = ctx->history;
@@ -89,6 +93,15 @@ static void	ft_delete_history(void)
 		tmp = tmp->next;
 	}
 	free(ctx->history);
+	path = ft_getvar_env("HOME", ctx->env);
+	if (path)
+	{
+		path = ft_strjoin(path, "/.yolosh_history");
+		fd = open(path, O_TRUNC);
+		free(path);
+		if (fd != -1)
+			close(fd);
+	}
 	ctx->history = NULL;
 	ctx->cur_h = NULL;
 	ctx->end_h = NULL;

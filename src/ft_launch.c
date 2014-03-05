@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 17:37:07 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/05 17:49:29 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/05 18:27:47 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int		ft_string_rep(char **str, int i, int cpt, int *len)
 	char	*rep;
 
 	if ((*str)[i] == '!')
-		rep = ft_return_specific(ft_struntil_fn((*str) + i + 1, ft_isalpha));
+		rep = ft_return_specific(ft_struntil_fn((*str) + i + 1, ft_isexcl));
 	else
 		rep = ft_getvar_env(ft_struntil_fn((*str) + i + 1, ft_isalpha), ENV);
 	if (!rep && (*str)[i] == '!')

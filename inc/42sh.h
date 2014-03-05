@@ -274,6 +274,7 @@ void				ft_add_history(char *str);
 void				ft_reset_line(t_ctx *ctx, int flag);
 
 char				*ft_return_specific(char *str);
+int					ft_isexcl(int c);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
