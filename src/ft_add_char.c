@@ -6,17 +6,11 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/02 17:04:30 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/05 00:00:16 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/05 17:14:52 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
-
-static int			st_exceed(t_ctx *ctx)
-{
-	(void) ctx;
-	return (0);
-}
 
 void				ft_add_char(char c)
 {
@@ -31,11 +25,12 @@ void				ft_add_char(char c)
 		--tmp;
 	}
 	ctx->line[CTX->i] = c;
-	++ctx->pos.x;
 	++ctx->i;
 	++ctx->len;
-	if (st_exceed(ctx) > ctx->cols)
+	ft_putchar(c);
+	++ctx->pos.x;
+	if (ctx->pos.x >= ctx->cols)
+		ft_move_cursor();
+	if (ft_exceed())
 		ft_rewrite();
-	else
-		ft_putchar(c);
 }

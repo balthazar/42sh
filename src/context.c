@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 15:07:16 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/04 21:10:59 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/05 16:44:04 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static void			st_set_defaults(t_ctx *ctx)
 
 	ioctl(ft_get_fd(), TIOCGWINSZ, &w);
 	ctx->cols = w.ws_col;
+//	ctx->cols = 20;
 	ctx->rows = w.ws_row;
 	ctx->env = NULL;
 	ctx->prompt = 0;

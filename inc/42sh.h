@@ -198,6 +198,8 @@ void				ft_prompt(void);
 void				ft_aff_prompt(void);
 int					ft_has_char(char *str);
 
+int					ft_exceed(void);
+
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ** Builtins

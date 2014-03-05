@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   treat_key_backsp.c                                 :+:      :+:    :+:   */
+/*   ft_exceed.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/05 17:19:08 by mpillet          ###   ########.fr       */
+/*   Created: 2014/03/05 17:19:33 by mpillet           #+#    #+#             */
+/*   Updated: 2014/03/05 17:22:15 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
 
-int				treat_key_backsp(void)
+int					ft_exceed(void)
 {
-	if (CTX->i > 0)
-	{
-		tputs(tgetstr("le", NULL), 1, ft_putput);
-		tputs(tgetstr("dc", NULL), 1, ft_putput);
-		--CTX->i;
-		--CTX->pos.x;
-		ft_del_char();
-		if (ft_exceed())
-			ft_rewrite();
-	}
-	return (OK);
+	t_ctx			*ctx;
+
+	ctx = CTX;
+	return (ctx->pos.x + ctx->len - ctx->i > ctx->cols);
 }
