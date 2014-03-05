@@ -6,39 +6,12 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/04 15:59:04 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/05 11:27:22 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/05 12:06:25 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "42sh.h"
-
-char		*ft_return_specific(char *str)
-{
-	t_ctx	*ctx;
-	t_dlist	*tmp;
-	int		nb;
-	int		cpt;
-
-	if (str && str[0] != '\0')
-	{
-		ctx = CTX;
-		cpt = 0;
-		tmp = ctx->history;
-		nb = ft_atoi(str);
-		printf("pute [%s]\n", str);
-		free(str);
-		while (tmp)
-		{
-			if (cpt == nb)
-				return (tmp->content);
-			++cpt;
-			tmp = tmp->next;
-		}
-	}
-	ft_err("No such event.");
-	return (NULL);
-}
 
 static int	ft_count_history(void)
 {
@@ -124,4 +97,30 @@ void		ft_history_builtin(t_btree *node)
 				ft_err("Invalid argument.");
 		}
 	}
+}
+
+char		*ft_return_specific(char *str)
+{
+	t_ctx	*ctx;
+	t_dlist	*tmp;
+	int		nb;
+	int		cpt;
+
+	if (str && str[0] != '\0')
+	{
+		ctx = CTX;
+		cpt = 0;
+		tmp = ctx->history;
+		nb = ft_atoi(str);
+		free(str);
+		while (tmp)
+		{
+			if (cpt == nb)
+				return (tmp->content);
+			++cpt;
+			tmp = tmp->next;
+		}
+	}
+	ft_err("No such event.");
+	return (NULL);
 }

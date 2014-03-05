@@ -6,14 +6,15 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 17:37:07 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/05 11:27:40 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/05 12:06:37 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdlib.h>
 #include "42sh.h"
 
-static int			ft_replacements(char *str)
+static int			ft_replacements(char *str, t_ctx *ctx)
 {
 	int		i;
 	int		cpt;
@@ -31,10 +32,15 @@ static int			ft_replacements(char *str)
 		{
 			while (str[i + cpt] != ' ')
 				++cpt;
-			rep = ft_return_specific(ft_struntil(str + i + 1, " "));
 			first = ft_strsub(str, 0, i);
+			rep = ft_return_specific(ft_struntil(str + i + 1, ' '));
 			last = ft_strsub(str, i + cpt, ft_strlen(str) - i - cpt);
-			printf("pute '%s' '%s' '%s'\n", first, last, rep);
+			str = ft_multijoin(2, first, rep, last);
+			free(first);
+			free(rep);
+			free(last);
+			ft_strcpy(ctx->line, str);
+			free(str);
 		}
 		++i;
 	}
@@ -46,7 +52,7 @@ int					ft_launch(t_btree *tree, t_dlist *dlist)
 	ft_reset_term();
 	ft_putchar('\n');
 	CTX->prompt = 0;
-	if (ft_has_char(CTX->line) && ft_replacements(CTX->line))
+	if (ft_replacements(CTX->line, CTX) && ft_has_char(CTX->line))
 	{
 		ft_lexer(CTX->line, &dlist);
 		if (OK == ft_lexer_check_err(dlist))
