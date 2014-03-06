@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   treat_key_left.c                                   :+:      :+:    :+:   */
+/*   ft_go_end.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/02 17:07:52 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/06 18:42:03 by mpillet          ###   ########.fr       */
+/*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
+/*   Updated: 2014/03/06 18:42:48 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
 
-int					treat_key_left(void)
+void				ft_go_end(int cols)
 {
-	t_ctx			*ctx;
+	int				i;
 
-	ctx = CTX;
-	if (ctx->i > 0)
+	i = 0;
+	while (i < cols - 1)
 	{
-		if (ctx->pos.x == 0)
-		{
-			tputs(tgetstr("up", NULL), 1, ft_putput);
-			ft_go_end(ctx->cols);
-			ctx->pos.x = ctx->cols - 1;
-			--ctx->pos.y;
-		}
-		else
-		{
-			tputs(tgetstr("le", NULL), 1, ft_putput);
-			--ctx->pos.x;
-		}
-		--ctx->i;
+		tputs(tgetstr("nd", NULL), 1, ft_putput);
+		++i;
 	}
-	return (OK);
 }
