@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/06 00:44:52 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/06 19:00:09 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,4 @@ void				ft_rewrite(int hard)
 	tputs(tgetstr("im", NULL), 1, ft_putput);
 	if (!hard)
 		tputs(tgetstr("rc", NULL), 1, ft_putput);
-	ft_logpos();
 }

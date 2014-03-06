@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 15:41:53 by janteuni          #+#    #+#             */
-/*   Updated: 2014/03/05 16:39:03 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/06 18:59:58 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int					ft_loop(void)
 	char			*buf;
 
 	buf = CTX->buf;
-	ft_logpos();
 	while (1)
 	{
 		ft_bzero(buf, BUF_LEN + 1);
@@ -35,7 +34,6 @@ int					ft_loop(void)
 			ft_add_char(buf[0]);
 		else
 			ft_treat_key(buf);
-		ft_logpos();
 	}
 	return (OK);
 }
