@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/04 15:19:04 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/06 00:57:44 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int					ft_treat_node(t_btree *node)
 {
-	static int		(*p[6]) (t_btree *) = {
+	static int		(*p[6]) (t_btree *) =
+	{
 		treat_cmd,
 		treat_chev,
 		treat_pipe,
