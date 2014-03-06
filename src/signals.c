@@ -6,7 +6,7 @@
 /*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/26 15:09:26 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/06 19:42:26 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/06 20:01:50 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,10 +80,12 @@ static void			ft_resize(int sig)
 	t_ctx			*ctx;
 
 	(void)sig;
+	tputs(tgetstr("ei", NULL), 1, ft_putput);
 	ioctl(ft_get_fd(), TIOCGWINSZ, &w);
 	ctx = ft_get_ctx();
 	ctx->cols = w.ws_col;
 	ctx->rows = w.ws_row;
+	tputs(tgetstr("im", NULL), 1, ft_putput);
 }
 
 void				setup_signal(void)
