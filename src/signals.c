@@ -6,7 +6,7 @@
 /*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/26 15:09:26 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/06 19:00:20 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/06 19:42:26 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,13 +77,13 @@ static void			ft_quit(int i)
 static void			ft_resize(int sig)
 {
 	struct winsize	w;
-	t_ctx			*env;
+	t_ctx			*ctx;
 
 	(void)sig;
 	ioctl(ft_get_fd(), TIOCGWINSZ, &w);
-	env = ft_get_ctx();
-	env->cols = w.ws_col;
-	env->rows = w.ws_row;
+	ctx = ft_get_ctx();
+	ctx->cols = w.ws_col;
+	ctx->rows = w.ws_row;
 }
 
 void				setup_signal(void)
