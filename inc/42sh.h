@@ -51,7 +51,7 @@
 # define K_DOWN			tgetstr("kd", NULL)
 # define K_UP			tgetstr("ku", NULL)
 # define K_DELETE		tgetstr("kD", NULL)
-# define K_BACKSP		"\177"
+# define K_BACKSP		("\177")
 # define K_ENTER		tgetstr("cr", NULL)
 # define K_CTRLD		("\004")
 
@@ -76,15 +76,21 @@ typedef struct		s_psone
 	int				realsize;
 }					t_psone;
 
+typedef struct		s_pos
+{
+	int				x;
+	int				y;
+}					t_pos;
+
 typedef struct		s_ctx
 {
 	char			**env;
 	char			line[LINE_LEN];
 	char			buf[BUF_LEN];
-	int				i;
 	int				cols;
 	int				rows;
 	int				prompt;
+	int				i;
 	int				len;
 	t_psone			*psone;
 	t_dlist			*history;
@@ -93,6 +99,7 @@ typedef struct		s_ctx
 	char			save[LINE_LEN];
 	pid_t			child;
 	t_list			*jobs;
+	t_pos			pos;
 }					t_ctx;
 
 typedef struct		s_elem
@@ -171,6 +178,9 @@ int					ft_has_char(char *str);
 int					ft_loop(void);
 void				ft_clean_line(void);
 void				ft_clear_line(void);
+void				ft_move_cursor(void);
+void				ft_rewrite(int hard);
+void				ft_go_end(int cols);
 
 int					treat_key_enter(void);
 int					treat_key_left(void);
@@ -188,6 +198,8 @@ void				ft_term_init(void);
 void				ft_prompt(void);
 void				ft_aff_prompt(void);
 int					ft_has_char(char *str);
+
+int					ft_exceed(void);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -294,5 +306,6 @@ void				ft_fg(int i);
 void				ft_ctrlz(int sig);
 
 void		print_tree(t_btree *node, int level, int dir); /* TODO delete */
+void		ft_logpos(void);
 
 #endif /* !A42SH_H */

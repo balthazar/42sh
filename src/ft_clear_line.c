@@ -6,7 +6,7 @@
 /*   By: janteuni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/04 11:27:43 by janteuni          #+#    #+#             */
-/*   Updated: 2014/03/04 11:32:24 by janteuni         ###   ########.fr       */
+/*   Updated: 2014/03/04 21:10:03 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,12 @@
 
 void				ft_clear_line(void)
 {
-	ft_bzero(ft_get_ctx()->line, LINE_LEN);
-	CTX->i = 0;
-	CTX->len = 0;
+	t_ctx			*ctx;
+
+	ctx = CTX;
+	ft_bzero(ctx->line, LINE_LEN);
+	ctx->i = 0;
+	ctx->len = 0;
+	ctx->pos.x = 0;
+	ctx->pos.y = 0;
 }

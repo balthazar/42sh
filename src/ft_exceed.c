@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   treat_key_right.c                                  :+:      :+:    :+:   */
+/*   ft_exceed.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/02 17:12:26 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/05 16:51:55 by mpillet          ###   ########.fr       */
+/*   Created: 2014/03/05 17:19:33 by mpillet           #+#    #+#             */
+/*   Updated: 2014/03/06 00:06:22 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
 
-int					treat_key_right(void)
+int					ft_exceed(void)
 {
 	t_ctx			*ctx;
 
 	ctx = CTX;
-	if (ctx->i < ctx->len)
-	{
-		++ctx->i;
-		++ctx->pos.x;
-		if (ctx->pos.x >= ctx->cols)
-			ft_move_cursor();
-		else
-			tputs(tgetstr("nd", NULL), 1, ft_putput);
-	}
-	return (OK);
+	return (ctx->pos.x + ctx->len - ctx->i > ctx->cols);
 }
