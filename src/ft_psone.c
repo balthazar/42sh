@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/27 12:38:51 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/02 18:48:21 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/05 12:38:47 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static void	ft_replacements(t_ctx *ctx, char **env)
 
 	gethostname(hostname, 1023);
 	ft_streplace(&PS->str, "%M", hostname);
-	tmp = ft_struntil(hostname, ".");
+	tmp = ft_struntil(hostname, '.');
 	ft_streplace(&PS->str, "%m", tmp);
 	free(tmp);
 	tmp = ft_strdup(ft_getvar_env("PWD", env));

@@ -42,6 +42,12 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_builtin.c \
 					  $(DIR_SRC)/ft_cd.c \
 					  $(DIR_SRC)/ft_exit_builtin.c \
+					  $(DIR_SRC)/ft_history.c \
+					  $(DIR_SRC)/ft_history_utils.c \
+					  $(DIR_SRC)/ft_history_delete.c \
+					  $(DIR_SRC)/ft_history_write.c \
+					  $(DIR_SRC)/ft_history_builtin.c \
+					  $(DIR_SRC)/ft_exclamation.c \
 					  $(DIR_SRC)/ft_env.c \
 					  $(DIR_SRC)/ft_setenv.c \
 					  $(DIR_SRC)/ft_unsetenv.c \
@@ -50,7 +56,6 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_time_utils_two.c \
 					  $(DIR_SRC)/ft_psone.c \
 					  $(DIR_SRC)/ft_getvar_env.c \
-					  $(DIR_SRC)/ft_history.c \
 					  $(DIR_SRC)/ft_odd_quotes.c \
 					  $(DIR_SRC)/ft_add_char.c \
 					  $(DIR_SRC)/ft_del_char.c \

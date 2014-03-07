@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/23 14:30:41 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/02 17:49:32 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/04 16:22:54 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,13 +93,12 @@ void		ft_unsetenv(t_btree *node)
 	ctx->env = new;
 }
 
-void		ft_rmline_tab(char *value, char ***arr)
+void		ft_rmline_tab(char *value, char ***arr, int len)
 {
 	char	**new;
 	char	*tmp;
 	int		i;
 	int		j;
-	int		len;
 
 	if (!value || !arr)
 		return ;

@@ -13,6 +13,7 @@
 # define LINE_LEN		2048
 
 # define CTX			ft_get_ctx()
+# define ENV			CTX->env
 
 # define CMD			0
 # define CHEV			1
@@ -51,8 +52,8 @@
 # define K_DOWN			tgetstr("kd", NULL)
 # define K_UP			tgetstr("ku", NULL)
 # define K_DELETE		tgetstr("kD", NULL)
-# define K_BACKSP		("\177")
 # define K_ENTER		tgetstr("cr", NULL)
+# define K_BACKSP		("\177")
 # define K_CTRLD		("\004")
 
 # define GETT(E, T)		((t_cmd *) (E)->content)->T
@@ -60,7 +61,7 @@
 # define CNIL			(!ft_strcmp(GETT(node, cmd)[1], "-i"))
 # define PS				ctx->psone
 # define NBTIME			7
-# define NBBS			7
+# define NBBS			8
 # define UP				1
 # define DOWN			2
 
@@ -96,6 +97,7 @@ typedef struct		s_ctx
 	t_dlist			*history;
 	t_dlist			*cur_h;
 	t_dlist			*end_h;
+	int				cpt_h;
 	char			save[LINE_LEN];
 	pid_t			child;
 	t_list			*jobs;
@@ -219,7 +221,8 @@ char				*ft_getvar_env(char *name, char **env);
 void				ft_cd(t_btree *node);
 void				ft_echo(t_btree *node);
 void				ft_exit_builtin(t_btree *node);
-void				ft_rmline_tab(char *name, char ***arr);
+void				ft_rmline_tab(char *name, char ***arr, int len);
+void				ft_history_builtin(t_btree *node);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -283,13 +286,24 @@ char				*ft_time_twelve(struct tm *l);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-** History
+** History & Exclamation
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 */
 void				ft_load_history(t_ctx *ctx, int fd, char *tmp, t_dlist *n);
+int					ft_count_history(void);
+void				ft_print_history(void);
+void				ft_print_hist_from(int number);
 void				ft_add_history(char *str);
-char				*ft_get_string(int key);
 void				ft_reset_line(t_ctx *ctx, int flag);
+void				ft_delete_history(t_ctx *ctx);
+void				ft_delete_specific_history(t_ctx *ctx, int nb, int cpt);
+void				ft_append_new_history(char *filename, t_ctx *ctx);
+void				ft_write_history(char *filename, t_ctx *ctx);
+void				ft_get_newlines(char *filename, t_ctx *ctx, int fdsave);
+void				ft_save_newlines(char *filename, t_ctx *ctx);
+
+char				*ft_return_specific(char *str);
+int					ft_isexcl(int c);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

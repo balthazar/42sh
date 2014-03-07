@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*   ft_stronly.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2013/11/20 11:01:09 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/05 12:41:28 by bgronon          ###   ########.fr       */
+/*   Created: 2014/03/04 16:09:12 by bgronon           #+#    #+#             */
+/*   Updated: 2014/03/04 16:18:34 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_strcpy(char *s1, const char *s2)
+int		ft_stronly(char *str, int (*fn)(int c))
 {
 	int		i;
 
 	i = 0;
-	while (s2[i] != '\0')
+	while (str[i] != '\0')
 	{
-		s1[i] = s2[i];
-		i++;
+		if (!fn(str[i]))
+			return (0);
+		++i;
 	}
-	s1[i] = '\0';
-	return (s1);
+	return (1);
 }
