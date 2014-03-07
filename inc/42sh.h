@@ -103,6 +103,7 @@ typedef struct		s_ctx
 	t_list			*jobs;
 	t_pos			pos;
 	int				sub_proc;
+	int				prompt_len;
 }					t_ctx;
 
 typedef struct		s_elem

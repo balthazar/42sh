@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 15:07:16 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/07 17:32:05 by fbeck            ###   ########.fr       */
+/*   Updated: 2014/03/07 19:57:41 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void			st_set_defaults(t_ctx *ctx)
 	ctx->jobs = NULL;
 	ctx->sub_proc = 0;
 	ctx->cpt_h = 0;
+	ctx->prompt_len = 0;
 	ft_bzero(ctx->line, LINE_LEN);
 	ft_bzero(ctx->buf, BUF_LEN);
 	PS->str = NULL;
