@@ -6,7 +6,7 @@
 /*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/26 15:09:26 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/07 14:49:46 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/07 15:34:36 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,16 +86,14 @@ static void			ft_resize(int sig)
 	ctx = ft_get_ctx();
 	ctx->cols = w.ws_col;
 	ctx->rows = w.ws_row;
-	if ((int) ft_strlen(PS->str) + ctx->len + 2 > ctx->cols)
-	{
-		tputs(tgetstr("cl", NULL), 1, ft_putput);
-		ctx->prompt = 0;
-		i = ctx->i;
-		ft_aff_prompt();
-		ctx->i = 0;
-		ft_rewrite(TRUE);
-		ft_move_to(i);
-	}
+	tputs(tgetstr("cl", NULL), 1, ft_putput);
+	ctx->prompt = 0;
+	i = ctx->i;
+	ft_aff_prompt();
+	ctx->i = 0;
+	ft_rewrite(TRUE);
+	ft_logpos();
+	ft_move_to(i);
 	tputs(tgetstr("im", NULL), 1, ft_putput);
 }
 
