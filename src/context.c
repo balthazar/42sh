@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 15:07:16 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/07 11:58:10 by fbeck            ###   ########.fr       */
+/*   Updated: 2014/03/07 15:08:07 by fbeck            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ t_ctx				*ft_get_ctx(void)
 		ctx->history = NULL;
 		ctx->cur_h = NULL;
 		ctx->end_h = NULL;
-		ctx->father = getpid();
 		ctx->jobs = NULL;
+		ctx->sub_proc = 0;
 		ft_bzero(ctx->line, LINE_LEN);
 		ft_bzero(ctx->buf, BUF_LEN);
 	}

@@ -6,7 +6,7 @@
 /*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/04 15:04:43 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/07 12:45:00 by fbeck            ###   ########.fr       */
+/*   Updated: 2014/03/07 16:39:54 by fbeck            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,32 +16,17 @@
 #include <sys/ioctl.h>
 #include "42sh.h"
 
-// TODO Manage SIGSTOP and SIGCONT properly
-// TODO NORM : 6 functions
-/*
-static void			ft_nothing(int sig)
-{
-	(void)sig;
-}
-*/
-
 void				ft_ctrlz(int sig)
 {
 	(void)sig;
-	printf("IN FT_CRTL_Z\n");
-/*	if (CTX->jobs)
-	{
-		printf("IM HERE LOLS\n");
-		signal(SIGTSTP, SIG_DFL);
-		if (kill(((t_jobs *)CTX->jobs->content)->pid, SIGTSTP) != -1)
-		{
-			ft_putendl("[1]+  Stopped(SIGTSTP)\n");
-			CTX->prompt = 0;
-			ft_clear_line();
-			ft_aff_prompt();
-		}
-		signal(SIGTSTP, ft_ctrlz);
-	}*/
+	ft_raw_term();
+	ft_putchar('\n');
+	ft_putstr("[1]+  Stopped(SIGTSTP) ");
+	ft_putendl(CTX->line);
+	CTX->sub_proc = 0;
+	CTX->prompt = 0;
+	ft_clear_line();
+	ft_aff_prompt();
 }
 
 void				ft_child(int sig)
@@ -50,21 +35,15 @@ void				ft_child(int sig)
 	int				status;
 
 	(void)sig;
-	ft_putendl("SIGCHILD");
 	ptr = CTX->jobs;
 	while (ptr)
 	{
 		if (waitpid(JOB(ptr)->pid, &status, WNOHANG) != 0)
 		{
-			if (WIFSTOPPED(status))
+			if (!WIFSTOPPED(status))
 			{
-				printf("PID OF THIS PROCESS %d\n", getpid() );
-				printf("STOPPED\n");
-			}
-			else
-			{
-				printf("ok %d is finished\n",JOB(ptr)->pid );
 				ft_lst_del_job(&(CTX->jobs), ptr);
+/*				ft_raw_term();*/
 			}
 		}
 		ptr = ptr->next;
@@ -73,16 +52,19 @@ void				ft_child(int sig)
 
 void				ft_fg(int i)
 {
+	int				status;
+
 	(void)i;
 	if (CTX->jobs)
 	{
 		signal(SIGCONT, SIG_DFL);
+		/*ft_reset_term();*/
 		if (kill(((t_jobs *)CTX->jobs->content)->pid, SIGCONT) == -1)
-			CTX->prompt = 0;
+			ft_putendl("I DONT KNOW WHAT HAPPENED -- SIGNAL ERROR");
 		else
 		{
-			//	DELETE element de la liste
-			ft_putendl("1fg: current: no such job");
+			CTX->sub_proc = 1;
+			waitpid(JOB(CTX->jobs)->pid, &status, WUNTRACED);
 		}
 	}
 	else
@@ -91,42 +73,32 @@ void				ft_fg(int i)
 
 static void			ft_ctrl_c(int i)
 {
-	pid_t			cool;
 	int				ret;
 
-	cool = getpid();
 	(void)i;
-	dprintf(2, "COOL = %d\n", cool);
-	signal(SIGINT, SIG_DFL);
-	if (CTX->father == cool)
+	if (CTX->jobs && CTX->sub_proc)
 	{
-		if (CTX->jobs)
-		{
-			printf("sending kill to JOB %d\n", JOB(CTX->jobs)->pid );
-			ret = kill(((t_jobs *)CTX->jobs->content)->pid, SIGKILL);
-			printf("ret %d\n",ret );
-			if (ret == -1)
-			{
-				ft_putendl("ctrl c n'a pas marche");
-			}
-			else
-			{
-				//	DELETE element de la liste
-				printf("CTR C MARCHE\n");
-				CTX->prompt = 0;
-			}
-		}
+		printf("HERE\n");
+		ret = kill(((t_jobs *)CTX->jobs->content)->pid, SIGKILL);
+		if (ret == -1)
+			ft_putendl("I DONT KNOW WHAT HAPPENED -- SIGNAL ERROR");
 		else
 		{
+			CTX->sub_proc = 0;
 			ft_putchar('\n');
 			CTX->prompt = 0;
 			ft_clear_line();
 			ft_aff_prompt();
+			printf("contrl c prompt - not the real one\n");
 		}
-		signal(SIGINT, ft_ctrl_c);
 	}
 	else
-		signal(SIGINT, SIG_DFL);
+	{
+		ft_putchar('\n');
+		CTX->prompt = 0;
+		ft_clear_line();
+		ft_aff_prompt();
+	}
 }
 
 static void			ft_quit(int i)

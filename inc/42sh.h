@@ -78,8 +78,8 @@ typedef struct		s_ctx
 	t_dlist			*cur_h;
 	t_dlist			*end_h;
 	char			save[LINE_LEN];
-	pid_t			father;
 	t_list			*jobs;
+	int				sub_proc;
 }					t_ctx;
 
 typedef struct		s_elem

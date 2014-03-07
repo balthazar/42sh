@@ -6,7 +6,7 @@
 /*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 14:24:03 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/07 11:57:56 by fbeck            ###   ########.fr       */
+/*   Updated: 2014/03/07 16:37:49 by fbeck            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void					ft_lst_del_job(t_list **list, t_list *node)
 	ft_assign_first(*list);
 }
 
-static void				st_add_bgjobs(pid_t process)
+static void				st_add_jobs(pid_t process)
 {
 	t_jobs			j;
 	static int		nb = 1;
@@ -124,26 +124,15 @@ void				ft_fork_and_exec(t_btree *node)
 {
 	pid_t			father;
 	int				status;
-	int				fd;
 
-	fd = open("toto", O_RDWR | O_CREAT | O_TRUNC);
 	if (-1 == (father = fork()))
 		ft_error("fork failed");
 	else if (!father)
 	{
-		dprintf(fd,"PID OF THE SON %d\n", getpid() );
 		reset_signal();
 		ft_exec(node);
 	}
-	dprintf(fd, "PID OF THE FATHER %d\n", getpid() );
-	st_add_bgjobs(father);
+	st_add_jobs(father);
 	waitpid(father, &status, WUNTRACED);
-/*	if (waitpid(father, &status, WNOHANG) != 0)
-	{
-				printf("PID OF THIS PROCESS %d\n", getpid() );
-		ft_putendl("ok it's finished");
-		ft_lst_del_job(&(CTX->jobs), CTX->jobs);
-	}*/
 	printf("COUCOU\n");
-	/*st_add_bgjobs(father);*/
 }
