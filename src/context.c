@@ -6,10 +6,11 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 15:07:16 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/04 12:58:36 by janteuni         ###   ########.fr       */
+/*   Updated: 2014/03/07 11:58:10 by fbeck            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include <sys/ioctl.h>
 #include <stdlib.h>
 #include "42sh.h"
@@ -33,7 +34,7 @@ t_ctx				*ft_get_ctx(void)
 		ctx->history = NULL;
 		ctx->cur_h = NULL;
 		ctx->end_h = NULL;
-		ctx->child = -1;
+		ctx->father = getpid();
 		ctx->jobs = NULL;
 		ft_bzero(ctx->line, LINE_LEN);
 		ft_bzero(ctx->buf, BUF_LEN);

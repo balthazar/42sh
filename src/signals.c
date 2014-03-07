@@ -6,22 +6,11 @@
 /*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/04 15:04:43 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/04 17:40:30 by fbeck            ###   ########.fr       */
+/*   Updated: 2014/03/07 12:45:00 by fbeck            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   signals.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/26 15:09:26 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/04 14:56:27 by fbeck            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
+#include <unistd.h>
 #include <stdlib.h>
 #include <signal.h>
 #include <sys/ioctl.h>
@@ -40,7 +29,7 @@ void				ft_ctrlz(int sig)
 {
 	(void)sig;
 	printf("IN FT_CRTL_Z\n");
-	if (CTX->jobs)
+/*	if (CTX->jobs)
 	{
 		printf("IM HERE LOLS\n");
 		signal(SIGTSTP, SIG_DFL);
@@ -52,13 +41,34 @@ void				ft_ctrlz(int sig)
 			ft_aff_prompt();
 		}
 		signal(SIGTSTP, ft_ctrlz);
-	}
+	}*/
 }
 
 void				ft_child(int sig)
 {
-	ft_putendl("sigchild");
+	t_list			*ptr;
+	int				status;
+
 	(void)sig;
+	ft_putendl("SIGCHILD");
+	ptr = CTX->jobs;
+	while (ptr)
+	{
+		if (waitpid(JOB(ptr)->pid, &status, WNOHANG) != 0)
+		{
+			if (WIFSTOPPED(status))
+			{
+				printf("PID OF THIS PROCESS %d\n", getpid() );
+				printf("STOPPED\n");
+			}
+			else
+			{
+				printf("ok %d is finished\n",JOB(ptr)->pid );
+				ft_lst_del_job(&(CTX->jobs), ptr);
+			}
+		}
+		ptr = ptr->next;
+	}
 }
 
 void				ft_fg(int i)
@@ -71,21 +81,52 @@ void				ft_fg(int i)
 			CTX->prompt = 0;
 		else
 		{
-		//	DELETE element de la liste
-			ft_putendl("fg: current: no such job");
+			//	DELETE element de la liste
+			ft_putendl("1fg: current: no such job");
 		}
 	}
 	else
-		ft_putendl("fg: current: no such job");
+		ft_putendl("2fg: current: no such job");
 }
 
 static void			ft_ctrl_c(int i)
 {
+	pid_t			cool;
+	int				ret;
+
+	cool = getpid();
 	(void)i;
-	ft_putchar('\n');
-	CTX->prompt = 0;
-	ft_clear_line();
-	ft_aff_prompt();
+	dprintf(2, "COOL = %d\n", cool);
+	signal(SIGINT, SIG_DFL);
+	if (CTX->father == cool)
+	{
+		if (CTX->jobs)
+		{
+			printf("sending kill to JOB %d\n", JOB(CTX->jobs)->pid );
+			ret = kill(((t_jobs *)CTX->jobs->content)->pid, SIGKILL);
+			printf("ret %d\n",ret );
+			if (ret == -1)
+			{
+				ft_putendl("ctrl c n'a pas marche");
+			}
+			else
+			{
+				//	DELETE element de la liste
+				printf("CTR C MARCHE\n");
+				CTX->prompt = 0;
+			}
+		}
+		else
+		{
+			ft_putchar('\n');
+			CTX->prompt = 0;
+			ft_clear_line();
+			ft_aff_prompt();
+		}
+		signal(SIGINT, ft_ctrl_c);
+	}
+	else
+		signal(SIGINT, SIG_DFL);
 }
 
 static void			ft_quit(int i)
@@ -121,6 +162,8 @@ void				setup_signal(void)
 void				reset_signal(void)
 {
 	if ((signal(SIGTSTP, SIG_DFL) == SIG_ERR)
-			|| (signal(SIGCONT, SIG_DFL) == SIG_ERR))
-		exit(-1);
+			|| (signal(SIGCONT, SIG_DFL) == SIG_ERR)
+			|| (signal(SIGINT, SIG_IGN) == SIG_ERR)
+			|| (signal(SIGCHLD, SIG_DFL) == SIG_ERR))
+		ft_exit(-1);
 }

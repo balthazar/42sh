@@ -6,10 +6,11 @@
 /*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 14:24:03 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/04 16:31:47 by fbeck            ###   ########.fr       */
+/*   Updated: 2014/03/07 11:57:56 by fbeck            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <fcntl.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
@@ -123,21 +124,26 @@ void				ft_fork_and_exec(t_btree *node)
 {
 	pid_t			father;
 	int				status;
+	int				fd;
 
+	fd = open("toto", O_RDWR | O_CREAT | O_TRUNC);
 	if (-1 == (father = fork()))
 		ft_error("fork failed");
 	else if (!father)
 	{
-		if ((signal(SIGTSTP, SIG_DFL) == SIG_ERR))
-			ft_error("signal error");
+		dprintf(fd,"PID OF THE SON %d\n", getpid() );
+		reset_signal();
 		ft_exec(node);
 	}
+	dprintf(fd, "PID OF THE FATHER %d\n", getpid() );
 	st_add_bgjobs(father);
 	waitpid(father, &status, WUNTRACED);
-	if (waitpid(father, &status, WNOHANG) != 0)
+/*	if (waitpid(father, &status, WNOHANG) != 0)
 	{
+				printf("PID OF THIS PROCESS %d\n", getpid() );
 		ft_putendl("ok it's finished");
 		ft_lst_del_job(&(CTX->jobs), CTX->jobs);
-	}
+	}*/
+	printf("COUCOU\n");
 	/*st_add_bgjobs(father);*/
 }

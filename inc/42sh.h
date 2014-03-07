@@ -78,7 +78,7 @@ typedef struct		s_ctx
 	t_dlist			*cur_h;
 	t_dlist			*end_h;
 	char			save[LINE_LEN];
-	pid_t			child;
+	pid_t			father;
 	t_list			*jobs;
 }					t_ctx;
 
@@ -269,6 +269,7 @@ void				setup_signal(void);
 void				reset_signal(void);
 void				ft_fg(int i);
 void				ft_ctrlz(int sig);
+void					ft_lst_del_job(t_list **list, t_list *node);
 
 void		print_tree(t_btree *node, int level, int dir); /* TODO delete */
 
