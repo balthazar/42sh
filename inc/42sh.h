@@ -32,7 +32,8 @@
 
 # define FIRST			1
 # define SECOND			2
-# define LOOSER			3
+# define LOSER			3
+# define JOB(X)			((t_jobs *)X->content)
 
 # define LIST			((t_elem *)list->content)
 # define PREV			((t_elem *)list->prev->content)
@@ -99,9 +100,9 @@ typedef struct		s_ctx
 	t_dlist			*end_h;
 	int				cpt_h;
 	char			save[LINE_LEN];
-	pid_t			child;
 	t_list			*jobs;
 	t_pos			pos;
+	int				sub_proc;
 }					t_ctx;
 
 typedef struct		s_elem
@@ -146,6 +147,7 @@ typedef struct		s_built
 typedef struct		s_jobs
 {
 	pid_t			pid;
+	char			*line;
 	int				first;
 	int				nb;
 }					t_jobs;
@@ -325,6 +327,7 @@ void				setup_signal(void);
 void				reset_signal(void);
 void				ft_fg(int i);
 void				ft_ctrlz(int sig);
+void					ft_lst_del_job(t_list **list, t_list *node);
 
 void		print_tree(t_btree *node, int level, int dir); /* TODO delete */
 void		ft_logpos(void);

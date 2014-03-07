@@ -6,13 +6,31 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 17:37:07 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/05 18:43:41 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/07 17:35:18 by fbeck            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include "42sh.h"
+
+void				print_pids(void)
+{
+	t_list			*list;
+
+	list = CTX->jobs;
+	if (!list)
+		printf("LIST IS NULL\n");
+	while (list)
+	{
+		printf("----------------------------------------\n");
+		printf("PID [%d]\n", ((t_jobs *)list->content)->pid);
+		printf("First or not  [%d]\n", ((t_jobs *)list->content)->first);
+		printf("NB [%d]\n", ((t_jobs *)list->content)->nb);
+		printf("----------------------------------------\n");
+		list = list->next;
+	}
+}
 
 static int		ft_string_rep(char **str, int i, int cpt, int *len)
 {

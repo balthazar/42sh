@@ -6,7 +6,7 @@
 /*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/26 15:09:26 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/07 15:36:46 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/07 17:36:29 by fbeck            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,43 +15,55 @@
 #include <sys/ioctl.h>
 #include "42sh.h"
 
-// TODO Manage SIGSTOP and SIGCONT properly
-// TODO NORM : 6 functions
-/*
-static void			ft_nothing(int sig)
-{
-	(void)sig;
-}
-*/
-
 void				ft_ctrlz(int sig)
 {
 	(void)sig;
-	if (CTX->child != -1)
+	ft_raw_term();
+	ft_putchar('\n');
+	ft_putstr("[1]+  Stopped(SIGTSTP) ");
+	ft_putendl(JOB(CTX->jobs)->line);
+	CTX->sub_proc = 0;
+	CTX->prompt = 0;
+	ft_clear_line();
+	ft_aff_prompt();
+}
+
+void				ft_child(int sig)
+{
+	t_list			*ptr;
+	int				status;
+
+	(void)sig;
+	ptr = CTX->jobs;
+	while (ptr)
 	{
-		signal(SIGTSTP, SIG_DFL);
-		if (kill(CTX->child, SIGTSTP) != -1)
+		if (waitpid(JOB(ptr)->pid, &status, WNOHANG) != 0)
 		{
-			ft_putendl("[1]+  Stopped(SIGTSTP)\n");
-			CTX->prompt = 0;
-			ft_clear_line();
-			ft_aff_prompt();
+			if (!WIFSTOPPED(status))
+			{
+				ft_raw_term();
+				ft_lst_del_job(&(CTX->jobs), ptr);
+			}
 		}
-		signal(SIGTSTP, ft_ctrlz);
+		ptr = ptr->next;
 	}
 }
 
 void				ft_fg(int i)
 {
+	int				status;
+
 	(void)i;
-	if (CTX->child != -1)
+	if (CTX->jobs)
 	{
 		signal(SIGCONT, SIG_DFL);
-		if (kill(CTX->child, SIGCONT) != -1)
-			CTX->prompt = 0;
+		ft_putendl(JOB(CTX->jobs)->line);
+		if (kill(((t_jobs *)CTX->jobs->content)->pid, SIGCONT) == -1)
+			ft_error("signal error");
 		else
 		{
-			ft_putendl("fg: current: no such job");
+			CTX->sub_proc = 1;
+			waitpid(JOB(CTX->jobs)->pid, &status, WUNTRACED);
 		}
 	}
 	else
@@ -60,11 +72,30 @@ void				ft_fg(int i)
 
 static void			ft_ctrl_c(int i)
 {
+	int				ret;
+
 	(void)i;
-	ft_putchar('\n');
-	CTX->prompt = 0;
-	ft_clear_line();
-	ft_aff_prompt();
+	if (CTX->jobs && CTX->sub_proc)
+	{
+		ret = kill(((t_jobs *)CTX->jobs->content)->pid, SIGKILL);
+		if (ret == -1)
+			ft_error("signal error");
+		else
+		{
+			CTX->sub_proc = 0;
+			ft_putchar('\n');
+			CTX->prompt = 0;
+			ft_clear_line();
+			ft_aff_prompt();
+		}
+	}
+	else
+	{
+		ft_putchar('\n');
+		CTX->prompt = 0;
+		ft_clear_line();
+		ft_aff_prompt();
+	}
 }
 
 static void			ft_quit(int i)
@@ -102,6 +133,7 @@ void				setup_signal(void)
 			|| (signal(SIGINT, ft_ctrl_c) == SIG_ERR)
 			|| (signal(SIGTSTP, ft_ctrlz) == SIG_ERR)
 			|| (signal(SIGCONT, ft_fg) == SIG_ERR)
+			|| (signal(SIGCHLD, ft_child) == SIG_ERR)
 			|| (signal(SIGWINCH, ft_resize) == SIG_ERR))
 		ft_error("failed to setup signals");
 }
@@ -109,6 +141,8 @@ void				setup_signal(void)
 void				reset_signal(void)
 {
 	if ((signal(SIGTSTP, SIG_DFL) == SIG_ERR)
-			|| (signal(SIGCONT, SIG_DFL) == SIG_ERR))
-		exit(-1);
+			|| (signal(SIGCONT, SIG_DFL) == SIG_ERR)
+			|| (signal(SIGINT, SIG_IGN) == SIG_ERR)
+			|| (signal(SIGCHLD, SIG_DFL) == SIG_ERR))
+		ft_exit(-1);
 }
