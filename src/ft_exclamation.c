@@ -27,7 +27,7 @@ char		*ft_return_specific(char *str)
 	int		nb;
 	int		cpt;
 
-	if (str && str[0] != '\0')
+	if (str && str[0] != '\0' && ft_stronly(str, ft_isdigit))
 	{
 		ctx = CTX;
 		cpt = 0;

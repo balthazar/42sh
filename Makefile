@@ -42,6 +42,7 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_exit_builtin.c \
 					  $(DIR_SRC)/ft_history.c \
 					  $(DIR_SRC)/ft_history_utils.c \
+					  $(DIR_SRC)/ft_history_delete.c \
 					  $(DIR_SRC)/ft_history_builtin.c \
 					  $(DIR_SRC)/ft_exclamation.c \
 					  $(DIR_SRC)/ft_env.c \

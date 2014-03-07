@@ -276,6 +276,8 @@ void				ft_print_history(void);
 void				ft_print_hist_from(int number);
 void				ft_add_history(char *str);
 void				ft_reset_line(t_ctx *ctx, int flag);
+void				ft_delete_history(t_ctx *ctx);
+void				ft_delete_specific_history(t_ctx *ctx, int nb, int cpt);
 
 char				*ft_return_specific(char *str);
 int					ft_isexcl(int c);

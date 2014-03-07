@@ -21,9 +21,9 @@ static int		ft_string_rep(char **str, int i, int cpt, int *len)
 	char	*rep;
 
 	if ((*str)[i] == '!')
-	rep = ft_return_specific(ft_struntil_fn((*str) + i + 1, ft_isexcl));
+		rep = ft_return_specific(ft_struntil_fn((*str) + i + 1, ft_isexcl));
 	else
-		rep = ft_getvar_env(ft_struntil_fn((*str) + i + 1, ft_isalpha), ENV);
+		rep = ft_getvar_env(ft_struntil_fn((*str) + i + 1, ft_isexcl), ENV);
 	if (!rep && (*str)[i] == '!')
 		return (-1);
 	*len = ft_strlen(rep);
@@ -44,10 +44,10 @@ static int		ft_replacements(char *str, t_ctx *ctx, int i)
 
 	while (str && str[i])
 	{
-		cpt = 0;
+		cpt = 1;
 		if (str[i] == '!' || str[i] == '$')
 		{
-			while (str[i + cpt] != ' ')
+			while (ft_isexcl(str[i + cpt]))
 				++cpt;
 			if (ft_string_rep(&str, i, cpt, &len) == -1)
 				return (0);
@@ -61,7 +61,7 @@ static int		ft_replacements(char *str, t_ctx *ctx, int i)
 		}
 		++i;
 	}
-	if ((int)ft_strlen(str) > i + len)
+	if ((int)ft_strlen(ctx->line) > i + len)
 		ft_replacements(ctx->line, ctx, i + len);
 	return (1);
 }
