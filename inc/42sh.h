@@ -278,6 +278,10 @@ void				ft_add_history(char *str);
 void				ft_reset_line(t_ctx *ctx, int flag);
 void				ft_delete_history(t_ctx *ctx);
 void				ft_delete_specific_history(t_ctx *ctx, int nb, int cpt);
+void				ft_append_new_history(char *filename, t_ctx *ctx);
+void				ft_write_history(char *filename, t_ctx *ctx);
+void				ft_get_newlines(char *filename, t_ctx *ctx, int fdsave);
+void				ft_save_newlines(char *filename, t_ctx *ctx);
 
 char				*ft_return_specific(char *str);
 int					ft_isexcl(int c);

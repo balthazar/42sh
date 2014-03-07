@@ -21,7 +21,7 @@ void	ft_reset_line(t_ctx *ctx, int flag)
 
 	ft_clean_line();
 	ft_bzero(ctx->line, LINE_LEN);
-	if (flag == 1)
+	if (flag == 1 && ctx->cur_h)
 		ft_strcpy(ctx->line, ctx->cur_h->content);
 	else if (flag == 2)
 		ft_strcpy(ctx->line, ctx->save);
