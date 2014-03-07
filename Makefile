@@ -12,6 +12,8 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_clean.c \
 					  $(DIR_SRC)/ft_loop.c \
 					  $(DIR_SRC)/ft_lexer.c \
+					  $(DIR_SRC)/ft_lexer_push.c \
+					  $(DIR_SRC)/ft_init_cmd.c \
 					  $(DIR_SRC)/ft_parser.c \
 					  $(DIR_SRC)/ft_parser_tree.c \
 					  $(DIR_SRC)/ft_parser_node.c \
@@ -68,6 +70,11 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/treat_key_down.c \
 					  $(DIR_SRC)/ft_clean_line.c \
 					  $(DIR_SRC)/ft_clear_line.c \
+					  $(DIR_SRC)/ft_logpos.c \
+					  $(DIR_SRC)/ft_move_cursor.c \
+					  $(DIR_SRC)/ft_rewrite.c \
+					  $(DIR_SRC)/ft_go_end.c \
+					  $(DIR_SRC)/ft_exceed.c \
 
 # ---------------------------------------------------------------------------- #
 

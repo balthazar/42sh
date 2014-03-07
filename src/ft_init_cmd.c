@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   treat_key_right.c                                  :+:      :+:    :+:   */
+/*   ft_init_cmd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: janteuni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/02 17:12:26 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/05 16:51:55 by mpillet          ###   ########.fr       */
+/*   Created: 2014/03/07 10:26:55 by janteuni          #+#    #+#             */
+/*   Updated: 2014/03/07 10:28:31 by janteuni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
 
-int					treat_key_right(void)
+void		ft_init_cmd(t_cmd *cmd)
 {
-	t_ctx			*ctx;
-
-	ctx = CTX;
-	if (ctx->i < ctx->len)
-	{
-		++ctx->i;
-		++ctx->pos.x;
-		if (ctx->pos.x >= ctx->cols)
-			ft_move_cursor();
-		else
-			tputs(tgetstr("nd", NULL), 1, ft_putput);
-	}
-	return (OK);
+	cmd->path = NULL;
+	cmd->cmd = NULL;
+	cmd->env = ft_get_env();
+	cmd->custom = NULL;
+	cmd->fd_in = -1;
+	cmd->fd_out = -1;
+	cmd->in = NULL;
+	cmd->out = NULL;
+	cmd->fail = FALSE;
+	cmd->force_null = 0;
 }

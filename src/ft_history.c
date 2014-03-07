@@ -17,18 +17,15 @@
 
 void	ft_reset_line(t_ctx *ctx, int flag)
 {
-	int		i;
-
 	ft_clean_line();
 	ft_bzero(ctx->line, LINE_LEN);
 	if (flag == 1 && ctx->cur_h)
 		ft_strcpy(ctx->line, ctx->cur_h->content);
 	else if (flag == 2)
 		ft_strcpy(ctx->line, ctx->save);
-	i = ft_strlen(ctx->line);
-	ctx->i = i;
-	ctx->len = i;
-	ft_putstr(ctx->line);
+	ctx->len = ft_strlen(ctx->line);
+	ctx->i = 0;
+	ft_rewrite(TRUE);
 }
 
 void	ft_add_history(char *str)
