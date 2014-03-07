@@ -6,11 +6,10 @@
 /*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/04 15:04:43 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/07 16:39:54 by fbeck            ###   ########.fr       */
+/*   Updated: 2014/03/07 17:23:38 by fbeck            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include <stdlib.h>
 #include <signal.h>
 #include <sys/ioctl.h>
@@ -22,7 +21,7 @@ void				ft_ctrlz(int sig)
 	ft_raw_term();
 	ft_putchar('\n');
 	ft_putstr("[1]+  Stopped(SIGTSTP) ");
-	ft_putendl(CTX->line);
+	ft_putendl(JOB(CTX->jobs)->line);
 	CTX->sub_proc = 0;
 	CTX->prompt = 0;
 	ft_clear_line();
@@ -42,8 +41,8 @@ void				ft_child(int sig)
 		{
 			if (!WIFSTOPPED(status))
 			{
+				ft_raw_term();
 				ft_lst_del_job(&(CTX->jobs), ptr);
-/*				ft_raw_term();*/
 			}
 		}
 		ptr = ptr->next;
@@ -58,9 +57,9 @@ void				ft_fg(int i)
 	if (CTX->jobs)
 	{
 		signal(SIGCONT, SIG_DFL);
-		/*ft_reset_term();*/
+		ft_putendl(JOB(CTX->jobs)->line);
 		if (kill(((t_jobs *)CTX->jobs->content)->pid, SIGCONT) == -1)
-			ft_putendl("I DONT KNOW WHAT HAPPENED -- SIGNAL ERROR");
+			ft_error("signal error");
 		else
 		{
 			CTX->sub_proc = 1;
@@ -68,7 +67,7 @@ void				ft_fg(int i)
 		}
 	}
 	else
-		ft_putendl("2fg: current: no such job");
+		ft_putendl("fg: current: no such job");
 }
 
 static void			ft_ctrl_c(int i)
@@ -78,10 +77,9 @@ static void			ft_ctrl_c(int i)
 	(void)i;
 	if (CTX->jobs && CTX->sub_proc)
 	{
-		printf("HERE\n");
 		ret = kill(((t_jobs *)CTX->jobs->content)->pid, SIGKILL);
 		if (ret == -1)
-			ft_putendl("I DONT KNOW WHAT HAPPENED -- SIGNAL ERROR");
+			ft_error("signal error");
 		else
 		{
 			CTX->sub_proc = 0;
@@ -89,7 +87,6 @@ static void			ft_ctrl_c(int i)
 			CTX->prompt = 0;
 			ft_clear_line();
 			ft_aff_prompt();
-			printf("contrl c prompt - not the real one\n");
 		}
 	}
 	else

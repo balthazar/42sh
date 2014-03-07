@@ -6,12 +6,10 @@
 /*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 14:24:03 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/07 16:37:49 by fbeck            ###   ########.fr       */
+/*   Updated: 2014/03/07 17:23:21 by fbeck            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <fcntl.h>
-#include <stdlib.h>
 #include <unistd.h>
 #include <sys/wait.h>
 #include "42sh.h"
@@ -22,6 +20,7 @@ static void				st_deljob(void *content, size_t size)
 
 	(void)size;
 	job = (t_jobs *)content;
+	ft_memdel((void **)&job->line);
 	ft_memdel((void **)&job);
 }
 
@@ -107,6 +106,7 @@ static void				st_add_jobs(pid_t process)
 		nb = 1;
 	j.pid = process;
 	j.first = FIRST;
+	j.line = ft_strdup(CTX->line);
 	while (list)
 	{
 		if (((t_jobs *)list->content)->first == FIRST)
@@ -125,6 +125,7 @@ void				ft_fork_and_exec(t_btree *node)
 	pid_t			father;
 	int				status;
 
+	CTX->sub_proc = 1;
 	if (-1 == (father = fork()))
 		ft_error("fork failed");
 	else if (!father)
@@ -134,5 +135,4 @@ void				ft_fork_and_exec(t_btree *node)
 	}
 	st_add_jobs(father);
 	waitpid(father, &status, WUNTRACED);
-	printf("COUCOU\n");
 }

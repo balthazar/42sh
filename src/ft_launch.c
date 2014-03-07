@@ -6,11 +6,10 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 17:37:07 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/07 16:27:24 by fbeck            ###   ########.fr       */
+/*   Updated: 2014/03/07 17:23:26 by fbeck            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "42sh.h"
 
 void				print_pids(void)
@@ -45,7 +44,6 @@ int					ft_launch(t_btree *tree, t_dlist *dlist)
 			ft_treat_node(tree);
 		}
 	}
-/*	print_pids();*/
 	ft_clean(&tree, &dlist);
 	ft_clear_line();
 	ft_raw_term();

@@ -122,6 +122,7 @@ typedef struct		s_built
 typedef struct		s_jobs
 {
 	pid_t			pid;
+	char			*line;
 	int				first;
 	int				nb;
 }					t_jobs;
