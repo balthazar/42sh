@@ -237,6 +237,12 @@ void				if_pipe(t_btree **tree, t_btree *node);
 void				if_or(t_btree **tree, t_btree *node);
 void				if_end(t_btree **tree, t_btree *node);
 
+int					ft_push_char(char *line, int i, t_dlist **list);
+int					ft_push_sep(char *line, int i, t_dlist **list);
+int					ft_push_quote(char *line, int i, t_dlist **list);
+int					is_sep(char c);
+void				ft_init_cmd(t_cmd *cmd);
+
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 ** Exec

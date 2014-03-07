@@ -12,6 +12,8 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_clean.c \
 					  $(DIR_SRC)/ft_loop.c \
 					  $(DIR_SRC)/ft_lexer.c \
+					  $(DIR_SRC)/ft_lexer_push.c \
+					  $(DIR_SRC)/ft_init_cmd.c \
 					  $(DIR_SRC)/ft_parser.c \
 					  $(DIR_SRC)/ft_parser_tree.c \
 					  $(DIR_SRC)/ft_parser_node.c \
