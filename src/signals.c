@@ -6,7 +6,7 @@
 /*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/26 15:09:26 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/07 15:34:36 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/07 15:36:46 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ static void			ft_resize(int sig)
 	ft_aff_prompt();
 	ctx->i = 0;
 	ft_rewrite(TRUE);
-	ft_logpos();
 	ft_move_to(i);
 	tputs(tgetstr("im", NULL), 1, ft_putput);
 }
