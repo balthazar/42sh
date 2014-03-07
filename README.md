@@ -3,10 +3,10 @@
 
 A beautiful, awesome and purposed shell.
 
-Written with love and using git-flow.
+Written with love, using vim and git-flow.
 
 
-How to install this perfect thing :
+How to get launched :
 
     make
 	./yolosh
