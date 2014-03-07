@@ -6,12 +6,12 @@
 /*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 13:04:21 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/02 15:07:38 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/04 16:12:30 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "42sh.h"
 #include <unistd.h>
+#include "42sh.h"
 
 static int		ft_check_access(char *path)
 {
@@ -93,7 +93,7 @@ int				ft_fill_path(t_cmd *cmd)
 		}
 		return (ERR);
 	}
-	if (!(paths = ft_get_paths(cmd->env)))
+	if (!(paths = ft_get_paths(cmd->custom ? cmd->custom : cmd->env)))
 		return (ERR);
 	ft_check_paths(cmd, paths);
 	ft_free_tab((void ***)&paths);

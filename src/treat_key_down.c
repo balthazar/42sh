@@ -1,43 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_struntil.c                                      :+:      :+:    :+:   */
+/*   treat_key_down.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/01 16:43:36 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/05 17:38:19 by bgronon          ###   ########.fr       */
+/*   Created: 2014/03/03 11:01:45 by bgronon           #+#    #+#             */
+/*   Updated: 2014/03/04 12:47:21 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "42sh.h"
 
-char	*ft_struntil(char *str, char stop)
+int		treat_key_down(void)
 {
-	int		i;
+	t_ctx	*ctx;
 
-	i = 0;
-	if (ft_indexof(str, stop) == -1)
-		return (ft_strdup(str));
-	while (str && str[i])
+	ctx = CTX;
+	if (!ctx->history || !ctx->cur_h)
+		return (1);
+	if (ctx->cur_h->next)
 	{
-		if (str[i] == stop)
-			return (ft_strsub(str, 0, i));
-		++i;
+		ctx->cur_h = ctx->cur_h->next;
+		ft_reset_line(ctx, 1);
 	}
-	return (NULL);
-}
-
-char	*ft_struntil_fn(char *str, int (*fn)(int c))
-{
-	int		i;
-
-	i = 0;
-	while (str && str[i])
+	else if (ctx->save)
 	{
-		if (!fn(str[i]))
-			return (ft_strsub(str, 0, i));
-		++i;
+		ctx->cur_h = NULL;
+		ft_reset_line(ctx, 2);
+		ft_bzero(ctx->save, LINE_LEN);
 	}
-	return (ft_strdup(str));
+	else if (ctx->line)
+	{
+		ctx->cur_h = NULL;
+		ft_clean_line();
+		ft_bzero(ctx->line, LINE_LEN);
+	}
+	return (OK);
 }

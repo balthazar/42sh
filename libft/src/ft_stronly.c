@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   treat_key_right.c                                  :+:      :+:    :+:   */
+/*   ft_stronly.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/02 17:12:26 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/05 16:51:55 by mpillet          ###   ########.fr       */
+/*   Created: 2014/03/04 16:09:12 by bgronon           #+#    #+#             */
+/*   Updated: 2014/03/04 16:18:34 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "42sh.h"
-
-int					treat_key_right(void)
+int		ft_stronly(char *str, int (*fn)(int c))
 {
-	t_ctx			*ctx;
+	int		i;
 
-	ctx = CTX;
-	if (ctx->i < ctx->len)
+	i = 0;
+	while (str[i] != '\0')
 	{
-		++ctx->i;
-		++ctx->pos.x;
-		if (ctx->pos.x >= ctx->cols)
-			ft_move_cursor();
-		else
-			tputs(tgetstr("nd", NULL), 1, ft_putput);
+		if (!fn(str[i]))
+			return (0);
+		++i;
 	}
-	return (OK);
+	return (1);
 }

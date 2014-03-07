@@ -6,7 +6,7 @@
 /*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/21 09:21:43 by mpillet           #+#    #+#             */
-/*   Updated: 2013/11/24 12:57:38 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/04 19:15:20 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,12 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n)
 	while (s1[i] != '\0' && i < n)
 	{
 		if (s2[i] == '\0')
-		{
 			return (1);
-		}
 		if (s1[i] != s2[i])
-		{
 			return ((s1[i] > s2[i]) ? 1 : -1);
-		}
 		i++;
 	}
 	if (s2[i] != '\0' && i != n)
-	{
 		return (-1);
-	}
 	return (0);
 }

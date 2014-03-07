@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/23 14:31:20 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/02 18:18:55 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/04 16:22:45 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ void		ft_setenv(t_btree *node)
 
 	if (!GETT(node, cmd)[1])
 		ft_env(node);
-	/*else if (GETT(node, cmd)[1] && GETT(node, cmd)[2] && GETT(node, cmd)[3])
-		ft_err("Too many arguments");*/
+	else if (GETT(node, cmd)[1] && GETT(node, cmd)[2] && GETT(node, cmd)[3])
+		ft_err("Too many arguments");
 	else
 	{
 		ctx = CTX;
 		len = ft_tab_len(ctx->env);
-		ft_rmline_tab(GETT(node, cmd)[1], &ctx->env);
+		ft_rmline_tab(GETT(node, cmd)[1], &ctx->env, 0);
 		new = (char **) malloc(sizeof(char *) * (len + 2));
 		ft_setenv_aux(&new, node, ctx);
 		ctx->env = new;
@@ -62,7 +62,7 @@ void		ft_setenv_b(char *name, char *value, char ***env)
 	}
 	i = 0;
 	len = ft_tab_len(*env);
-	ft_rmline_tab(name, env);
+	ft_rmline_tab(name, env, 0);
 	new = (char **) malloc(sizeof(char *) * (len + 2));
 	while (*env && (*env)[i])
 	{

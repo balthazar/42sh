@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   treat_key_left.c                                   :+:      :+:    :+:   */
+/*   ft_clean_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
+/*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/02 17:07:52 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/06 18:42:03 by mpillet          ###   ########.fr       */
+/*   Created: 2014/03/04 11:19:58 by bgronon           #+#    #+#             */
+/*   Updated: 2014/03/06 18:50:25 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
 
-int					treat_key_left(void)
+void	ft_clean_line(void)
 {
-	t_ctx			*ctx;
+	t_ctx	*ctx;
 
 	ctx = CTX;
-	if (ctx->i > 0)
+	while (ctx->i > 0)
 	{
 		if (ctx->pos.x == 0)
 		{
+			tputs(tgetstr("ce", NULL), 1, ft_putput);
 			tputs(tgetstr("up", NULL), 1, ft_putput);
 			ft_go_end(ctx->cols);
-			ctx->pos.x = ctx->cols - 1;
+			ctx->pos.x = ctx->cols;
 			--ctx->pos.y;
 		}
 		else
-		{
 			tputs(tgetstr("le", NULL), 1, ft_putput);
-			--ctx->pos.x;
-		}
 		--ctx->i;
+		--ctx->pos.x;
 	}
-	return (OK);
+	ctx->len = 0;
+	tputs(tgetstr("ce", NULL), 1, ft_putput);
 }

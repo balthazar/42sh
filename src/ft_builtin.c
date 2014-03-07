@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/23 12:38:47 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/01 18:27:32 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/04 16:44:34 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ static t_built	*ft_get_builts(void)
 		builts[4].fn = &ft_unsetenv;
 		builts[5].name = "echo";
 		builts[5].fn = &ft_echo;
+		builts[6].name = "fg";
+		builts[6].fn = &ft_fg;
+		builts[7].name = "history";
+		builts[7].fn = &ft_history_builtin;
 	}
 	return (builts);
 }
@@ -60,7 +64,9 @@ int				ft_detect_builtin(char *cmd)
 		|| !ft_strcmp(cmd, "setenv")
 		|| !ft_strcmp(cmd, "unsetenv")
 		|| !ft_strcmp(cmd, "echo")
-		|| !ft_strcmp(cmd, "exit"))
+		|| !ft_strcmp(cmd, "exit")
+		|| !ft_strcmp(cmd, "history")
+		|| !ft_strcmp(cmd, "fg"))
 		return (1);
 	return (0);
 }

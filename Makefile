@@ -3,7 +3,7 @@ NAME				= yolosh
 CC					= clang
 FLAG				= -Wall -Werror -Wextra -pedantic
 INCS				= -I inc -I ./inc -I libft/inc
-LIBS				= -L libft -lft -L /usr/lib -ltermcap
+LIBS				= -L libft -lft -L /usr/lib -lncurses -ltermcap
 
 SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/context.c \
@@ -12,6 +12,8 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_clean.c \
 					  $(DIR_SRC)/ft_loop.c \
 					  $(DIR_SRC)/ft_lexer.c \
+					  $(DIR_SRC)/ft_lexer_push.c \
+					  $(DIR_SRC)/ft_init_cmd.c \
 					  $(DIR_SRC)/ft_parser.c \
 					  $(DIR_SRC)/ft_parser_tree.c \
 					  $(DIR_SRC)/ft_parser_node.c \
@@ -25,7 +27,6 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_get_fd.c \
 					  $(DIR_SRC)/ft_create_files.c \
 					  $(DIR_SRC)/ft_close_files.c \
-					  $(DIR_SRC)/ft_test.c \
 					  $(DIR_SRC)/treat_cmd.c \
 					  $(DIR_SRC)/treat_pipe.c \
 					  $(DIR_SRC)/treat_end.c \
@@ -33,7 +34,6 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/treat_chev.c \
 					  $(DIR_SRC)/treat_or.c \
 					  $(DIR_SRC)/print_tree.c \
-					  $(DIR_SRC)/ft_term_init.c \
 					  $(DIR_SRC)/ft_term_mode.c \
 					  $(DIR_SRC)/ft_aff_prompt.c \
 					  $(DIR_SRC)/ft_launch.c \
@@ -42,10 +42,19 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_builtin.c \
 					  $(DIR_SRC)/ft_cd.c \
 					  $(DIR_SRC)/ft_exit_builtin.c \
+					  $(DIR_SRC)/ft_history.c \
+					  $(DIR_SRC)/ft_history_utils.c \
+					  $(DIR_SRC)/ft_history_delete.c \
+					  $(DIR_SRC)/ft_history_write.c \
+					  $(DIR_SRC)/ft_history_builtin.c \
+					  $(DIR_SRC)/ft_exclamation.c \
 					  $(DIR_SRC)/ft_env.c \
 					  $(DIR_SRC)/ft_setenv.c \
 					  $(DIR_SRC)/ft_unsetenv.c \
 					  $(DIR_SRC)/ft_echo.c \
+					  $(DIR_SRC)/ft_time_utils.c \
+					  $(DIR_SRC)/ft_time_utils_two.c \
+					  $(DIR_SRC)/ft_psone.c \
 					  $(DIR_SRC)/ft_getvar_env.c \
 					  $(DIR_SRC)/ft_odd_quotes.c \
 					  $(DIR_SRC)/ft_add_char.c \
@@ -57,6 +66,15 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/treat_key_ctrld.c \
 					  $(DIR_SRC)/treat_key_delete.c \
 					  $(DIR_SRC)/treat_key_backsp.c \
+					  $(DIR_SRC)/treat_key_up.c \
+					  $(DIR_SRC)/treat_key_down.c \
+					  $(DIR_SRC)/ft_clean_line.c \
+					  $(DIR_SRC)/ft_clear_line.c \
+					  $(DIR_SRC)/ft_logpos.c \
+					  $(DIR_SRC)/ft_move_cursor.c \
+					  $(DIR_SRC)/ft_rewrite.c \
+					  $(DIR_SRC)/ft_go_end.c \
+					  $(DIR_SRC)/ft_exceed.c \
 
 # ---------------------------------------------------------------------------- #
 

@@ -1,29 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_getvar_env.c                                    :+:      :+:    :+:   */
+/*   ft_time_utils_two.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/02/27 11:58:43 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/05 16:18:10 by bgronon          ###   ########.fr       */
+/*   Created: 2014/03/01 17:00:17 by bgronon           #+#    #+#             */
+/*   Updated: 2014/03/02 18:43:12 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <time.h>
 #include "42sh.h"
 
-char	*ft_getvar_env(char *name, char **env)
+char	*ft_time_majd(struct tm *l)
 {
-	int		i;
-	size_t	len;
+	char	str[32];
+	char	*out;
 
-	i = 0;
-	len = ft_strlen(name);
-	while (env && env[i])
-	{
-		if (!ft_strncmp(name, env[i], len) && env[i][len] == '=')
-			return (env[i] + len + 1);
-		++i;
-	}
-	return (NULL);
+	strftime(str, 32, "%g-%m-%d", l);
+	out = ft_strdup(str);
+	return (out);
+}
+
+char	*ft_time_majw(struct tm *l)
+{
+	char	str[32];
+	char	*out;
+
+	strftime(str, 32, "%D", l);
+	out = ft_strdup(str);
+	return (out);
+}
+
+char	*ft_time_majt(struct tm *l)
+{
+	char	str[32];
+	char	*out;
+
+	strftime(str, 32, "%R", l);
+	out = ft_strdup(str);
+	return (out);
 }

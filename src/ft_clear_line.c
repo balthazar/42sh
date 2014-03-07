@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   treat_key_right.c                                  :+:      :+:    :+:   */
+/*   ft_clear_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: janteuni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/02 17:12:26 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/05 16:51:55 by mpillet          ###   ########.fr       */
+/*   Created: 2014/03/04 11:27:43 by janteuni          #+#    #+#             */
+/*   Updated: 2014/03/04 21:10:03 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
 
-int					treat_key_right(void)
+void				ft_clear_line(void)
 {
 	t_ctx			*ctx;
 
 	ctx = CTX;
-	if (ctx->i < ctx->len)
-	{
-		++ctx->i;
-		++ctx->pos.x;
-		if (ctx->pos.x >= ctx->cols)
-			ft_move_cursor();
-		else
-			tputs(tgetstr("nd", NULL), 1, ft_putput);
-	}
-	return (OK);
+	ft_bzero(ctx->line, LINE_LEN);
+	ctx->i = 0;
+	ctx->len = 0;
+	ctx->pos.x = 0;
+	ctx->pos.y = 0;
 }

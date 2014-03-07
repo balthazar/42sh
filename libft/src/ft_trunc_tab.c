@@ -1,43 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_struntil.c                                      :+:      :+:    :+:   */
+/*   ft_trunc_tab.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/01 16:43:36 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/05 17:38:19 by bgronon          ###   ########.fr       */
+/*   Created: 2014/03/04 15:06:49 by bgronon           #+#    #+#             */
+/*   Updated: 2014/03/04 15:07:12 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdlib.h>
 #include "libft.h"
 
-char	*ft_struntil(char *str, char stop)
+void		ft_trunc_tab(char ***arr, int nb)
 {
+	char	**new;
 	int		i;
+	int		len;
 
-	i = 0;
-	if (ft_indexof(str, stop) == -1)
-		return (ft_strdup(str));
-	while (str && str[i])
+	len = ft_tab_len(*arr) - nb;
+	if (len > 0)
 	{
-		if (str[i] == stop)
-			return (ft_strsub(str, 0, i));
-		++i;
+		new = (char **) malloc(sizeof(char *) * (len + 1));
+		if (new)
+		{
+			i = 0;
+			while (*arr && (*arr)[i + nb])
+			{
+				new[i] = ft_strdup((*arr)[i + nb]);
+				++i;
+			}
+			new[i] = NULL;
+			ft_free_tab((void ***)arr);
+			*arr = new;
+		}
 	}
-	return (NULL);
-}
-
-char	*ft_struntil_fn(char *str, int (*fn)(int c))
-{
-	int		i;
-
-	i = 0;
-	while (str && str[i])
-	{
-		if (!fn(str[i]))
-			return (ft_strsub(str, 0, i));
-		++i;
-	}
-	return (ft_strdup(str));
 }
