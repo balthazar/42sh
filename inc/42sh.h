@@ -181,6 +181,7 @@ void				ft_clear_line(void);
 void				ft_move_cursor(void);
 void				ft_rewrite(int hard);
 void				ft_go_end(int cols);
+void				ft_move_to(int pos);
 
 int					treat_key_enter(void);
 int					treat_key_left(void);

@@ -70,6 +70,7 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_rewrite.c \
 					  $(DIR_SRC)/ft_go_end.c \
 					  $(DIR_SRC)/ft_exceed.c \
+					  $(DIR_SRC)/ft_move_to.c \
 
 # ---------------------------------------------------------------------------- #
 
