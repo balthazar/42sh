@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/06 11:01:11 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/07 15:33:34 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/08 23:34:49 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void		ft_delete_specific_history(t_ctx *ctx, int nb, int cpt)
 		if (cpt == nb)
 		{
 			swap = tmp;
-			ctx->history = (tmp == ctx->history) ? ctx->history->next : ctx->history;
+			ctx->history = (tmp == ctx->history) ? ctx->history->next : HIS;
 			ctx->end_h = (tmp == ctx->end_h) ? ctx->end_h->prev : ctx->end_h;
 			if (tmp->next)
 				tmp->next->prev = tmp->prev;
