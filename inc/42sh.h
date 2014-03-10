@@ -105,6 +105,7 @@ typedef struct		s_ctx
 	t_pos			pos;
 	int				sub_proc;
 	int				prompt_len;
+	int				sub_shell;
 }					t_ctx;
 
 typedef struct		s_elem
@@ -171,6 +172,7 @@ t_ctx				*ft_get_ctx(void);
 */
 
 void				ft_add_char(char c);
+void				ft_insert_char(char c);
 void				ft_del_char(void);
 int					ft_putput(int c);
 void				ft_reset_term(void);

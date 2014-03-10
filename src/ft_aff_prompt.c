@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/10 16:55:09 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/10 17:44:17 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void				ft_aff_prompt(void)
 	ctx = CTX;
 	if (ctx->prompt)
 		return ;
+	ctx->sub_shell = 0;
 	PS->str = NULL;
 	ft_psone(ctx->env, CTX);
 	ft_putstr(PS->str);

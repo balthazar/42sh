@@ -6,13 +6,13 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/02 17:04:30 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/06 00:42:01 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/10 17:54:58 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
 
-void				ft_add_char(char c)
+void				ft_insert_char(char c)
 {
 	t_ctx			*ctx;
 	int				tmp;
@@ -24,9 +24,17 @@ void				ft_add_char(char c)
 		ctx->line[tmp] = ctx->line[tmp - 1];
 		--tmp;
 	}
-	ctx->line[CTX->i] = c;
+	ctx->line[ctx->i] = c;
 	++ctx->i;
 	++ctx->len;
+}
+
+void				ft_add_char(char c)
+{
+	t_ctx			*ctx;
+
+	ctx = CTX;
+	ft_insert_char(c);
 	ft_putchar(c);
 	++ctx->pos.x;
 	if (ft_exceed())

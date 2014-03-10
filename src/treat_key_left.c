@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/02 17:07:52 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/06 18:42:03 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/10 17:45:53 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int					treat_key_left(void)
 	t_ctx			*ctx;
 
 	ctx = CTX;
-	if (ctx->i > 0)
+	if (ctx->i > 0 && (!ctx->sub_shell || ctx->pos.x > 2))
 	{
 		if (ctx->pos.x == 0)
 		{
