@@ -38,18 +38,20 @@ void	ft_streplace(char **str, char *pattern, char *replace)
 
 	i = 0;
 	len = ft_strlen(pattern);
-	first = NULL;
 	end = NULL;
 	while (*str && pattern && (*str)[i] != '\0')
 	{
+		first = NULL;
 		if (!ft_strncmp(pattern, *str + i, len))
 		{
 			if (i > 0)
 				first = ft_strsub(*str, 0, i);
 			end = ft_strsub(*str, i + len, ft_strlen(*str + i + len));
+			if (!first && !end && replace[0] == '\0')
+				break ;
 			free(*str);
 			*str = ft_join_three(first, replace, end);
-			i += len;
+			i += len + 1;
 		}
 		else
 			++i;

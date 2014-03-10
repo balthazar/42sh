@@ -20,7 +20,7 @@ void				ft_aff_prompt(void)
 	if (ctx->prompt)
 		return ;
 	PS->str = NULL;
-	/*ft_psone(ctx->env);*/
+	ft_psone(ctx->env);
 	if (!PS->str)
 		PS->str = ft_strdup("YOLO-Shell> ");
 	ft_putstr(PS->str);

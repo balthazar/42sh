@@ -57,6 +57,8 @@ static void	ft_replacements(t_ctx *ctx, char **env)
 	char			*tmp;
 
 	p = getpwuid(getuid());
+	if (p)
+		ft_streplace(&PS->str, "%n", p->pw_name);
 	gethostname(hostname, 1023);
 	ft_streplace(&PS->str, "%M", hostname);
 	tmp = ft_struntil(hostname, '.');
@@ -68,7 +70,6 @@ static void	ft_replacements(t_ctx *ctx, char **env)
 	tmp = ft_strdup(ft_getvar_env("PWD", env));
 	ft_streplace(&PS->str, "%~", tmp);
 	free(tmp);
-	ft_streplace(&PS->str, "%n", p->pw_name);
 	ft_streplace(&PS->str, "%%", "%");
 	ft_streplace(&PS->str, "%)", ")");
 	tmp = ft_strdup(ft_getvar_env("SHLVL", env));
