@@ -6,7 +6,7 @@
 /*   By: janteuni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 15:12:47 by janteuni          #+#    #+#             */
-/*   Updated: 2014/03/04 16:02:26 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/10 18:03:06 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,9 @@ void				ft_term_init(void)
 	char		*term;
 
 	if ((term = (char *) getenv("TERM")) == NULL)
-		ft_error("Can't determinate terminal.\n");
+		ft_error("Can't determine terminal purpose.");
 	if (tgetent(NULL, term) != 1)
-		ft_error("Failed with tgetent\n");
+		ft_error("Failed with tgetent");
 	ft_raw_term();
 }
 
