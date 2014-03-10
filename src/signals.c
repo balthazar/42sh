@@ -6,7 +6,7 @@
 /*   By: fbeck <fbeck@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/26 15:09:26 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/10 18:51:21 by janteuni         ###   ########.fr       */
+/*   Updated: 2014/03/10 18:55:26 by janteuni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,6 +131,12 @@ static void			ft_resize(int sig)
 	tputs(tgetstr("im", NULL), 1, ft_putput);
 }
 
+static void			ft_sigsev(int sig)
+{
+	(void)sig;
+	ft_error("Segfaulting, but quitting properly.");
+}
+
 void				setup_signal(void)
 {
 	if ((signal(SIGQUIT, ft_quit) == SIG_ERR)
@@ -138,7 +144,7 @@ void				setup_signal(void)
 			|| (signal(SIGTSTP, ft_ctrlz) == SIG_ERR)
 			|| (signal(SIGCONT, ft_fg) == SIG_ERR)
 			|| (signal(SIGCHLD, ft_child) == SIG_ERR)
-			|| (signal(SIGSEGV, ft_quit) == SIG_ERR)
+			|| (signal(SIGSEGV, ft_sigsev) == SIG_ERR)
 			|| (signal(SIGWINCH, ft_resize) == SIG_ERR))
 		ft_error("failed to setup signals");
 }
