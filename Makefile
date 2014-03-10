@@ -68,6 +68,8 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/treat_key_backsp.c \
 					  $(DIR_SRC)/treat_key_up.c \
 					  $(DIR_SRC)/treat_key_down.c \
+					  $(DIR_SRC)/treat_key_home.c \
+					  $(DIR_SRC)/treat_key_end.c \
 					  $(DIR_SRC)/ft_clean_line.c \
 					  $(DIR_SRC)/ft_clear_line.c \
 					  $(DIR_SRC)/ft_logpos.c \

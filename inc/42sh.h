@@ -47,7 +47,7 @@
 # define C(EL)			((t_cmd *) EL->content)
 # define CH(X)			(((t_chev *)X->content))
 
-# define NB_KEYS		8
+# define NB_KEYS		10
 # define K_LEFT			tgetstr("kl", NULL)
 # define K_RIGHT		tgetstr("kr", NULL)
 # define K_DOWN			tgetstr("kd", NULL)
@@ -56,11 +56,14 @@
 # define K_ENTER		tgetstr("cr", NULL)
 # define K_BACKSP		("\177")
 # define K_CTRLD		("\004")
+# define K_HOME			tgetstr("kh", NULL)
+# define K_END			("\033OF")
 
 # define GETT(E, T)		((t_cmd *) (E)->content)->T
 # define CMU			(GETT(node, cmd)[1])
 # define CNIL			(!ft_strcmp(GETT(node, cmd)[1], "-i"))
 # define PS				ctx->psone
+# define PSLEN			PS->realsize
 # define HIS			ctx->history
 # define NBTIME			7
 # define NBBS			8
@@ -199,6 +202,8 @@ int					treat_key_delete(void);
 int					treat_key_backsp(void);
 int					treat_key_up(void);
 int					treat_key_down(void);
+int					treat_key_home(void);
+int					treat_key_end(void);
 
 int					ft_putput(int c);
 void				ft_reset_term(void);
@@ -267,13 +272,14 @@ int					ft_fill_path(t_cmd *cmd);
 int					ft_treat_node(t_btree *node);
 int					ft_redirect(t_btree *node);
 int					ft_create_files(t_btree *node);
+int					ft_close_files(t_btree *node);
+
 int					treat_cmd(t_btree *node);
 int					treat_pipe(t_btree *node);
 int					treat_end(t_btree *node);
 int					treat_and(t_btree *node);
 int					treat_or(t_btree *node);
 int					treat_chev(t_btree *node);
-int					ft_close_files(t_btree *node);
 
 /*
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -1,39 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_loop.c                                          :+:      :+:    :+:   */
+/*   treat_key_end.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/01 15:41:53 by janteuni          #+#    #+#             */
-/*   Updated: 2014/03/10 18:26:14 by mpillet          ###   ########.fr       */
+/*   Created: 2014/03/10 18:27:42 by mpillet           #+#    #+#             */
+/*   Updated: 2014/03/10 18:41:35 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <sys/types.h>
-#include <sys/uio.h>
-#include <unistd.h>
 #include "42sh.h"
 
-static int			st_isprint(char *buf)
+int					treat_key_end(void)
 {
-	return (ft_isprint(buf[0]) && buf[1] == 0 && buf[2] == 0 && buf[3] == 0
-			&& buf[4] == 0 && buf[5] == 0);
-}
+	t_ctx			*ctx;
 
-int					ft_loop(void)
-{
-	char			*buf;
-
-	buf = CTX->buf;
-	while (1)
-	{
-		ft_bzero(buf, BUF_LEN + 1);
-		read(STDIN_FILENO, buf, BUF_LEN);
-		if (st_isprint(buf))
-			ft_add_char(buf[0]);
-		else
-			ft_treat_key(buf);
-	}
+	ctx = CTX;
+	while (ctx->i < ctx->len)
+		treat_key_right();
 	return (OK);
 }
