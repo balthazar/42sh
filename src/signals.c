@@ -6,7 +6,7 @@
 /*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/26 15:09:26 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/07 17:36:29 by fbeck            ###   ########.fr       */
+/*   Updated: 2014/03/10 18:43:34 by janteuni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,17 @@
 void				ft_ctrlz(int sig)
 {
 	(void)sig;
-	ft_raw_term();
-	ft_putchar('\n');
-	ft_putstr("[1]+  Stopped(SIGTSTP) ");
-	ft_putendl(JOB(CTX->jobs)->line);
-	CTX->sub_proc = 0;
-	CTX->prompt = 0;
-	ft_clear_line();
-	ft_aff_prompt();
+	if (CTX->jobs)
+	{
+		ft_raw_term();
+		ft_putchar('\n');
+		ft_putstr("[1]+  Stopped(SIGTSTP) ");
+		ft_putendl(JOB(CTX->jobs)->line);
+		CTX->sub_proc = 0;
+		CTX->prompt = 0;
+		ft_clear_line();
+		ft_aff_prompt();
+	}
 }
 
 void				ft_child(int sig)
@@ -135,6 +138,7 @@ void				setup_signal(void)
 			|| (signal(SIGTSTP, ft_ctrlz) == SIG_ERR)
 			|| (signal(SIGCONT, ft_fg) == SIG_ERR)
 			|| (signal(SIGCHLD, ft_child) == SIG_ERR)
+			|| (signal(SIGSEGV, ft_quit) == SIG_ERR)
 			|| (signal(SIGWINCH, ft_resize) == SIG_ERR))
 		ft_error("failed to setup signals");
 }

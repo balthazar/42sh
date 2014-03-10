@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 11:01:11 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/10 16:47:03 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/10 18:27:13 by janteuni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdlib.h>
 #include "42sh.h"
 
-void	ft_reset_line(t_ctx *ctx, int flag)
+void		ft_reset_line(t_ctx *ctx, int flag)
 {
 	ft_clean_line();
 	ft_bzero(ctx->line, LINE_LEN);
@@ -28,7 +28,7 @@ void	ft_reset_line(t_ctx *ctx, int flag)
 	ft_rewrite(TRUE);
 }
 
-void	ft_add_history(char *str)
+void		ft_add_history(char *str)
 {
 	int		fd;
 	char	*tmp;
@@ -48,13 +48,14 @@ void	ft_add_history(char *str)
 		free(tmp);
 		if (fd != -1)
 		{
+			//ft_replace_newlines(&str);
 			ft_putendl_fd(str, fd);
 			close(fd);
 		}
 	}
 }
 
-void	ft_load_history(t_ctx *ctx, int fd, char *tmp, t_dlist *new)
+void		ft_load_history(t_ctx *ctx, int fd, char *tmp, t_dlist *new)
 {
 	tmp = ft_getvar_env("HOME", ctx->env);
 	if (tmp)
