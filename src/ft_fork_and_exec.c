@@ -6,7 +6,7 @@
 /*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 14:24:03 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/07 17:33:42 by fbeck            ###   ########.fr       */
+/*   Updated: 2014/03/08 23:36:00 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,7 @@ static void				st_add_jobs(pid_t process)
 	{
 		if (((t_jobs *)list->content)->first == FIRST)
 			((t_jobs *)list->content)->first = SECOND;
-		else if(((t_jobs *)list->content)->first == SECOND)
+		else if (((t_jobs *)list->content)->first == SECOND)
 			((t_jobs *)list->content)->first = LOSER;
 		list = list->next;
 	}
