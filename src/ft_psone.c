@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/27 12:38:51 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/10 17:57:03 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/10 18:06:23 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void		ft_psone(char **env, t_ctx *ctx)
 			free(PS->str);
 		PS->str = ft_strdup(copy);
 		ft_replacements(ctx, env, NULL);
-		if ((PS->realsize = ft_realsize(PS->str, 0, 0, ft_strlen(PS->str))) == -1)
+		if ((PSLEN = ft_realsize(PS->str, 0, 0, ft_strlen(PS->str))) == -1)
 		{
 			PS->str = ft_strdup("YOLO-Shell> ");
 			PS->realsize = ft_strlen(PS->str);
