@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/04 15:59:04 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/05 19:38:36 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/10 16:27:42 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	ft_parse_history(t_btree *node)
 	if (ft_parse_history_cmd(GETT(node, cmd)[1], node))
 		;
 	else if (GETT(node, cmd)[1] && GETT(node, cmd)[2])
-		ft_err("xxToo many arguments.");
+		ft_err("Too many arguments.");
 	else
 	{
 		if (!ft_stronly(GETT(node, cmd)[1], ft_isdigit))
