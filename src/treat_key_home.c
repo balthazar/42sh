@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/10 18:07:15 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/10 18:10:26 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/10 18:22:30 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 int					treat_key_home(void)
 {
-	printf("PUTE IS PUTE\n");
-	ft_exit(0);
+	t_ctx			*ctx;
+
+	ctx = CTX;
+	while (ctx->i)
+		treat_key_left();
 	return (OK);
 }
