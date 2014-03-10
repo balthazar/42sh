@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/02 16:22:32 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/10 18:09:25 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/10 18:17:37 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int					ft_treat_key(char *buf)
 	i = 0;
 	while (i < NB_KEYS)
 	{
-		if (0 == ft_strcmp(keys[i].key, buf))
+		if (keys[i].key && 0 == ft_strcmp(keys[i].key, buf))
 			return (keys[i].fn());
 		++i;
 	}

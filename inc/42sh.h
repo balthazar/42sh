@@ -56,7 +56,7 @@
 # define K_ENTER		tgetstr("cr", NULL)
 # define K_BACKSP		("\177")
 # define K_CTRLD		("\004")
-# define K_HOME			tgetstr("kH", NULL)
+# define K_HOME			tgetstr("kh", NULL)
 
 # define GETT(E, T)		((t_cmd *) (E)->content)->T
 # define CMU			(GETT(node, cmd)[1])
