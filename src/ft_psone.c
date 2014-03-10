@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/27 12:38:51 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/10 17:57:03 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/10 17:59:30 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,6 @@ void		ft_psone(char **env, t_ctx *ctx)
 		if ((PS->realsize = ft_realsize(PS->str, 0, 0, ft_strlen(PS->str))) == -1)
 		{
 			PS->str = ft_strdup("YOLO-Shell> ");
-			PS->realsize = ft_strlen(PS->str);
 			return ;
 		}
 		ft_streplace(&PS->str, "%{", "");
