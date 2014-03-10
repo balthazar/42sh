@@ -61,6 +61,7 @@
 # define CMU			(GETT(node, cmd)[1])
 # define CNIL			(!ft_strcmp(GETT(node, cmd)[1], "-i"))
 # define PS				ctx->psone
+# define PSLEN			PS->realsize
 # define HIS			ctx->history
 # define NBTIME			7
 # define NBBS			8
