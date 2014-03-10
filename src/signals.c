@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signals.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: fbeck <fbeck@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/26 15:09:26 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/10 18:43:34 by janteuni         ###   ########.fr       */
+/*   Updated: 2014/03/10 18:51:21 by janteuni         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 void				ft_ctrlz(int sig)
 {
 	(void)sig;
-	if (CTX->jobs)
+	if (CTX->sub_proc)
 	{
 		ft_raw_term();
 		ft_putchar('\n');
