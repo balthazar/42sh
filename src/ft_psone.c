@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/27 12:38:51 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/10 01:35:47 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/10 16:24:53 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,10 @@ static int	ft_realsize(char *str, int i, int open, int size)
 	return (size);
 }
 
-static void	ft_replacements(t_ctx *ctx, char **env)
+static void	ft_replacements(t_ctx *ctx, char **env, char *tmp)
 {
 	char			hostname[1024];
 	struct passwd	*p;
-	char			*tmp;
 
 	p = getpwuid(getuid());
 	if (p)
@@ -67,7 +66,6 @@ static void	ft_replacements(t_ctx *ctx, char **env)
 	tmp = ft_strdup(ft_getvar_env("PWD", env));
 	ft_streplace(&PS->str, "%/", tmp);
 	ft_streplace(&tmp, ft_getvar_env("HOME", env), "~");
-	tmp = ft_strdup(ft_getvar_env("PWD", env));
 	ft_streplace(&PS->str, "%~", tmp);
 	free(tmp);
 	ft_streplace(&PS->str, "%%", "%");
@@ -91,7 +89,7 @@ void		ft_psone(char **env)
 		if (PS->str)
 			free(PS->str);
 		PS->str = ft_strdup(copy);
-		ft_replacements(ctx, env);
+		ft_replacements(ctx, env, NULL);
 		if ((size = ft_realsize(PS->str, 0, 0, ft_strlen(PS->str))) == -1)
 		{
 			free(PS->str);
