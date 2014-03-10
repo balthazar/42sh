@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/03 11:01:11 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/10 18:27:13 by janteuni         ###   ########.fr       */
+/*   Updated: 2014/03/10 19:22:16 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,26 @@ void		ft_reset_line(t_ctx *ctx, int flag)
 	ft_rewrite(TRUE);
 }
 
+static char	*ft_replace_newline(char *str)
+{
+	char	*out;
+
+	out = ft_strdup(str);
+	ft_streplace(&out, "\n", " ");
+	return (out);
+}
+
 void		ft_add_history(char *str)
 {
 	int		fd;
 	char	*tmp;
+	char	*copy;
 	t_ctx	*ctx;
 	t_dlist	*new;
 
 	ctx = CTX;
-	new = ft_dlstnew(str, sizeof(char) * (ft_strlen(str) + 1));
+	copy = ft_replace_newline(str);
+	new = ft_dlstnew(copy, sizeof(char) * (ft_strlen(str) + 1));
 	ft_dlstpush(&ctx->history, new);
 	ctx->cur_h = NULL;
 	ctx->end_h = new;
@@ -48,11 +59,11 @@ void		ft_add_history(char *str)
 		free(tmp);
 		if (fd != -1)
 		{
-			//ft_replace_newlines(&str);
-			ft_putendl_fd(str, fd);
+			ft_putendl_fd(copy, fd);
 			close(fd);
 		}
 	}
+	free(copy);
 }
 
 void		ft_load_history(t_ctx *ctx, int fd, char *tmp, t_dlist *new)
