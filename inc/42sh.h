@@ -279,7 +279,7 @@ int					ft_close_files(t_btree *node);
 ** - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 */
 
-void				ft_psone(char **env);
+void				ft_psone(char **env, t_ctx *ctx);
 void				ft_timepurpose(t_ctx *ctx);
 char				*ft_time_majd(struct tm *l);
 char				*ft_time_majw(struct tm *l);

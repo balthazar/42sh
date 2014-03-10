@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/27 12:38:51 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/10 16:24:53 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/10 16:55:29 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,11 @@ static void	ft_replacements(t_ctx *ctx, char **env, char *tmp)
 	ft_timepurpose(ctx);
 }
 
-void		ft_psone(char **env)
+void		ft_psone(char **env, t_ctx *ctx)
 {
-	t_ctx	*ctx;
 	char	*copy;
 	int		size;
 
-	ctx = ft_get_ctx();
 	copy = ft_getvar_env("PS1", env);
 	if (copy)
 	{
@@ -92,11 +90,16 @@ void		ft_psone(char **env)
 		ft_replacements(ctx, env, NULL);
 		if ((size = ft_realsize(PS->str, 0, 0, ft_strlen(PS->str))) == -1)
 		{
-			free(PS->str);
-			PS->str = NULL;
+			PS->str = ft_strdup("YOLO-Shell> ");
+			PS->realsize = ft_strlen(PS->str);
 			return ;
 		}
 		ft_streplace(&PS->str, "%{", "");
 		ft_streplace(&PS->str, "%}", "");
+	}
+	else
+	{
+		PS->str = ft_strdup("YOLO-Shell> ");
+		PS->realsize = ft_strlen(PS->str);
 	}
 }
