@@ -13,6 +13,7 @@
 #include <stdlib.h>
 #include <signal.h>
 #include <sys/ioctl.h>
+#include <sys/wait.h>
 #include "42sh.h"
 
 void				ft_ctrlz(int sig)
