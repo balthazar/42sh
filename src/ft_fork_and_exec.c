@@ -6,7 +6,7 @@
 /*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 14:24:03 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/11 14:05:18 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/11 14:28:19 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,9 @@ void					ft_lst_del_job(t_list **list, t_list *node)
 
 static void				st_add_jobs(pid_t process)
 {
-	t_jobs			j;
-	static int		nb = 1;
-	t_list			*list;
+	t_jobs				j;
+	static int			nb = 1;
+	t_list				*list;
 
 	list = CTX->jobs;
 	if (!list)
@@ -75,10 +75,10 @@ static void				st_add_jobs(pid_t process)
 	ft_lstadd(&CTX->jobs, ft_lstnew(&j, sizeof(t_jobs)));
 }
 
-void				ft_fork_and_exec(t_btree *node)
+void					ft_fork_and_exec(t_btree *node)
 {
-	pid_t			father;
-	int				status;
+	pid_t				father;
+	int					status;
 
 	CTX->sub_proc = 1;
 	if (-1 == (father = fork()))
