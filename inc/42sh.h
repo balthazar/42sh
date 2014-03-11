@@ -6,7 +6,7 @@
 /*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/11 14:00:35 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/11 14:00:38 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/11 14:18:39 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -349,7 +349,10 @@ void				setup_signal(void);
 void				reset_signal(void);
 void				ft_fg(int i);
 void				ft_ctrlz(int sig);
-void					ft_lst_del_job(t_list **list, t_list *node);
+void				ft_ctrl_c(int i);
+void				ft_lst_del_job(t_list **list, t_list *node);
+void				ft_resize(int sig);
+void				ft_child(int sig);
 
 void		print_tree(t_btree *node, int level, int dir); /* TODO delete */
 void		ft_logpos(void);

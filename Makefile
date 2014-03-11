@@ -6,7 +6,7 @@
 #    By: mpillet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/03/11 14:01:00 by mpillet           #+#    #+#              #
-#    Updated: 2014/03/11 14:01:01 by mpillet          ###   ########.fr        #
+#    Updated: 2014/03/11 14:17:42 by mpillet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ LIBS				= -L libft -lft -L /usr/lib -lncurses -ltermcap
 SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/context.c \
 					  $(DIR_SRC)/error.c \
+					  $(DIR_SRC)/jobs.c \
 					  $(DIR_SRC)/signals.c \
 					  $(DIR_SRC)/ft_clean.c \
 					  $(DIR_SRC)/ft_loop.c \
@@ -90,6 +91,7 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_go_end.c \
 					  $(DIR_SRC)/ft_exceed.c \
 					  $(DIR_SRC)/ft_move_to.c \
+					  $(DIR_SRC)/ft_resize.c \
 
 # ---------------------------------------------------------------------------- #
 
