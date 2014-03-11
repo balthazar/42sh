@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/05 23:53:27 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/11 14:31:16 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void				ft_logpos(void)
 	tputs(tgetstr("mr", NULL), 1, ft_putput);
 	ctx = CTX;
 	i = 0;
-
 	st_log(i++, "ctx->cols", ft_itoa(ctx->cols));
 	st_log(i++, "ctx->rows", ft_itoa(ctx->rows));
 	st_log(i++, "ctx->line", ctx->line);
@@ -53,7 +52,6 @@ void				ft_logpos(void)
 	st_log(i++, "pos.x", ft_itoa(ctx->pos.x));
 	st_log(i++, "pos.y", ft_itoa(ctx->pos.y));
 	st_log(i++, "exceed", ft_itoa(ft_exceed()));
-
 	tputs(tgetstr("me", NULL), 1, ft_putput);
 	tputs(tgetstr("rc", NULL), 1, ft_putput);
 	tputs(tgetstr("im", NULL), 1, ft_putput);

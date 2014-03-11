@@ -6,15 +6,13 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/23 19:02:46 by mpillet           #+#    #+#             */
-/*   Updated: 2014/01/24 15:48:47 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/11 14:53:19 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 # define BUFF_SIZE 4096
-
-int					get_next_line(int const fd, char **line);
 
 typedef struct		s_read
 {
@@ -24,5 +22,8 @@ typedef struct		s_read
 	char			*read;
 	struct s_read	*next;
 }					t_read;
+
+int					get_next_line(int const fd, char **line, int reset);
+void				ft_free_read(t_read **read);
 
 #endif /* !GET_NEXT_LINE_H */

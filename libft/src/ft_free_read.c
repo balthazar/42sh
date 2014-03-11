@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exit_builtin.c                                  :+:      :+:    :+:   */
+/*   ft_free_read.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/01/28 10:42:27 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/11 14:25:29 by mpillet          ###   ########.fr       */
+/*   Created: 2014/03/11 14:51:43 by bgronon           #+#    #+#             */
+/*   Updated: 2014/03/11 14:58:48 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include "42sh.h"
+#include "libft.h"
+#include "get_next_line.h"
 
-void	ft_exit_builtin(t_btree *node)
+void		ft_free_read(t_read **read)
 {
-	int		nb;
+	t_read	*tmp;
+	t_read	*next;
 
-	nb = 0;
-	if (GETT(node, cmd)[1])
-		nb = ft_atoi(GETT(node, cmd)[1]);
-	ft_exit(nb);
+	tmp = *read;
+	while (tmp)
+	{
+		next = tmp->next;
+		ft_memdel((void **)&tmp->read);
+		ft_memdel((void **)&tmp);
+		tmp = next;
+	}
+	*read = NULL;
 }

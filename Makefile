@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mpillet <marvin@42.fr>                     +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2014/03/11 14:01:00 by mpillet           #+#    #+#              #
+#    Updated: 2014/03/11 14:22:46 by mpillet          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME				= yolosh
 
 CC					= clang
@@ -8,6 +20,7 @@ LIBS				= -L libft -lft -L /usr/lib -lncurses -ltermcap
 SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/context.c \
 					  $(DIR_SRC)/error.c \
+					  $(DIR_SRC)/jobs.c \
 					  $(DIR_SRC)/signals.c \
 					  $(DIR_SRC)/ft_clean.c \
 					  $(DIR_SRC)/ft_loop.c \
@@ -33,7 +46,6 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/treat_and.c \
 					  $(DIR_SRC)/treat_chev.c \
 					  $(DIR_SRC)/treat_or.c \
-					  $(DIR_SRC)/print_tree.c \
 					  $(DIR_SRC)/ft_term_mode.c \
 					  $(DIR_SRC)/ft_aff_prompt.c \
 					  $(DIR_SRC)/ft_launch.c \
@@ -78,6 +90,7 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_go_end.c \
 					  $(DIR_SRC)/ft_exceed.c \
 					  $(DIR_SRC)/ft_move_to.c \
+					  $(DIR_SRC)/ft_resize.c \
 
 # ---------------------------------------------------------------------------- #
 

@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/27 12:38:51 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/10 18:06:23 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/11 15:05:50 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,14 +81,15 @@ void		ft_psone(char **env, t_ctx *ctx)
 	char	*copy;
 
 	copy = ft_getvar_env("PS1", env);
+	if (PS->str)
+		ft_memdel((void **)&PS->str);
 	if (copy)
 	{
-		if (PS->str)
-			free(PS->str);
 		PS->str = ft_strdup(copy);
 		ft_replacements(ctx, env, NULL);
 		if ((PSLEN = ft_realsize(PS->str, 0, 0, ft_strlen(PS->str))) == -1)
 		{
+			ft_memdel((void **)&PS->str);
 			PS->str = ft_strdup("YOLO-Shell> ");
 			PS->realsize = ft_strlen(PS->str);
 			return ;
