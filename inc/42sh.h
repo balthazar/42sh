@@ -6,7 +6,7 @@
 /*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/11 14:00:35 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/11 14:22:39 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/11 14:23:53 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -354,6 +354,6 @@ void				ft_lst_del_job(t_list **list, t_list *node);
 void				ft_resize(int sig);
 void				ft_child(int sig);
 
-void		ft_logpos(void);
+void				ft_logpos(void);
 
 #endif /* !A42SH_H */
