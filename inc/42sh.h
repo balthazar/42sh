@@ -6,14 +6,12 @@
 /*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/11 14:00:35 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/11 14:23:53 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/11 16:29:12 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef A42SH_H
 # define A42SH_H
-
-# include <stdio.h> /* TODO delete */
 
 # include <termios.h>
 # include <curses.h>
