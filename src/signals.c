@@ -6,7 +6,7 @@
 /*   By: fbeck <fbeck@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/26 15:09:26 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/10 18:55:26 by janteuni         ###   ########.fr       */
+/*   Updated: 2014/03/11 14:12:25 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 void				ft_ctrlz(int sig)
 {
 	(void)sig;
-	if (CTX->sub_proc)
+	if (CTX->jobs && CTX->sub_proc)
 	{
 		ft_raw_term();
 		ft_putchar('\n');
@@ -47,6 +47,7 @@ void				ft_child(int sig)
 			{
 				ft_raw_term();
 				ft_lst_del_job(&(CTX->jobs), ptr);
+				CTX->sub_proc = 0;
 			}
 		}
 		ptr = ptr->next;
