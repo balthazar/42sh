@@ -1,44 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_add_char.c                                      :+:      :+:    :+:   */
+/*   treat_key_home.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/02 17:04:30 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/10 17:54:58 by mpillet          ###   ########.fr       */
+/*   Created: 2014/03/10 18:07:15 by mpillet           #+#    #+#             */
+/*   Updated: 2014/03/10 18:22:30 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "42sh.h"
 
-void				ft_insert_char(char c)
-{
-	t_ctx			*ctx;
-	int				tmp;
-
-	ctx = CTX;
-	tmp = ft_strlen(ctx->line);
-	while (tmp != ctx->i)
-	{
-		ctx->line[tmp] = ctx->line[tmp - 1];
-		--tmp;
-	}
-	ctx->line[ctx->i] = c;
-	++ctx->i;
-	++ctx->len;
-}
-
-void				ft_add_char(char c)
+int					treat_key_home(void)
 {
 	t_ctx			*ctx;
 
 	ctx = CTX;
-	ft_insert_char(c);
-	ft_putchar(c);
-	++ctx->pos.x;
-	if (ft_exceed())
-		ft_rewrite(FALSE);
-	if (ctx->pos.x >= ctx->cols)
-		ft_move_cursor();
+	while (ctx->i)
+		treat_key_left();
+	return (OK);
 }

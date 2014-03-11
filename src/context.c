@@ -6,10 +6,11 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 15:07:16 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/04 13:18:23 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/07 19:57:41 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include <sys/ioctl.h>
 #include <stdlib.h>
 #include "42sh.h"
@@ -22,14 +23,15 @@ static void			st_set_defaults(t_ctx *ctx)
 	ctx->cols = w.ws_col;
 	ctx->rows = w.ws_row;
 	ctx->env = NULL;
-	ctx->i = 0;
 	ctx->prompt = 0;
 	ctx->len = 0;
 	ctx->history = NULL;
 	ctx->cur_h = NULL;
 	ctx->end_h = NULL;
-	ctx->child = -1;
 	ctx->jobs = NULL;
+	ctx->sub_proc = 0;
+	ctx->cpt_h = 0;
+	ctx->prompt_len = 0;
 	ft_bzero(ctx->line, LINE_LEN);
 	ft_bzero(ctx->buf, BUF_LEN);
 	PS->str = NULL;

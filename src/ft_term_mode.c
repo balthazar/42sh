@@ -6,7 +6,7 @@
 /*   By: janteuni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 15:12:47 by janteuni          #+#    #+#             */
-/*   Updated: 2014/03/04 12:41:08 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/10 18:03:06 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,17 @@ int					ft_putput(int c)
 {
 	write(1, &c, 1);
 	return (0);
+}
+
+void				ft_term_init(void)
+{
+	char		*term;
+
+	if ((term = (char *) getenv("TERM")) == NULL)
+		ft_error("Can't determine terminal purpose.");
+	if (tgetent(NULL, term) != 1)
+		ft_error("Failed with tgetent");
+	ft_raw_term();
 }
 
 void				ft_reset_term(void)
@@ -47,5 +58,4 @@ void				ft_raw_term(void)
 	tattr.c_cc[VTIME] = 0;
 	tcsetattr(STDIN_FILENO, TCSADRAIN, &tattr);
 	tputs(tgetstr("ks", NULL), 1, ft_putput);
-	tputs(tgetstr("im", NULL), 1, ft_putput);
 }

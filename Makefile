@@ -12,6 +12,8 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_clean.c \
 					  $(DIR_SRC)/ft_loop.c \
 					  $(DIR_SRC)/ft_lexer.c \
+					  $(DIR_SRC)/ft_lexer_push.c \
+					  $(DIR_SRC)/ft_init_cmd.c \
 					  $(DIR_SRC)/ft_parser.c \
 					  $(DIR_SRC)/ft_parser_tree.c \
 					  $(DIR_SRC)/ft_parser_node.c \
@@ -32,7 +34,6 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/treat_chev.c \
 					  $(DIR_SRC)/treat_or.c \
 					  $(DIR_SRC)/print_tree.c \
-					  $(DIR_SRC)/ft_term_init.c \
 					  $(DIR_SRC)/ft_term_mode.c \
 					  $(DIR_SRC)/ft_aff_prompt.c \
 					  $(DIR_SRC)/ft_launch.c \
@@ -41,6 +42,12 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_builtin.c \
 					  $(DIR_SRC)/ft_cd.c \
 					  $(DIR_SRC)/ft_exit_builtin.c \
+					  $(DIR_SRC)/ft_history.c \
+					  $(DIR_SRC)/ft_history_utils.c \
+					  $(DIR_SRC)/ft_history_delete.c \
+					  $(DIR_SRC)/ft_history_write.c \
+					  $(DIR_SRC)/ft_history_builtin.c \
+					  $(DIR_SRC)/ft_exclamation.c \
 					  $(DIR_SRC)/ft_env.c \
 					  $(DIR_SRC)/ft_setenv.c \
 					  $(DIR_SRC)/ft_unsetenv.c \
@@ -49,7 +56,6 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/ft_time_utils_two.c \
 					  $(DIR_SRC)/ft_psone.c \
 					  $(DIR_SRC)/ft_getvar_env.c \
-					  $(DIR_SRC)/ft_history.c \
 					  $(DIR_SRC)/ft_odd_quotes.c \
 					  $(DIR_SRC)/ft_add_char.c \
 					  $(DIR_SRC)/ft_del_char.c \
@@ -62,8 +68,16 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/treat_key_backsp.c \
 					  $(DIR_SRC)/treat_key_up.c \
 					  $(DIR_SRC)/treat_key_down.c \
+					  $(DIR_SRC)/treat_key_home.c \
+					  $(DIR_SRC)/treat_key_end.c \
 					  $(DIR_SRC)/ft_clean_line.c \
 					  $(DIR_SRC)/ft_clear_line.c \
+					  $(DIR_SRC)/ft_logpos.c \
+					  $(DIR_SRC)/ft_move_cursor.c \
+					  $(DIR_SRC)/ft_rewrite.c \
+					  $(DIR_SRC)/ft_go_end.c \
+					  $(DIR_SRC)/ft_exceed.c \
+					  $(DIR_SRC)/ft_move_to.c \
 
 # ---------------------------------------------------------------------------- #
 

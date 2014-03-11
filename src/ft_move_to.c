@@ -1,51 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   treat_key_backsp.c                                 :+:      :+:    :+:   */
+/*   ft_move_to.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/06 00:42:13 by mpillet          ###   ########.fr       */
+/*   Created: 2014/03/07 15:08:51 by mpillet           #+#    #+#             */
+/*   Updated: 2014/03/07 15:31:23 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include "42sh.h"
 
-static void			st_go_end(int cols)
+static void			st_go_to(t_ctx *ctx, int pos)
 {
-	int				i;
+	(void) ctx;
+	(void) pos;
+}
 
-	i = 0;
-	while (i < cols - 1)
+static void			st_back_to(t_ctx *ctx, int pos)
+{
+	(void) ctx;
+	(void) pos;
+	while (ctx->i > pos)
 	{
-		tputs(tgetstr("nd", NULL), 1, ft_putput);
-		++i;
+		--ctx->pos.x;
+		--ctx->i;
+		if (ctx->pos.x < 0)
+		{
+			tputs(tgetstr("up", NULL), 1, ft_putput);
+			ft_go_end(ctx->cols);
+			ctx->pos.x = ctx->cols - 1;
+			--ctx->pos.y;
+		}
+		else
+			tputs(tgetstr("le", NULL), 1, ft_putput);
 	}
 }
 
-int					treat_key_backsp(void)
+void				ft_move_to(int pos)
 {
 	t_ctx			*ctx;
 
 	ctx = CTX;
-	if (ctx->i > 0)
-	{
-		tputs(tgetstr("le", NULL), 1, ft_putput);
-		tputs(tgetstr("dc", NULL), 1, ft_putput);
-		--ctx->i;
-		--ctx->pos.x;
-		ft_del_char();
-		if (ctx->pos.x < 0)
-		{
-			tputs(tgetstr("up", NULL), 1, ft_putput);
-			st_go_end(ctx->cols);
-			tputs(tgetstr("dc", NULL), 1, ft_putput);
-			ctx->pos.x = ctx->cols - 1;
-			--ctx->pos.y;
-		}
-		if (ft_exceed())
-			ft_rewrite(FALSE);
-	}
-	return (OK);
+	if (ctx->i > pos)
+		st_back_to(ctx, pos);
+	else if (ctx->i < pos)
+		st_go_to(ctx, pos);
 }
