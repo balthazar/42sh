@@ -6,7 +6,7 @@
 #    By: mpillet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/03/11 14:01:00 by mpillet           #+#    #+#              #
-#    Updated: 2014/03/11 14:17:42 by mpillet          ###   ########.fr        #
+#    Updated: 2014/03/11 14:22:46 by mpillet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,6 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/treat_and.c \
 					  $(DIR_SRC)/treat_chev.c \
 					  $(DIR_SRC)/treat_or.c \
-					  $(DIR_SRC)/print_tree.c \
 					  $(DIR_SRC)/ft_term_mode.c \
 					  $(DIR_SRC)/ft_aff_prompt.c \
 					  $(DIR_SRC)/ft_launch.c \
