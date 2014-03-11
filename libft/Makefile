@@ -94,6 +94,7 @@ SRC                = $(DIR_SRC)/ft_memset.c \
 					 $(DIR_SRC)/ft_lstlen.c \
 					 $(DIR_SRC)/ft_pad.c \
 					 $(DIR_SRC)/get_next_line.c \
+					 $(DIR_SRC)/ft_free_read.c \
 					 $(DIR_SRC)/btree_create_node.c \
 					 $(DIR_SRC)/btree_insert_data.c \
 					 $(DIR_SRC)/btree_print.c \

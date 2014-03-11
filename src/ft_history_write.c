@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/06 11:01:11 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/10 18:05:05 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/11 15:00:08 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,9 @@ void	ft_get_newlines(char *filename, t_ctx *ctx, int fdsave)
 	if (fd != -1)
 	{
 		new = NULL;
-		tmp = NULL;
-		printf("pute %d\n", fd);
-		while (get_next_line(fd, &tmp))
+		get_next_line(-1, NULL, 1);
+		while (get_next_line(fd, &tmp, 0) > 0)
 		{
-			printf("pute\n");
 			if (fdsave != -1)
 				ft_putendl_fd(tmp, fdsave);
 			new = ft_dlstnew(tmp, sizeof(char) * (ft_strlen(tmp) + 1));
