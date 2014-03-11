@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/15 18:49:13 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/10 17:05:12 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/11 15:00:10 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,13 +109,15 @@ static int			ft_findendl(int fd, t_read *red)
 	return (size);
 }
 
-int					get_next_line(int fd, char **line)
+int					get_next_line(int fd, char **line, int reset)
 {
 	static t_read	*start = NULL;
 	t_read			*red;
 	t_read			*prevtmp;
 	t_read			*tab[2];
 
+	if (reset)
+		ft_free_read(&start);
 	if (fd < 0)
 		return (-1);
 	prevtmp = NULL;
