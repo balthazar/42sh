@@ -26,17 +26,14 @@ void		ft_exit(int n)
 
 void		ft_error(char *msg)
 {
-	ft_putstr_fd("\033[0;31m", 2);
-	ft_putstr_fd("Yolosh: Error: ", 2);
-	ft_putendl_fd(msg, 2);
-	ft_putstr_fd("\033[0m", 2);
+	ft_err(msg);
 	ft_exit(1);
 }
 
 int			ft_err(char *msg)
 {
 	ft_putstr_fd("\033[0;31m", 2);
-	ft_putstr_fd("Error: ", 2);
+	ft_putstr_fd("Yolosh: Error: ", 2);
 	ft_putendl_fd(msg, 2);
 	ft_putstr_fd("\033[0m", 2);
 	return (ERR);
