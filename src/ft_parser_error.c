@@ -6,7 +6,7 @@
 /*   By: janteuni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 11:12:07 by janteuni          #+#    #+#             */
-/*   Updated: 2014/03/04 16:15:16 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/18 15:24:02 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int			ft_treat_sep(t_dlist **tmp)
 	if ((ref == END && count > 1) || (ref <= 2 && count > 2)
 			|| (ref == AND && count != 2))
 		return (ft_parser_print_err(LIST->data[0]));
-	if (ref == CHEV && !list->next)
+	if (ref == CHEV && (!list->next || NEXT->def != STR))
 		return (ft_parser_print_err(LIST->data[0]));
 	*tmp = list->next;
 	return (OK);
