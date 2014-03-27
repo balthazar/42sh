@@ -6,7 +6,7 @@
 /*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/22 10:23:53 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/05 12:46:21 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/27 11:00:41 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	else if (s1 && s2)
 	{
 		length = ft_strlen(s1) + ft_strlen(s2);
-		out = (char *) malloc(sizeof(char) * (length + 1));
+		out = (char *)malloc(sizeof(char) * (length + 1));
 		if (out)
 		{
 			ft_strcpy(out, s1);

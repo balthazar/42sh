@@ -6,7 +6,7 @@
 /*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/22 09:48:43 by mpillet           #+#    #+#             */
-/*   Updated: 2013/11/27 14:45:56 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/27 11:01:04 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 
 	length = ft_strlen(s);
 	i = 0;
-	out = (char *) malloc(sizeof(char) * (length + 1));
+	out = (char *)malloc(sizeof(char) * (length + 1));
 	if (out)
 	{
 		while (i < length)

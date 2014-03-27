@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/23 19:02:46 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/11 14:53:19 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/27 11:06:05 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,4 @@ typedef struct		s_read
 int					get_next_line(int const fd, char **line, int reset);
 void				ft_free_read(t_read **read);
 
-#endif /* !GET_NEXT_LINE_H */
+#endif
