@@ -6,15 +6,17 @@
 /*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/02 18:49:14 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/02 18:54:48 by fbeck            ###   ########.fr       */
+/*   Updated: 2014/03/12 17:59:56 by fbeck            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "42sh.h"
+#include "norme42sh.h"
 
 int					treat_key_ctrld(void)
 {
 	ft_putchar('\n');
 	ft_exit(0);
+	CTX->prompt = 0;
+	ft_aff_prompt();
 	return (OK);
 }

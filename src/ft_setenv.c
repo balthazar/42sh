@@ -6,12 +6,12 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/23 14:31:20 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/04 16:22:45 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/27 10:40:30 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "42sh.h"
+#include "norme42sh.h"
 
 static void	ft_setenv_aux(char ***new, t_btree *node, t_ctx *ctx)
 {
@@ -43,7 +43,7 @@ void		ft_setenv(t_btree *node)
 		ctx = CTX;
 		len = ft_tab_len(ctx->env);
 		ft_rmline_tab(GETT(node, cmd)[1], &ctx->env, 0);
-		new = (char **) malloc(sizeof(char *) * (len + 2));
+		new = (char **)malloc(sizeof(char *) * (len + 2));
 		ft_setenv_aux(&new, node, ctx);
 		ctx->env = new;
 	}
@@ -63,7 +63,7 @@ void		ft_setenv_b(char *name, char *value, char ***env)
 	i = 0;
 	len = ft_tab_len(*env);
 	ft_rmline_tab(name, env, 0);
-	new = (char **) malloc(sizeof(char *) * (len + 2));
+	new = (char **)malloc(sizeof(char *) * (len + 2));
 	while (*env && (*env)[i])
 	{
 		new[i] = ft_strdup((*env)[i]);

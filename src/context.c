@@ -6,14 +6,14 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/28 15:07:16 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/07 19:57:41 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/27 10:40:30 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <sys/ioctl.h>
 #include <stdlib.h>
-#include "42sh.h"
+#include "norme42sh.h"
 
 static void			st_set_defaults(t_ctx *ctx)
 {
@@ -43,9 +43,9 @@ t_ctx				*ft_get_ctx(void)
 
 	if (!ctx)
 	{
-		if (!(ctx = (t_ctx *) malloc(sizeof(t_ctx))))
+		if (!(ctx = (t_ctx *)malloc(sizeof(t_ctx))))
 			ft_error("Can't malloc 'ctx'");
-		if (!(ctx->psone = (t_psone *) malloc(sizeof(t_psone))))
+		if (!(ctx->psone = (t_psone *)malloc(sizeof(t_psone))))
 			ft_error("Can't malloc 'PS1 utility'");
 		st_set_defaults(ctx);
 	}

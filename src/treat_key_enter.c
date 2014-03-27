@@ -6,11 +6,11 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/02 17:00:23 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/10 17:52:09 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/27 10:51:27 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "42sh.h"
+#include "norme42sh.h"
 
 static int			is_full_cmd(char *line)
 {
@@ -20,7 +20,7 @@ static int			is_full_cmd(char *line)
 	while (i > 1 && line[i] == ' ')
 		--i;
 	return (!(line[i] == '&' && line[i - 1] == '&')
-			&& !(line[i] == '|') && ft_odd_quotes(line));
+	&& !(line[i] == '|') && ft_odd_quotes(line));
 }
 
 static void			st_treat_subshell(t_ctx *ctx)

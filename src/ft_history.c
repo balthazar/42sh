@@ -13,7 +13,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include "42sh.h"
+#include "norme42sh.h"
 
 void		ft_reset_line(t_ctx *ctx, int flag)
 {

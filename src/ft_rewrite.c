@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "42sh.h"
+#include "norme42sh.h"
 
 static void			st_do(t_ctx *ctx, int *i, int *x, int *y)
 {

@@ -6,11 +6,11 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/04 16:25:45 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/14 18:00:05 by fbeck            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "42sh.h"
+#include "norme42sh.h"
 
 int				treat_key_delete(void)
 {
@@ -21,6 +21,8 @@ int				treat_key_delete(void)
 	{
 		tputs(tgetstr("dc", NULL), 1, ft_putput);
 		ft_del_char();
+		if (ft_exceed())
+			ft_rewrite(FALSE);
 	}
 	return (OK);
 }

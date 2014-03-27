@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_exec.c                                          :+:      :+:    :+:   */
+/*   treat_key_jumpl.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/04 15:36:00 by bgronon          ###   ########.fr       */
+/*   Created: 2014/03/14 14:28:15 by mpillet           #+#    #+#             */
+/*   Updated: 2014/03/14 18:36:12 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
 #include "norme42sh.h"
 
-int					ft_exec(t_btree *node)
+int					treat_key_jumpl(void)
 {
-	if (GETT(node, force_null))
-		execve(C(node)->path, C(node)->cmd, NULL);
-	else if (GETT(node, custom))
-		execve(C(node)->path, C(node)->cmd, C(node)->custom);
-	else
-		execve(C(node)->path, C(node)->cmd, C(node)->env);
-	return (0);
+	t_ctx			*ctx;
+
+	ctx = CTX;
+	if (ctx->len > 0)
+	{
+		if (ctx->i > 0)
+			treat_key_left();
+		while (ctx->i > 0 && ctx->line[ctx->i] == ' ')
+			treat_key_left();
+		while (ctx->i > 0 && ctx->line[ctx->i] != ' ')
+			treat_key_left();
+		if (ctx->i > 0)
+			treat_key_right();
+	}
+	return (OK);
 }

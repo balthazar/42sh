@@ -6,12 +6,12 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/23 14:30:41 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/04 16:22:54 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/27 10:47:13 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "42sh.h"
+#include "norme42sh.h"
 
 static int	ft_notin(char *str, t_btree *node)
 {
@@ -88,7 +88,7 @@ void		ft_unsetenv(t_btree *node)
 		return ;
 	ctx = CTX;
 	len = ft_tab_len(ctx->env) + 1 - ft_count_unset(ctx, node);
-	new = (char **) malloc(sizeof(char *) * len);
+	new = (char **)malloc(sizeof(char *) * len);
 	ft_unsetenv_aux(&new, node, ctx);
 	ctx->env = new;
 }
@@ -105,7 +105,7 @@ void		ft_rmline_tab(char *value, char ***arr, int len)
 	i = 0;
 	j = 0;
 	len = ft_tab_len(*arr);
-	new = (char **) malloc(sizeof(char *) * (len + 1));
+	new = (char **)malloc(sizeof(char *) * (len + 1));
 	tmp = ft_strjoin(value, "=");
 	while (*arr && (*arr)[i])
 	{

@@ -6,11 +6,11 @@
 /*   By: janteuni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 11:12:07 by janteuni          #+#    #+#             */
-/*   Updated: 2014/03/04 16:15:16 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/27 10:49:04 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "42sh.h"
+#include "norme42sh.h"
 
 int			ft_parser_print_err(char c)
 {
@@ -22,9 +22,9 @@ int			ft_parser_print_err(char c)
 	ch[1] = '\0';
 	tmp = ft_strjoin("Parse error near '", ch);
 	tmp2 = ft_strjoin(tmp, "'");
-	ft_memdel((void **) &tmp);
+	ft_memdel((void **)&tmp);
 	ft_err(tmp2);
-	ft_memdel((void **) &tmp2);
+	ft_memdel((void **)&tmp2);
 	return (ERR);
 }
 
@@ -43,7 +43,7 @@ int			ft_treat_sep(t_dlist **tmp)
 	if ((ref == END && count > 1) || (ref <= 2 && count > 2)
 			|| (ref == AND && count != 2))
 		return (ft_parser_print_err(LIST->data[0]));
-	if (ref == CHEV && !list->next)
+	if (ref == CHEV && (!list->next || NEXT->def != STR))
 		return (ft_parser_print_err(LIST->data[0]));
 	*tmp = list->next;
 	return (OK);

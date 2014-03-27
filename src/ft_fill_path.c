@@ -6,12 +6,12 @@
 /*   By: fbeck <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 13:04:21 by fbeck             #+#    #+#             */
-/*   Updated: 2014/03/04 16:12:30 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/27 10:46:36 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include "42sh.h"
+#include "norme42sh.h"
 
 static int		ft_check_access(char *path)
 {
@@ -74,7 +74,7 @@ static int		st_err_cmd(char *name)
 
 	tmp = ft_strjoin(name, ": command not found");
 	ft_err(tmp);
-	ft_memdel((void **) &tmp);
+	ft_memdel((void **)&tmp);
 	return (ERR);
 }
 
@@ -101,4 +101,3 @@ int				ft_fill_path(t_cmd *cmd)
 		return (st_err_cmd(cmd->cmd[0]));
 	return (OK);
 }
-

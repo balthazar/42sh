@@ -6,7 +6,7 @@
 #    By: mpillet <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/03/11 14:01:00 by mpillet           #+#    #+#              #
-#    Updated: 2014/03/11 14:22:46 by mpillet          ###   ########.fr        #
+#    Updated: 2014/03/14 14:29:25 by mpillet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,6 +82,8 @@ SRC					= $(DIR_SRC)/main.c \
 					  $(DIR_SRC)/treat_key_down.c \
 					  $(DIR_SRC)/treat_key_home.c \
 					  $(DIR_SRC)/treat_key_end.c \
+					  $(DIR_SRC)/treat_key_jumpl.c \
+					  $(DIR_SRC)/treat_key_jumpr.c \
 					  $(DIR_SRC)/ft_clean_line.c \
 					  $(DIR_SRC)/ft_clear_line.c \
 					  $(DIR_SRC)/ft_logpos.c \

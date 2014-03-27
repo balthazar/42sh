@@ -12,7 +12,7 @@
 
 #include <fcntl.h>
 #include <unistd.h>
-#include "42sh.h"
+#include "norme42sh.h"
 
 static int			st_check_redirect_in(char *file)
 {

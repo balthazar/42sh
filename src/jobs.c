@@ -12,7 +12,7 @@
 
 #include <signal.h>
 #include <sys/wait.h>
-#include "42sh.h"
+#include "norme42sh.h"
 
 void				ft_ctrl_c(int i)
 {

@@ -6,11 +6,11 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/02 17:04:30 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/10 17:54:58 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/14 17:55:41 by fbeck            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "42sh.h"
+#include "norme42sh.h"
 
 void				ft_insert_char(char c)
 {
@@ -34,11 +34,14 @@ void				ft_add_char(char c)
 	t_ctx			*ctx;
 
 	ctx = CTX;
-	ft_insert_char(c);
-	ft_putchar(c);
-	++ctx->pos.x;
-	if (ft_exceed())
-		ft_rewrite(FALSE);
-	if (ctx->pos.x >= ctx->cols)
-		ft_move_cursor();
+	if (ctx->len + 1 < LINE_LEN)
+	{
+		ft_insert_char(c);
+		ft_putchar(c);
+		++ctx->pos.x;
+		if (ft_exceed())
+			ft_rewrite(FALSE);
+		if (ctx->pos.x >= ctx->cols)
+			ft_move_cursor();
+	}
 }

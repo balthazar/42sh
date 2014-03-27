@@ -12,7 +12,7 @@
 
 #include <unistd.h>
 #include <stdlib.h>
-#include "42sh.h"
+#include "norme42sh.h"
 
 static int		ft_string_rep(char **str, int i, int cpt, int *len)
 {

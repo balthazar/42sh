@@ -6,7 +6,7 @@
 /*   By: janteuni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 15:12:47 by janteuni          #+#    #+#             */
-/*   Updated: 2014/03/10 18:03:06 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/27 10:40:48 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <curses.h>
 #include <stdlib.h>
 #include <term.h>
-#include "42sh.h"
+#include "norme42sh.h"
 
 int					ft_putput(int c)
 {
@@ -26,7 +26,7 @@ void				ft_term_init(void)
 {
 	char		*term;
 
-	if ((term = (char *) getenv("TERM")) == NULL)
+	if ((term = (char *)getenv("TERM")) == NULL)
 		ft_error("Can't determine terminal purpose.");
 	if (tgetent(NULL, term) != 1)
 		ft_error("Failed with tgetent");

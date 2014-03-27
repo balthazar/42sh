@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "42sh.h"
+#include "norme42sh.h"
 
 void			ft_fill_redirection(t_cmd *cmd, t_dlist *list)
 {

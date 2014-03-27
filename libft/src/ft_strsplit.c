@@ -6,35 +6,12 @@
 /*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/22 14:54:26 by mpillet           #+#    #+#             */
-/*   Updated: 2013/12/10 16:16:19 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/27 11:03:11 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
-
-static void	set_nb(char const *s, char c, int *nb);
-static void	fill_tab(char const *s, char c, char **tab, int index);
-
-char		**ft_strsplit(char const *s, char c)
-{
-	char	**tab;
-	int		nb;
-
-	tab = NULL;
-	if (s)
-	{
-		nb = 0;
-		set_nb(s, c, &nb);
-		tab = (char **) malloc(sizeof(char *) * (nb + 1));
-		if (tab)
-		{
-			tab[nb] = NULL;
-			fill_tab(s, c, tab, 0);
-		}
-	}
-	return (tab);
-}
 
 static void	set_nb(char const *s, char c, int *nb)
 {
@@ -88,4 +65,24 @@ static void	fill_tab(char const *s, char c, char **tab, int index)
 				i2++;
 		}
 	}
+}
+
+char		**ft_strsplit(char const *s, char c)
+{
+	char	**tab;
+	int		nb;
+
+	tab = NULL;
+	if (s)
+	{
+		nb = 0;
+		set_nb(s, c, &nb);
+		tab = (char **)malloc(sizeof(char *) * (nb + 1));
+		if (tab)
+		{
+			tab[nb] = NULL;
+			fill_tab(s, c, tab, 0);
+		}
+	}
+	return (tab);
 }

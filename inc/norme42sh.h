@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   42sh.h                                             :+:      :+:    :+:   */
+/*   norme42sh.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2014/03/11 14:00:35 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/11 16:29:12 by mpillet          ###   ########.fr       */
+/*   Created: 2014/03/27 11:14:32 by mpillet           #+#    #+#             */
+/*   Updated: 2014/03/27 12:07:38 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef A42SH_H
-# define A42SH_H
+#ifndef NORME42SH_H
+# define NORME42SH_H
 
 # include <termios.h>
 # include <curses.h>
@@ -57,7 +57,7 @@
 # define C(EL)			((t_cmd *) EL->content)
 # define CH(X)			(((t_chev *)X->content))
 
-# define NB_KEYS		10
+# define NB_KEYS		12
 # define K_LEFT			tgetstr("kl", NULL)
 # define K_RIGHT		tgetstr("kr", NULL)
 # define K_DOWN			tgetstr("kd", NULL)
@@ -68,6 +68,8 @@
 # define K_CTRLD		("\004")
 # define K_HOME			tgetstr("kh", NULL)
 # define K_END			("\033OF")
+# define K_JUMPL		("\033[1;2D")
+# define K_JUMPR		("\033[1;2C")
 
 # define GETT(E, T)		((t_cmd *) (E)->content)->T
 # define CMU			(GETT(node, cmd)[1])
@@ -214,6 +216,8 @@ int					treat_key_up(void);
 int					treat_key_down(void);
 int					treat_key_home(void);
 int					treat_key_end(void);
+int					treat_key_jumpl(void);
+int					treat_key_jumpr(void);
 
 int					ft_putput(int c);
 void				ft_reset_term(void);
@@ -354,4 +358,4 @@ void				ft_child(int sig);
 
 void				ft_logpos(void);
 
-#endif /* !A42SH_H */
+#endif
