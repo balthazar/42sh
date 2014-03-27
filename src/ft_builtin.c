@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/23 12:38:47 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/04 16:44:34 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/27 10:41:33 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static t_built	*ft_get_builts(void)
 
 	if (!builts)
 	{
-		if (!(builts = (t_built *) malloc(sizeof(t_built) * (NBBS + 1))))
+		if (!(builts = (t_built *)malloc(sizeof(t_built) * (NBBS + 1))))
 			ft_error("Can't malloc 'builts'");
 		builts[NBBS].name = NULL;
 		builts[0].name = "cd";

@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/07 15:08:51 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/07 15:31:23 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/27 10:48:31 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,14 @@
 
 static void			st_go_to(t_ctx *ctx, int pos)
 {
-	(void) ctx;
-	(void) pos;
+	(void)ctx;
+	(void)pos;
 }
 
 static void			st_back_to(t_ctx *ctx, int pos)
 {
-	(void) ctx;
-	(void) pos;
+	(void)ctx;
+	(void)pos;
 	while (ctx->i > pos)
 	{
 		--ctx->pos.x;
