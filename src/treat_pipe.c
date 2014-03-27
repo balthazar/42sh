@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/03/03 13:02:57 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/27 10:51:54 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,18 @@
 
 static void				st_child(int *fdes, t_btree *node1)
 {
-		dup2(fdes[1], 1);
-		close(fdes[0]);
-		if (CMD == C(node1)->type)
-		{
-			if (ERR == ft_redirect(node1) || ERR == ft_fill_path(C(node1)))
-				C(node1)->fail = TRUE;
-			else
-				ft_exec(node1);
-		}
+	dup2(fdes[1], 1);
+	close(fdes[0]);
+	if (CMD == C(node1)->type)
+	{
+		if (ERR == ft_redirect(node1) || ERR == ft_fill_path(C(node1)))
+			C(node1)->fail = TRUE;
 		else
-			ft_treat_node(node1);
-		exit(1);
+			ft_exec(node1);
+	}
+	else
+		ft_treat_node(node1);
+	exit(1);
 }
 
 static void				st_run_pipe(t_btree *node1, t_btree *node2)

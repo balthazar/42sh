@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/02 16:22:32 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/10 18:29:08 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/27 10:45:48 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,19 @@
 int					ft_treat_key(char *buf)
 {
 	int				i;
-	t_key			keys[NB_KEYS] =
-	{
-		{ K_ENTER, treat_key_enter },
-		{ K_LEFT, treat_key_left },
-		{ K_RIGHT, treat_key_right },
-		{ K_CTRLD, treat_key_ctrld },
-		{ K_DELETE, treat_key_delete },
-		{ K_DOWN, treat_key_down },
-		{ K_UP, treat_key_up },
-		{ K_HOME, treat_key_home },
-		{ K_END, treat_key_end },
-		{ K_BACKSP, treat_key_backsp }
-	};
+	static t_key	keys[NB_KEYS] = {
 
+	{ K_ENTER, treat_key_enter },
+	{ K_LEFT, treat_key_left },
+	{ K_RIGHT, treat_key_right },
+	{ K_CTRLD, treat_key_ctrld },
+	{ K_DELETE, treat_key_delete },
+	{ K_DOWN, treat_key_down },
+	{ K_UP, treat_key_up },
+	{ K_HOME, treat_key_home },
+	{ K_END, treat_key_end },
+	{ K_BACKSP, treat_key_backsp }
+	};
 	i = 0;
 	while (i < NB_KEYS)
 	{

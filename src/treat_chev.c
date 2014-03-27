@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 0000/00/00 00:00:00 by 5tta              #+#    #+#             */
-/*   Updated: 2014/02/28 22:34:53 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/27 10:48:09 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 int					treat_chev(t_btree *node)
 {
-	(void) node;
+	(void)node;
 	return (OK);
 }

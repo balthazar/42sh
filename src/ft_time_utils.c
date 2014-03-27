@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 12:28:31 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/02 18:43:02 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/27 10:41:11 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static t_stime	*ft_gethandlers(void)
 
 	if (!out)
 	{
-		if (!(out = (t_stime *) malloc(sizeof(t_stime) * (NBTIME + 1))))
+		if (!(out = (t_stime *)malloc(sizeof(t_stime) * (NBTIME + 1))))
 			ft_error("Can't malloc time pointer functions array.");
 		out[NBTIME].type = NULL;
 		out[0].type = "%D";
