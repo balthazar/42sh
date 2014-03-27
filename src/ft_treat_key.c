@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/02 16:22:32 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/27 11:13:56 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/27 11:18:45 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void			st_assign(t_key keys[])
 	keys[8].key = K_END;
 	keys[8].fn = treat_key_end;
 	keys[9].key = K_BACKSP;
-	keys[9].fn =treat_key_backsp;
+	keys[9].fn = treat_key_backsp;
 }
 
 int					ft_treat_key(char *buf)
