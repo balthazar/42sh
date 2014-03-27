@@ -6,14 +6,12 @@
 /*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/27 11:14:32 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/27 11:14:34 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/27 11:16:29 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef A42SH_H
-# define A42SH_H
-
-# include <stdio.h> /* TODO delete */
+#ifndef NORME42SH_H
+# define NORME42SH_H
 
 # include <termios.h>
 # include <curses.h>
@@ -360,4 +358,4 @@ void				ft_child(int sig);
 
 void				ft_logpos(void);
 
-#endif /* !A42SH_H */
+#endif
