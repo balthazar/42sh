@@ -6,44 +6,18 @@
 /*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/19 12:24:11 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/05 17:38:17 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/27 11:08:32 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <string.h>
+# include "headers.h"
 # include "get_next_line.h"
 
 # define TRUE		1
 # define FALSE		0
-
-/*
-** structs
-*/
-typedef struct		s_dlist
-{
-	void			*content;
-	size_t			content_size;
-	struct s_dlist	*next;
-	struct s_dlist	*prev;
-}					t_dlist;
-
-typedef struct		s_list
-{
-	void			*content;
-	size_t			content_size;
-	struct s_list	*next;
-}					t_list;
-
-typedef struct		s_btree
-{
-	struct s_btree	*parent;
-	struct s_btree	*right;
-	struct s_btree	*left;
-	size_t			content_size;
-	void			*content;
-}					t_btree;
 
 /*
 ** memory
@@ -154,7 +128,7 @@ int			ft_lstlen(t_list *lst);
 */
 t_btree		*btree_create_node(void *content, size_t content_size);
 void		btree_insert_data(t_btree **root, void *content,
-		size_t content_size, int (*cmpf)(void *, void *));
+			size_t content_size, int (*cmpf)(void *, void *));
 void		btree_print(t_btree *root, char *type, int level);
 
 #endif

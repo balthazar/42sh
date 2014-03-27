@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/01/23 17:15:33 by mpillet           #+#    #+#             */
-/*   Updated: 2014/02/27 21:38:56 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/27 10:55:20 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_btree		*btree_create_node(void *content, size_t content_size)
 {
 	t_btree		*node;
 
-	if (!(node = (t_btree *) malloc(sizeof(t_btree))))
+	if (!(node = (t_btree *)malloc(sizeof(t_btree))))
 		return (NULL);
 	node->parent = NULL;
 	node->right = NULL;

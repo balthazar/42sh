@@ -6,7 +6,7 @@
 /*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/22 14:58:48 by mpillet           #+#    #+#             */
-/*   Updated: 2013/12/12 16:31:33 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/27 10:56:45 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char		*ft_itoa(int n)
 	negative = (n < 0) ? 1 : 0;
 	n = (n < 0) ? -n : n;
 	length = get_length(n, negative);
-	str = (char *) malloc(sizeof(char) * (length + 1));
+	str = (char *)malloc(sizeof(char) * (length + 1));
 	if (str)
 	{
 		str[length] = '\0';

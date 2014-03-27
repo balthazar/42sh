@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/02 14:59:38 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/02 15:22:37 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/27 10:55:57 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void		ft_copy_tab(char ***dest, char **arr)
 	if (!arr)
 		return ;
 	len = ft_tab_len(arr);
-	*dest = (char **) malloc(sizeof(char *) * (len + 1));
+	*dest = (char **)malloc(sizeof(char *) * (len + 1));
 	while (arr && *arr)
 	{
 		(*dest)[i] = ft_strdup(*arr);

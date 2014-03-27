@@ -6,7 +6,7 @@
 /*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/22 09:56:50 by mpillet           #+#    #+#             */
-/*   Updated: 2013/11/25 11:02:35 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/27 11:03:26 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 	out = NULL;
 	if ((start + len) <= length)
 	{
-		out = (char *) malloc(sizeof(char) * (len + 1));
+		out = (char *)malloc(sizeof(char) * (len + 1));
 		if (out)
 		{
 			out = ft_strncpy(out, s + start, len);

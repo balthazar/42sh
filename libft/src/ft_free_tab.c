@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 18:55:03 by mpillet           #+#    #+#             */
-/*   Updated: 2014/03/18 15:17:07 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/27 10:56:30 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void				ft_free_tab(void ***arr)
 	while (arr && *arr && (*arr)[i])
 	{
 		if ((*arr)[i])
-			ft_memdel((void **) &(*arr)[i]);
+			ft_memdel((void **)&(*arr)[i]);
 		++i;
 	}
 	if (arr)
-		ft_memdel((void **) arr);
+		ft_memdel((void **)arr);
 }

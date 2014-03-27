@@ -6,7 +6,7 @@
 /*   By: mpillet <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2013/11/20 17:37:09 by mpillet           #+#    #+#             */
-/*   Updated: 2013/11/27 12:23:53 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/27 11:01:59 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@ char	*ft_strrchr(const char *s, int c)
 	length = ft_strlen(s);
 	while (length >= 0)
 	{
-		if (s[length] == (char) c)
-		{
-			return (&(((char *) s)[length]));
-		}
+		if (s[length] == (char)c)
+			return (&(((char *)s)[length]));
 		length--;
 	}
 	return (NULL);
