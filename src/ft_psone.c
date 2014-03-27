@@ -6,7 +6,7 @@
 /*   By: bgronon <bgronon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/27 12:38:51 by bgronon           #+#    #+#             */
-/*   Updated: 2014/03/11 15:05:50 by bgronon          ###   ########.fr       */
+/*   Updated: 2014/03/27 11:27:05 by bgronon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ static void	ft_replacements(t_ctx *ctx, char **env, char *tmp)
 	tmp = ft_strdup(ft_getvar_env("PWD", env));
 	ft_streplace(&PS->str, "%/", tmp);
 	ft_streplace(&tmp, ft_getvar_env("HOME", env), "~");
+	ft_streplace(&tmp, "/Volumes/Data", "");
 	ft_streplace(&PS->str, "%~", tmp);
 	free(tmp);
 	ft_streplace(&PS->str, "%%", "%");
