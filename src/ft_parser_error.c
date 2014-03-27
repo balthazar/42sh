@@ -6,7 +6,7 @@
 /*   By: janteuni <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/02/26 11:12:07 by janteuni          #+#    #+#             */
-/*   Updated: 2014/03/18 15:24:02 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/27 10:49:04 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ int			ft_parser_print_err(char c)
 	ch[1] = '\0';
 	tmp = ft_strjoin("Parse error near '", ch);
 	tmp2 = ft_strjoin(tmp, "'");
-	ft_memdel((void **) &tmp);
+	ft_memdel((void **)&tmp);
 	ft_err(tmp2);
-	ft_memdel((void **) &tmp2);
+	ft_memdel((void **)&tmp2);
 	return (ERR);
 }
 

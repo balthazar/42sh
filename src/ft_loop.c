@@ -6,7 +6,7 @@
 /*   By: mpillet <mpillet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/03/01 15:41:53 by janteuni          #+#    #+#             */
-/*   Updated: 2014/03/10 18:26:14 by mpillet          ###   ########.fr       */
+/*   Updated: 2014/03/27 10:47:54 by mpillet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 static int			st_isprint(char *buf)
 {
 	return (ft_isprint(buf[0]) && buf[1] == 0 && buf[2] == 0 && buf[3] == 0
-			&& buf[4] == 0 && buf[5] == 0);
+	&& buf[4] == 0 && buf[5] == 0);
 }
 
 int					ft_loop(void)
