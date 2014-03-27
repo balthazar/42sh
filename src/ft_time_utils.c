@@ -12,7 +12,7 @@
 
 #include <stdlib.h>
 #include <time.h>
-#include "42sh.h"
+#include "norme42sh.h"
 
 static t_stime	*ft_gethandlers(void)
 {

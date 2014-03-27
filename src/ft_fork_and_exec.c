@@ -12,7 +12,7 @@
 
 #include <unistd.h>
 #include <sys/wait.h>
-#include "42sh.h"
+#include "norme42sh.h"
 
 static void				st_deljob(void *content, size_t size)
 {

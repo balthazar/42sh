@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "42sh.h"
+#include "norme42sh.h"
 
 static void	ft_push_elem(char *data, char c, t_dlist **list)
 {

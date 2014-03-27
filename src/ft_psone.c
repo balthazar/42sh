@@ -14,7 +14,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <pwd.h>
-#include "42sh.h"
+#include "norme42sh.h"
 
 static void	ft_crealsize(int *i, int *size, int open)
 {

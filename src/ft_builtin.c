@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "42sh.h"
+#include "norme42sh.h"
 
 static t_built	*ft_get_builts(void)
 {

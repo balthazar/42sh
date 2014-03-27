@@ -14,7 +14,7 @@
 #include <curses.h>
 #include <stdlib.h>
 #include <term.h>
-#include "42sh.h"
+#include "norme42sh.h"
 
 int					ft_putput(int c)
 {

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "42sh.h"
+#include "norme42sh.h"
 
 static int	ft_notin(char *str, t_btree *node)
 {

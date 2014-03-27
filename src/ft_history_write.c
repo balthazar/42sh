@@ -13,7 +13,7 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include "42sh.h"
+#include "norme42sh.h"
 
 void	ft_append_new_history(char *filename, t_ctx *ctx)
 {

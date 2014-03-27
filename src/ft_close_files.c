@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include "42sh.h"
+#include "norme42sh.h"
 
 static void			st_close_fd(int fd)
 {

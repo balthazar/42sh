@@ -12,7 +12,7 @@
 
 #include <stdlib.h>
 #include <signal.h>
-#include "42sh.h"
+#include "norme42sh.h"
 
 static void			ft_quit(int i)
 {

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <time.h>
-#include "42sh.h"
+#include "norme42sh.h"
 
 char	*ft_time_majd(struct tm *l)
 {

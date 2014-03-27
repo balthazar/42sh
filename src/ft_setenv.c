@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "42sh.h"
+#include "norme42sh.h"
 
 static void	ft_setenv_aux(char ***new, t_btree *node, t_ctx *ctx)
 {

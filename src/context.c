@@ -13,7 +13,7 @@
 #include <unistd.h>
 #include <sys/ioctl.h>
 #include <stdlib.h>
-#include "42sh.h"
+#include "norme42sh.h"
 
 static void			st_set_defaults(t_ctx *ctx)
 {

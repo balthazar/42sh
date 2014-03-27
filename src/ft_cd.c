@@ -12,7 +12,7 @@
 
 #include <errno.h>
 #include <unistd.h>
-#include "42sh.h"
+#include "norme42sh.h"
 
 static void	ft_errors_cd(char *str)
 {

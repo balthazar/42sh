@@ -13,7 +13,7 @@
 #include <sys/types.h>
 #include <sys/uio.h>
 #include <unistd.h>
-#include "42sh.h"
+#include "norme42sh.h"
 
 static int			st_isprint(char *buf)
 {

@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <stdio.h>
-#include "42sh.h"
+#include "norme42sh.h"
 
 int					treat_cmd(t_btree *node)
 {

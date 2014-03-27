@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <sys/ioctl.h>
-#include "42sh.h"
+#include "norme42sh.h"
 
 void				ft_resize(int sig)
 {
